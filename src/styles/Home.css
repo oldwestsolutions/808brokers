@@ -120,7 +120,7 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  margin-top: 300px; /* Move search bar down */
+  margin-top: 200px; /* Unchanged for desktop */
 }
 
 .search-input {
@@ -172,7 +172,7 @@
   }
   
   .search-container {
-    margin-top: 200px; /* Adjust for mobile */
+    margin-top: 75px; /* Increased from 50px for mobile */
   }
 }
 
