@@ -19,6 +19,9 @@ const Home = () => {
           className="hero-image"
         />
         
+        <h1 className="hero-title">808 Brokers</h1>
+        <p className="hero-description">Your Premium Marketplace for Beats and Samples</p>
+        
         <form className="search-container" onSubmit={handleSearch}>
           <input
             type="text"

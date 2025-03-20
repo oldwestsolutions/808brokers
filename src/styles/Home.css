@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 body {
   margin: 0;
   padding: 0;
@@ -130,8 +134,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  margin-top: 200px; /* Unchanged for desktop */
+  padding: 0 20px;
+  margin-top: 0;
 }
 
 .search-input {
@@ -195,4 +199,29 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: 0;
+}
+
+.hero-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #1a1a1a; /* Dark charcoal/metallic black */
+  background: linear-gradient(180deg, #2d2d2d, #1a1a1a); /* Subtle metallic gradient */
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(138, 43, 226, 0.4); /* Reduced glow for darker look */
+  margin-bottom: 1rem;
+  z-index: 1;
+  position: relative;
+  letter-spacing: 0.5px;
+}
+
+.hero-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  color: rgba(230, 230, 230, 0.9);
+  margin-bottom: 1rem;
+  z-index: 1;
+  position: relative;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
 } 
