@@ -27,8 +27,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <img src={dicelogo} alt="808 Brokers Dice Logo" className="navbar-logo-image" />
-        <Link to="/" onClick={handleHomeClick}>808 Brokers</Link>
+        <img src={dicelogo} alt="808 Brokers" className="logo-image" />
       </div>
       <div className="navbar-actions">
         {user ? (
