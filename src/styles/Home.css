@@ -170,24 +170,32 @@ body {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .hero {
-    min-height: 500px; /* Slightly smaller on mobile */
-    padding: 6rem 1rem;
+    padding-top: 4rem;
   }
-  
-  .hero h1 {
-    font-size: 3rem;
+
+  .hero-title {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
   }
-  
-  .hero p {
-    font-size: 1.2rem;
+
+  .hero-description {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
   }
-  
-  .search-input {
-    width: 80%;
-  }
-  
+
   .search-container {
-    margin-top: 75px; /* Increased from 50px for mobile */
+    margin-top: 0.5rem;
+  }
+}
+
+/* Smaller mobile devices */
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 3rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
   }
 }
 
@@ -205,11 +213,11 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: 4rem;
   font-weight: 700;
-  color: #1a1a1a; /* Dark charcoal/metallic black */
-  background: linear-gradient(180deg, #2d2d2d, #1a1a1a); /* Subtle metallic gradient */
+  color: #1a1a1a;
+  background: linear-gradient(180deg, #2d2d2d, #1a1a1a);
   -webkit-background-clip: text;
   background-clip: text;
-  text-shadow: 0 0 15px rgba(138, 43, 226, 0.4); /* Reduced glow for darker look */
+  text-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
   margin-bottom: 1rem;
   z-index: 1;
   position: relative;
@@ -224,4 +232,4 @@ body {
   z-index: 1;
   position: relative;
   text-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
-} 
+}
