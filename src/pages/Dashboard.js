@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DashboardHeader from '../components/DashboardHeader';
 import '../styles/Dashboard.css';
@@ -9,6 +9,15 @@ const Dashboard = () => {
   const handleNavigation = (path) => {
     navigate(`/dashboard/${path}`);
   };
+
+  useEffect(() => {
+    document.querySelector('.navbar')?.style.setProperty('display', 'none');
+    
+    // Show navbar when component unmounts
+    return () => {
+      document.querySelector('.navbar')?.style.setProperty('display', 'flex');
+    };
+  }, []);
 
   return (
     <>

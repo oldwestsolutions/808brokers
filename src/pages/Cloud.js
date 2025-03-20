@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import '../styles/Cloud.css';
 
@@ -119,6 +120,16 @@ const Cloud = () => {
     setSortBy(criteria);
     // Implement sort logic
   };
+
+  // Hide navbar when component mounts
+  useEffect(() => {
+    document.querySelector('.navbar')?.style.setProperty('display', 'none');
+    
+    // Show navbar when component unmounts
+    return () => {
+      document.querySelector('.navbar')?.style.setProperty('display', 'flex');
+    };
+  }, []);
 
   return (
     <div className="cloud-page">

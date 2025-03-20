@@ -1,6 +1,14 @@
 .cloud-page {
-  padding: 6rem 2rem 2rem 2rem;
-  min-height: calc(100vh - 80px);
+  padding: 2rem 2rem 2rem 2rem;
+  min-height: 100vh;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  z-index: 10;
 }
 
 .cloud-container {
@@ -12,6 +20,7 @@
   background: rgba(255, 255, 255, 0.03);
   border-radius: 20px;
   overflow: hidden;
+  margin-top: 4rem;
 }
 
 .cloud-sidebar {
@@ -19,6 +28,7 @@
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.05);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
 }
 
 .storage-info {
@@ -260,12 +270,18 @@
 
 @media (max-width: 768px) {
   .cloud-page {
-    padding: 5rem 1rem 1rem 1rem;
+    padding: 1rem;
+  }
+  
+  .back-button {
+    top: 0.5rem;
+    left: 1rem;
   }
 
   .cloud-container {
     flex-direction: column;
     height: auto;
+    margin-top: 3rem;
   }
 
   .cloud-sidebar {

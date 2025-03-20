@@ -1,9 +1,21 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import '../styles/Login.css';
 
 const Login = () => {
   const navigate = useNavigate();
+
+  // Hide navbar and prevent scroll
+  useEffect(() => {
+    document.querySelector('.navbar')?.style.setProperty('display', 'none');
+    document.body.classList.add('login-active');
+    
+    // Cleanup
+    return () => {
+      document.querySelector('.navbar')?.style.setProperty('display', 'flex');
+      document.body.classList.remove('login-active');
+    };
+  }, []);
 
   const handleCoinbaseLogin = () => {
     // Directly navigate to dashboard instead of Coinbase OAuth
@@ -17,6 +29,10 @@ const Login = () => {
 
   return (
     <div className="login-page">
+      <Link to="/" className="back-button">
+        ← Back to Home
+      </Link>
+      
       <div className="login-modal">
         <div className="modal-header">
           <h2>Connect Your Wallet</h2>

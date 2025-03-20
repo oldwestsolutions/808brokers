@@ -1,38 +1,41 @@
 .login-page {
   min-height: 100vh;
+  height: 100vh; /* Fixed height */
   display: flex;
-  align-items: flex-start;
+  align-items: center; /* Center vertically */
   justify-content: center;
   padding: 2rem;
-  background: var(--gradient-2);
+  background: #0a0a0a;
   position: relative;
-  padding-top: 8rem;
+  overflow: hidden; /* Prevent scrolling */
+  padding-top: 0; /* Remove top padding */
+  margin-top: -4rem; /* Move everything up a bit */
 }
 
 .login-modal {
-  background: rgba(18, 18, 18, 0.95);
+  background: rgba(13, 13, 13, 0.95);
   backdrop-filter: blur(10px);
   padding: 2.5rem;
   border-radius: 20px;
   width: 100%;
-  max-width: 480px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 700px; /* Wider to accommodate horizontal layout */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   animation: modalFadeIn 0.5s ease-out;
+  margin-top: 0; /* Remove extra top margin */
 }
 
 .modal-header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem; /* More space between header and options */
 }
 
 .modal-header h2 {
-  font-size: 2rem;
-  color: var(--text);
-  margin-bottom: 0.5rem;
-  background: var(--gradient-1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 2.2rem; /* Slightly larger heading */
+  color: #ffffff;
+  margin-bottom: 0.8rem;
+  background: none;
+  -webkit-text-fill-color: #ffffff;
 }
 
 .modal-header p {
@@ -40,33 +43,36 @@
 }
 
 .login-options {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Change to horizontal layout */
   gap: 1.5rem;
+  margin: 0 -0.75rem; /* Negative margin to allow proper spacing */
 }
 
 .login-option {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.5rem;
+  flex-direction: column; /* Stack icon and text vertically */
+  text-align: center;
+  padding: 2rem 1.5rem;
+  height: 100%;
+  justify-content: center;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(20, 20, 20, 0.95);
   cursor: pointer;
   transition: all 0.3s ease;
-  text-align: left;
 }
 
 .login-option:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--primary-purple);
+  background: rgba(30, 30, 30, 0.95);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .option-icon {
-  width: 48px;
-  height: 48px;
+  width: 64px; /* Larger icons */
+  height: 64px;
+  margin-bottom: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,19 +80,23 @@
 }
 
 .option-icon img {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
+}
+
+.option-info {
+  margin-top: 0.5rem;
 }
 
 .option-info h3 {
-  color: var(--text);
-  margin-bottom: 0.25rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
 }
 
 .option-info p {
-  color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .coinbase .option-icon {
@@ -98,26 +108,11 @@
 }
 
 .divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.4);
-  margin: 0.5rem 0;
-}
-
-.divider::before,
-.divider::after {
-  content: '';
-  flex: 1;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.divider span {
-  padding: 0 1rem;
+  display: none;
 }
 
 .modal-footer {
-  margin-top: 2rem;
+  margin-top: 3rem; /* More space above footer */
   text-align: center;
   color: rgba(255, 255, 255, 0.4);
   font-size: 0.9rem;
@@ -143,22 +138,49 @@
   }
 }
 
-@media (max-width: 480px) {
-  .login-modal {
-    padding: 1.5rem;
+@media (max-width: 600px) {
+  .login-options {
+    grid-template-columns: 1fr; /* Stack vertically on mobile */
   }
   
-  .login-option {
-    padding: 1rem;
+  .login-page {
+    margin-top: -2rem; /* Less margin on mobile */
   }
-  
-  .option-icon {
-    width: 40px;
-    height: 40px;
+}
+
+.back-button {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffffff;
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.back-button:hover {
+  background: rgba(30, 30, 30, 0.95);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .back-button {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.6rem 1rem;
   }
-  
-  .option-icon img {
-    width: 24px;
-    height: 24px;
-  }
+}
+
+body.login-active {
+  overflow: hidden; /* Prevent body scroll when login is active */
 } 

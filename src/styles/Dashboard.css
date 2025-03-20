@@ -1,15 +1,21 @@
 .dashboard {
-  padding: 2rem;
-  min-height: calc(100vh - 80px); /* Account for navbar height */
+  padding-top: 0; /* Remove top padding that was accounting for navbar */
+  min-height: 100vh;
+  background: #0a0a0a;
   color: var(--text);
 }
 
 .dashboard-header {
-  background: var(--gradient-2);
-  border-radius: 20px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dashboard-header h1 {
@@ -25,6 +31,8 @@
   justify-content: center;
   gap: 2rem;
   padding: 1rem;
+  margin-top: 4rem;
+  padding-top: 5rem;
 }
 
 .bubble-card {
@@ -70,6 +78,8 @@
 .dashboard-content {
   display: grid;
   gap: 2rem;
+  padding: 2rem;
+  margin-top: 2rem;
 }
 
 .dashboard-section {
@@ -273,6 +283,8 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
+    margin-top: 2rem;
+    padding-top: 3rem;
   }
 
   .feature-bubbles::-webkit-scrollbar {
@@ -354,6 +366,10 @@
   
   .notification-icon i {
     font-size: 1rem;
+  }
+
+  .dashboard-content {
+    padding: 1rem;
   }
 }
 
@@ -489,4 +505,59 @@
   .bulletin-content p {
     font-size: 0.85rem;
   }
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  min-width: 200px;
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.5rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.wallet-status {
+  padding: 0.8rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.wallet-status.connected {
+  color: #00C805;
+}
+
+.profile-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 0.95rem;
+  text-align: left;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.profile-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.profile-dropdown-item.logout {
+  color: #ff4444;
+}
+
+.profile-dropdown-item.logout:hover {
+  background: rgba(255, 68, 68, 0.1);
 } 

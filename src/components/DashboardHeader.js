@@ -14,7 +14,6 @@ const DashboardHeader = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Implement search functionality
     console.log('Searching for:', searchQuery);
   };
 
@@ -56,53 +55,31 @@ const DashboardHeader = () => {
         </button>
 
         {showDropdown && (
-          <div className="dashboard-dropdown">
-            <div className="dropdown-header">
-              <div className="user-info">
-                <div className="user-avatar-large">
-                  {user?.avatar ? (
-                    <img src={user.avatar} alt="Profile" />
-                  ) : (
-                    <svg className="avatar-placeholder" viewBox="0 0 24 24">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                    </svg>
-                  )}
-                </div>
-                <div className="user-details">
-                  <p className="user-name">{user?.name || 'User'}</p>
-                  <p className="user-email">{user?.email}</p>
-                </div>
-              </div>
-              <div className="user-balance">
-                <i className="fas fa-wallet"></i>
-                <span>{user?.balance || '0.00'} ETH</span>
-              </div>
+          <div className="profile-dropdown">
+            <div className="wallet-status connected">
+              <i className="fas fa-circle"></i>
+              Wallet Connected
             </div>
 
-            <div className="dropdown-section">
-              <button className="dropdown-item">
-                <i className="fas fa-user"></i>
-                Profile
-              </button>
-              <button className="dropdown-item">
-                <i className="fas fa-cog"></i>
-                Settings
-              </button>
-            </div>
-
-            <div className="dropdown-section">
-              <button className="dropdown-item">
-                <i className="fas fa-question-circle"></i>
-                Help Center
-              </button>
-              <button 
-                className="dropdown-item logout-btn"
-                onClick={handleLogout}
-              >
-                <i className="fas fa-sign-out-alt"></i>
-                Logout
-              </button>
-            </div>
+            <button className="profile-dropdown-item">
+              <i className="fas fa-user"></i>
+              Profile
+            </button>
+            <button className="profile-dropdown-item">
+              <i className="fas fa-cog"></i>
+              Settings
+            </button>
+            <button className="profile-dropdown-item">
+              <i className="fas fa-question-circle"></i>
+              Help Center
+            </button>
+            <button 
+              className="profile-dropdown-item logout"
+              onClick={handleLogout}
+            >
+              <i className="fas fa-sign-out-alt"></i>
+              Logout
+            </button>
           </div>
         )}
       </div>

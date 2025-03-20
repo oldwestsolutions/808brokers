@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 import BackButton from '../components/BackButton';
 import AudioTrackRecorder from '../components/AudioTrackRecorder';
@@ -8,8 +8,40 @@ const Studio = () => {
   const [mainTrack, setMainTrack] = useState(null);
   const [recordings, setRecordings] = useState([]);
   const [lyrics, setLyrics] = useState('');
+  const [aiLyrics, setAiLyrics] = useState('');
+  const [songTitle, setSongTitle] = useState('Untitled Track');
+  const [lastSaved, setLastSaved] = useState(new Date());
+  const [isSaving, setIsSaving] = useState(false);
   const mainWaveformRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isEditingTitle, setIsEditingTitle] = useState(false);
+
+  // Hide navbar when Studio component mounts
+  useEffect(() => {
+    document.querySelector('.navbar')?.style.setProperty('display', 'none');
+    
+    // Show navbar when component unmounts
+    return () => {
+      document.querySelector('.navbar')?.style.setProperty('display', 'flex');
+    };
+  }, []);
+
+  // Autosave functionality
+  useEffect(() => {
+    const saveTimer = setTimeout(() => {
+      handleAutoSave();
+    }, 3000); // Autosave after 3 seconds of no changes
+
+    return () => clearTimeout(saveTimer);
+  }, [lyrics, aiLyrics, songTitle]);
+
+  const handleAutoSave = async () => {
+    setIsSaving(true);
+    // Simulate save operation
+    await new Promise(resolve => setTimeout(resolve, 500));
+    setLastSaved(new Date());
+    setIsSaving(false);
+  };
 
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
@@ -63,25 +95,55 @@ const Studio = () => {
     }]);
   };
 
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <div className="studio-page">
       <BackButton />
       <div className="studio-container">
         <div className="studio-header">
-          <h1>Studio</h1>
+          <div className="song-info">
+            <h1 className="song-title">{songTitle}</h1>
+            <div className="save-status">
+              Last saved {lastSaved.toLocaleTimeString()}
+            </div>
+          </div>
           <div className="transport-controls">
             <button className="transport-btn">
               <i className="fas fa-backward"></i>
             </button>
             <button 
               className={`play-btn ${isPlaying ? 'playing' : ''}`}
-              onClick={() => setIsPlaying(!isPlaying)}
+              onClick={handlePlayPause}
             >
-              <i className={`fas fa-${isPlaying ? 'pause' : 'play'}`}></i>
+              <i className={`fas ${isPlaying ? 'fa-pause' : 'fa-play'}`}></i>
             </button>
             <button className="transport-btn">
               <i className="fas fa-forward"></i>
             </button>
+          </div>
+        </div>
+
+        <div className="lyrics-section">
+          <div className="lyrics-editor">
+            <h2>Written Lyrics</h2>
+            <textarea
+              value={lyrics}
+              onChange={(e) => setLyrics(e.target.value)}
+              placeholder="Write your lyrics here..."
+            />
+          </div>
+
+          <div className="ai-lyrics">
+            <h2>AI Lyrics</h2>
+            <textarea
+              value={aiLyrics}
+              onChange={(e) => setAiLyrics(e.target.value)}
+              placeholder="AI generated lyrics will appear here..."
+              readOnly
+            />
           </div>
         </div>
 
@@ -112,10 +174,10 @@ const Studio = () => {
               <div className="track-header">
                 <span className="track-name">{mainTrack.name}</span>
                 <button 
-                  className="remove-track"
-                  onClick={() => setMainTrack(null)}
+                  className="play-btn"
+                  onClick={handlePlayPause}
                 >
-                  <i className="fas fa-times"></i>
+                  <i className={`fas ${isPlaying ? 'fa-pause' : 'fa-play'}`}></i>
                 </button>
               </div>
               <div ref={mainWaveformRef} className="waveform-container"></div>
@@ -131,51 +193,17 @@ const Studio = () => {
                   <div className="track-header">
                     <span className="track-name">{recording.name}</span>
                     <div className="track-controls">
-                      <button className="track-btn">
-                        <i className="fas fa-volume-up"></i>
-                      </button>
                       <button 
-                        className="track-btn remove"
-                        onClick={() => setRecordings(prev => 
-                          prev.filter(r => r.id !== recording.id)
-                        )}
+                        className="play-btn"
+                        onClick={handlePlayPause}
                       >
-                        <i className="fas fa-trash"></i>
+                        <i className={`fas ${isPlaying ? 'fa-pause' : 'fa-play'}`}></i>
                       </button>
                     </div>
                   </div>
                   <div className="waveform-container recording"></div>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="studio-sidebar">
-          <div className="lyrics-editor">
-            <h2>Lyrics</h2>
-            <textarea
-              value={lyrics}
-              onChange={(e) => setLyrics(e.target.value)}
-              placeholder="Write your lyrics here..."
-            />
-          </div>
-
-          <div className="ai-assistant">
-            <h2>AI Assistant</h2>
-            <div className="ai-suggestions">
-              <button className="suggestion-btn">
-                <i className="fas fa-magic"></i>
-                Generate Rhymes
-              </button>
-              <button className="suggestion-btn">
-                <i className="fas fa-lightbulb"></i>
-                Suggest Next Line
-              </button>
-              <button className="suggestion-btn">
-                <i className="fas fa-sync"></i>
-                Find References
-              </button>
             </div>
           </div>
         </div>

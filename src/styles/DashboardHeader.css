@@ -174,4 +174,27 @@
     width: 280px;
     right: -1rem;
   }
+}
+
+.wallet-status i {
+  font-size: 8px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.wallet-status.connected i {
+  color: #00C805;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
 } 

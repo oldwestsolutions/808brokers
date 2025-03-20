@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import '../styles/Mailbox.css';
 
@@ -75,6 +76,16 @@ const Mailbox = () => {
       setSelectedMessages(currentMessages.map(msg => msg.id));
     }
   };
+
+  // Hide navbar when component mounts
+  useEffect(() => {
+    document.querySelector('.navbar')?.style.setProperty('display', 'none');
+    
+    // Show navbar when component unmounts
+    return () => {
+      document.querySelector('.navbar')?.style.setProperty('display', 'flex');
+    };
+  }, []);
 
   return (
     <div className="mailbox-page">
