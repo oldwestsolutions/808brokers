@@ -1,0 +1,16 @@
+.marketplace {
+  padding: 2rem;
+  color: var(--text);
+}
+
+.marketplace h1 {
+  color: var(--primary-purple);
+  margin-bottom: 2rem;
+}
+
+.marketplace-content {
+  background-color: var(--gray);
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+} 
