@@ -54,7 +54,7 @@ const AudioTrackRecorder = ({ onRecordingComplete }) => {
         wavesurferRef.current.destroy();
       }
     };
-  }, []);
+  }, [duration, onRecordingComplete]);
 
   const startRecording = async () => {
     try {
