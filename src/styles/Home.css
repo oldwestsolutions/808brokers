@@ -4,16 +4,15 @@
 }
 
 .hero {
+  position: relative;
+  width: 100%;
+  min-height: 600px; /* Increased from 400px */
   text-align: center;
-  padding: 6rem 1rem;
-  background: var(--gradient-2);
+  padding: 8rem 1rem; /* Increased padding */
   border-radius: 25px;
   margin-bottom: 4rem;
-  position: relative;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  width: 100%;
-  min-height: 400px; /* Adjust this value as needed */
 }
 
 .hero::before {
@@ -172,6 +171,11 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .hero {
+    min-height: 500px; /* Slightly smaller on mobile */
+    padding: 6rem 1rem;
+  }
+  
   .hero h1 {
     font-size: 3rem;
   }
