@@ -1,0 +1,87 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: rgba(18, 18, 18, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding-top: 80px;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.nav-item i {
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.active {
+  background: var(--primary-purple);
+  color: white;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    padding-top: 0;
+    border-right: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0.5rem;
+  }
+
+  .nav-item {
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.8rem;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .nav-item i {
+    font-size: 1.4rem;
+  }
+
+  /* Adjust main content padding for mobile */
+  .dashboard-page,
+  .cloud-page,
+  .studio-page,
+  .shop-page,
+  .mailbox-page {
+    margin-left: 0 !important;
+    padding-bottom: 80px !important; /* Space for mobile navigation */
+  }
+} 

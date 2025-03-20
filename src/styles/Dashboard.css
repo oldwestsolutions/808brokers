@@ -1,0 +1,492 @@
+.dashboard {
+  padding: 2rem;
+  min-height: calc(100vh - 80px); /* Account for navbar height */
+  color: var(--text);
+}
+
+.dashboard-header {
+  background: var(--gradient-2);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dashboard-header h1 {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  background: linear-gradient(to right, #fff, var(--light-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.feature-bubbles {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.bubble-card {
+  flex: 0 0 auto;
+  width: 160px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bubble-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--primary-purple);
+}
+
+.bubble-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--primary-purple);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  transition: all 0.3s ease;
+}
+
+.bubble-icon i {
+  font-size: 1.8rem;
+  color: white;
+}
+
+.bubble-card h3 {
+  color: var(--text);
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.dashboard-content {
+  display: grid;
+  gap: 2rem;
+}
+
+.dashboard-section {
+  background: rgba(18, 18, 18, 0.95);
+  border-radius: 15px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dashboard-section h2 {
+  color: var(--primary-purple);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.activity-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.activity-type {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.activity-type.purchase {
+  background: #0052FF;
+  color: white;
+}
+
+.activity-type.sale {
+  background: #00C805;
+  color: white;
+}
+
+.activity-name {
+  flex: 1;
+  margin: 0 1rem;
+}
+
+.activity-price {
+  font-weight: 600;
+  color: var(--light-purple);
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.collection-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.collection-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.collection-item h3 {
+  color: var(--light-purple);
+  margin-bottom: 0.5rem;
+}
+
+.collection-item p {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.notification-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.notification-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--primary-purple);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notification-icon i {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-content p {
+  margin: 0;
+  color: var(--text);
+}
+
+.notification-time {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.bulletin-container {
+  width: 100%;
+  overflow: hidden;
+  padding: 0.5rem 0;
+}
+
+.bulletin-scroll {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.bulletin-item {
+  flex: 0 0 auto;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.bulletin-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+}
+
+.bulletin-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bulletin-header i {
+  color: var(--primary-purple);
+  font-size: 1.5rem;
+}
+
+.bulletin-header h3 {
+  margin: 0;
+  color: var(--text);
+}
+
+.bulletin-item p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 1rem;
+  }
+  
+  .dashboard-header {
+    padding: 1.5rem;
+  }
+
+  .feature-bubbles {
+    gap: 1rem;
+    padding: 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  .feature-bubbles::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  .bubble-card {
+    width: 120px;
+    padding: 1rem;
+    min-width: 120px;
+  }
+
+  .bubble-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .bubble-card h3 {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .silhouette-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .dashboard-section {
+    padding: 1rem;
+  }
+
+  .bulletin-container {
+    margin: 0 -1rem;
+    padding: 0.5rem 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .bulletin-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bulletin-scroll {
+    gap: 1rem;
+  }
+
+  .bulletin-item {
+    width: 260px;
+    min-width: 260px;
+    padding: 1rem;
+  }
+
+  .bulletin-header {
+    gap: 0.8rem;
+  }
+
+  .bulletin-header i {
+    font-size: 1.2rem;
+  }
+
+  .bulletin-header h3 {
+    font-size: 1rem;
+  }
+
+  .bulletin-item p {
+    font-size: 0.9rem;
+  }
+  
+  .notification-item {
+    padding: 0.8rem;
+  }
+  
+  .notification-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .notification-icon i {
+    font-size: 1rem;
+  }
+}
+
+/* Add these styles for the silhouette icons */
+.silhouette-icon {
+  width: 28px;
+  height: 28px;
+  fill: white;
+  transition: all 0.3s ease;
+}
+
+.bubble-card:hover .silhouette-icon {
+  transform: scale(1.1);
+}
+
+.bubble-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--primary-purple);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  transition: all 0.3s ease;
+}
+
+.bubble-card:hover .bubble-icon {
+  background: var(--dark-purple);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+}
+
+/* Ensure smooth scrolling on all devices */
+@media (hover: none) {
+  .feature-bubbles {
+    scroll-snap-type: x mandatory;
+    scroll-padding: 1rem;
+  }
+
+  .bubble-card {
+    scroll-snap-align: center;
+  }
+
+  .bulletin-container {
+    scroll-snap-type: x mandatory;
+    scroll-padding: 1rem;
+  }
+
+  .bulletin-item {
+    scroll-snap-align: center;
+  }
+}
+
+.bulletin-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.bulletin-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.bulletin-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+}
+
+.bulletin-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--primary-purple);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.bulletin-icon i {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.bulletin-content h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.bulletin-content p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .bulletin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .bulletin-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .bulletin-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0;
+  }
+
+  .bulletin-icon i {
+    font-size: 1.2rem;
+  }
+
+  .bulletin-item:hover {
+    transform: translateX(5px);
+  }
+
+  .bulletin-content h3 {
+    font-size: 1rem;
+  }
+
+  .bulletin-content p {
+    font-size: 0.85rem;
+  }
+} 

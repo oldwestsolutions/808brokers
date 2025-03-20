@@ -1,0 +1,68 @@
+.back-button {
+  position: fixed;
+  top: 90px;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(138, 43, 226, 0.2);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.back-button:hover {
+  background: rgba(138, 43, 226, 0.3);
+  transform: translateX(-5px);
+}
+
+.back-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+@media (max-width: 768px) {
+  .back-button {
+    top: 85px;
+    left: 1rem;
+    padding: 0.6rem 1rem;
+    background: rgba(138, 43, 226, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(138, 43, 226, 0.4);
+  }
+
+  .back-button span {
+    display: none; /* Hide "Back to Dashboard" text on mobile */
+  }
+
+  .back-button:hover {
+    transform: translateX(-3px);
+  }
+
+  .back-button:active {
+    transform: translateX(0);
+  }
+
+  .back-icon {
+    width: 18px;
+    height: 18px;
+    margin: 0; /* Remove any margin when text is hidden */
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .back-button {
+    top: 85px;
+    left: 0.5rem;
+    padding: 0.5rem;
+  }
+} 

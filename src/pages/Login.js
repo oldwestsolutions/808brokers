@@ -6,16 +6,13 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleCoinbaseLogin = () => {
-    const CLIENT_ID = process.env.REACT_APP_COINBASE_CLIENT_ID;
-    const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
-    const SCOPE = 'wallet:user:read';
-    
-    window.location.href = `https://www.coinbase.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=${SCOPE}`;
+    // Directly navigate to dashboard instead of Coinbase OAuth
+    navigate('/dashboard');
   };
 
   const handleRobinhoodLogin = () => {
-    // Implement Robinhood OAuth flow when available
-    console.log('Robinhood login - coming soon');
+    // Directly navigate to dashboard
+    navigate('/dashboard');
   };
 
   return (

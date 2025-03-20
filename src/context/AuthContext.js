@@ -1,64 +1,39 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(() => {
+    // Check if user data exists in localStorage
+    const savedUser = localStorage.getItem('user');
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
-  useEffect(() => {
-    // Check for existing auth token in localStorage
-    const token = localStorage.getItem('auth_token');
-    if (token) {
-      // Validate token and set user
-      validateToken(token);
-    } else {
-      setLoading(false);
-    }
-  }, []);
-
-  const validateToken = async (token) => {
-    try {
-      // Add token validation logic here
-      setLoading(false);
-    } catch (error) {
-      localStorage.removeItem('auth_token');
-      setLoading(false);
-    }
-  };
-
-  const login = async (code) => {
-    try {
-      // Exchange authorization code for token
-      const response = await fetch('/api/auth/coinbase/callback', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ code }),
-      });
-      
-      const data = await response.json();
-      
-      if (data.token) {
-        localStorage.setItem('auth_token', data.token);
-        setUser(data.user);
-      }
-    } catch (error) {
-      console.error('Login failed:', error);
-    }
+  const login = (userData) => {
+    setUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
   };
 
   const logout = () => {
-    localStorage.removeItem('auth_token');
     setUser(null);
+    localStorage.removeItem('user');
   };
 
-  return (
-    <AuthContext.Provider value={{ user, loading, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  const value = {
+    user,
+    login,
+    logout,
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-export const useAuth = () => useContext(AuthContext); 
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};
+
+export default AuthContext; 

@@ -1,0 +1,99 @@
+.shop-page {
+  padding: 2rem;
+  min-height: calc(100vh - 80px);
+}
+
+.shop-header {
+  margin-bottom: 2rem;
+}
+
+.shop-filters {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.shop-filters select,
+.shop-filters input {
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--text);
+}
+
+.samples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.sample-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.sample-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sample-image {
+  height: 160px;
+  background: var(--gradient-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sample-image i {
+  font-size: 3rem;
+  color: white;
+}
+
+.sample-info {
+  padding: 1.5rem;
+}
+
+.sample-info h3 {
+  margin-bottom: 0.5rem;
+}
+
+.sample-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.sample-price span {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary-purple);
+}
+
+.sample-price button {
+  background: var(--primary-purple);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sample-price button:hover {
+  background: var(--dark-purple);
+}
+
+@media (max-width: 768px) {
+  .shop-page {
+    padding: 1rem;
+  }
+
+  .shop-filters {
+    flex-direction: column;
+  }
+} 

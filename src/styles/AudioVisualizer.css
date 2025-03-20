@@ -1,0 +1,120 @@
+.audio-visualizer {
+  width: 100%;
+  height: 200px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .audio-visualizer {
+    height: 150px;
+  }
+}
+
+.track-lane {
+  display: flex;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.track-lane.main {
+  background: rgba(138, 43, 226, 0.1);
+  border: 1px solid rgba(138, 43, 226, 0.2);
+}
+
+.track-controls {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  min-width: 80px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.track-mute,
+.track-solo {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.track-mute:hover,
+.track-solo:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.track-mute.active {
+  background: #ff4444;
+  color: white;
+}
+
+.track-solo.active {
+  background: #ffd700;
+  color: black;
+}
+
+.track-volume {
+  width: 100%;
+  padding: 0 0.5rem;
+}
+
+.track-volume input[type="range"] {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.waveform-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 8px 8px 0;
+}
+
+.waveform-canvas {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.timeline-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 100px 25px;
+  pointer-events: none;
+}
+
+.recording-track {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .track-controls {
+    min-width: 60px;
+  }
+  
+  .track-mute,
+  .track-solo {
+    width: 25px;
+    height: 25px;
+    font-size: 0.8rem;
+  }
+} 
