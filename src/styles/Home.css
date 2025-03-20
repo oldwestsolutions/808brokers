@@ -174,12 +174,12 @@ body {
   }
 
   .hero-title {
-    font-size: 2.8rem;
+    font-size: 2.2rem;
     margin-bottom: 0.5rem;
   }
 
   .hero-description {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-bottom: 0.5rem;
   }
 
@@ -195,7 +195,11 @@ body {
   }
 
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+
+  .hero-description {
+    font-size: 0.85rem;
   }
 }
 
