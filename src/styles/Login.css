@@ -1,15 +1,13 @@
 .login-page {
   min-height: 100vh;
-  height: 100vh; /* Fixed height */
   display: flex;
-  align-items: center; /* Center vertically */
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 2rem;
   background: #0a0a0a;
   position: relative;
-  overflow: hidden; /* Prevent scrolling */
-  padding-top: 0; /* Remove top padding */
-  margin-top: -4rem; /* Move everything up a bit */
+  overflow-x: hidden;
+  overflow-y: auto; /* Allow scrolling if needed */
 }
 
 .login-modal {
@@ -18,20 +16,20 @@
   padding: 2.5rem;
   border-radius: 20px;
   width: 100%;
-  max-width: 700px; /* Wider to accommodate horizontal layout */
+  max-width: 700px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.05);
   animation: modalFadeIn 0.5s ease-out;
-  margin-top: 0; /* Remove extra top margin */
+  margin-top: 4rem;
 }
 
 .modal-header {
   text-align: center;
-  margin-bottom: 3rem; /* More space between header and options */
+  margin-bottom: 3rem;
 }
 
 .modal-header h2 {
-  font-size: 2.2rem; /* Slightly larger heading */
+  font-size: 2.2rem;
   color: #ffffff;
   margin-bottom: 0.8rem;
   background: none;
@@ -44,13 +42,13 @@
 
 .login-options {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Change to horizontal layout */
+  grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  margin: 0 -0.75rem; /* Negative margin to allow proper spacing */
+  margin: 0 -0.75rem;
 }
 
 .login-option {
-  flex-direction: column; /* Stack icon and text vertically */
+  flex-direction: column;
   text-align: center;
   padding: 2rem 1.5rem;
   height: 100%;
@@ -70,7 +68,7 @@
 }
 
 .option-icon {
-  width: 64px; /* Larger icons */
+  width: 64px;
   height: 64px;
   margin-bottom: 1.2rem;
   display: flex;
@@ -112,7 +110,7 @@
 }
 
 .modal-footer {
-  margin-top: 3rem; /* More space above footer */
+  margin-top: 3rem;
   text-align: center;
   color: rgba(255, 255, 255, 0.4);
   font-size: 0.9rem;
@@ -138,49 +136,69 @@
   }
 }
 
-@media (max-width: 600px) {
-  .login-options {
-    grid-template-columns: 1fr; /* Stack vertically on mobile */
-  }
-  
-  .login-page {
-    margin-top: -2rem; /* Less margin on mobile */
-  }
-}
-
-.back-button {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
+.back-to-home {
+  position: fixed; /* Changed from absolute to fixed */
+  bottom: 3rem; /* Position from bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   color: #ffffff;
   background: rgba(20, 20, 20, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 0.8rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 2rem;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  width: calc(100% - 2rem);
+  max-width: 300px;
 }
 
-.back-button:hover {
+.back-to-home:hover {
   background: rgba(30, 30, 30, 0.95);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  transform: translateY(-2px);
+  transform: translateX(-50%) translateY(-2px);
 }
 
+.back-to-home i {
+  font-size: 1rem;
+}
+
+/* Mobile adjustments */
 @media (max-width: 768px) {
-  .back-button {
-    top: 1rem;
-    left: 1rem;
-    padding: 0.6rem 1rem;
+  .login-page {
+    padding: 1rem;
+  }
+
+  .back-to-home {
+    bottom: 2rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* Smaller screens */
+@media (max-width: 480px) {
+  .back-to-home {
+    bottom: 1.5rem;
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
   }
 }
 
 body.login-active {
-  overflow: hidden; /* Prevent body scroll when login is active */
+  overflow: hidden;
+}
+
+.login-container {
+  min-height: 100vh;
+  padding: 6rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 } 

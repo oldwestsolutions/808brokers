@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
 
 const Login = () => {
   const navigate = useNavigate();
 
-  // Hide navbar and prevent scroll
   useEffect(() => {
     document.querySelector('.navbar')?.style.setProperty('display', 'none');
     document.body.classList.add('login-active');
     
-    // Cleanup
     return () => {
       document.querySelector('.navbar')?.style.setProperty('display', 'flex');
       document.body.classList.remove('login-active');
@@ -18,19 +16,18 @@ const Login = () => {
   }, []);
 
   const handleCoinbaseLogin = () => {
-    // Directly navigate to dashboard instead of Coinbase OAuth
     navigate('/dashboard');
   };
 
   const handleRobinhoodLogin = () => {
-    // Directly navigate to dashboard
     navigate('/dashboard');
   };
 
   return (
     <div className="login-page">
-      <Link to="/" className="back-button">
-        ← Back to Home
+      <Link to="/" className="back-to-home">
+        <i className="fas fa-arrow-left"></i>
+        Back to Home
       </Link>
       
       <div className="login-modal">

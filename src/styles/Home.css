@@ -291,3 +291,112 @@ body {
   margin-right: auto;
   line-height: 1.2;
 }
+
+/* Login page container */
+.login-container {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Back button positioning */
+.back-button {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 1000;
+}
+
+/* Wallet options container */
+.wallet-options {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Individual wallet option card */
+.wallet-option {
+  flex: 0 0 auto;
+  width: 160px;
+  padding: 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.wallet-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.wallet-option img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin: 0 auto 1rem;
+}
+
+.wallet-option h3 {
+  font-size: 1rem;
+  margin: 0;
+  color: var(--text);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 4rem 1rem 1rem 1rem; /* Extra padding at top for back button */
+  }
+
+  .wallet-options {
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+
+  .wallet-option {
+    width: 130px;
+    padding: 1rem;
+  }
+
+  .wallet-option img {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 0.5rem;
+  }
+
+  .wallet-option h3 {
+    font-size: 0.9rem;
+  }
+
+  .back-button {
+    top: 1rem;
+    left: 1rem;
+  }
+}
+
+/* Smaller screens */
+@media (max-width: 480px) {
+  .wallet-option {
+    width: 120px;
+    padding: 0.8rem;
+  }
+
+  .wallet-option img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .wallet-option h3 {
+    font-size: 0.8rem;
+  }
+}
