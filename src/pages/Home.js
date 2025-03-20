@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/Home.css';
+import heroImage from '../images/downtown.gif';
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -13,8 +14,11 @@ const Home = () => {
   return (
     <div className="home">
       <div className="hero">
-        <h1>Welcome to 808 Brokers</h1>
-        <p>Your Premium Marketplace for Beats and Samples</p>
+        <img 
+          src={heroImage}
+          alt="808 Brokers Hero"
+          className="hero-image"
+        />
         
         <form className="search-container" onSubmit={handleSearch}>
           <input
