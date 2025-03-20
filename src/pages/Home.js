@@ -7,7 +7,6 @@ const Home = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Search logic will go here
     console.log('Searching for:', searchQuery);
   };
 

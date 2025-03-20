@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import '../styles/Navbar.css';
+import dicelogo from '../images/DiceLogoTransparent.png';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -26,6 +27,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
+        <img src={dicelogo} alt="808 Brokers Dice Logo" className="navbar-logo-image" />
         <Link to="/" onClick={handleHomeClick}>808 Brokers</Link>
       </div>
       <div className="navbar-actions">
