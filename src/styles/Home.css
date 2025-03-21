@@ -17,6 +17,9 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   animation: fadeIn 1s ease-out;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the footer stays at the bottom */
 }
 
 .hero {
