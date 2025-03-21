@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Footer from '../components/Footer';
 import '../styles/Home.css';
 import heroImage from '../images/downtown.gif';
 
@@ -51,6 +52,8 @@ const Home = () => {
           <h3>Trending</h3>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
