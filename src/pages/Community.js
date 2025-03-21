@@ -35,9 +35,7 @@ const Community = () => {
       date: "MAR 25",
       time: "8:00 PM EST",
       location: "Virtual Event",
-      description: "Join the biggest online beat battle of the year. Compete with producers worldwide for cash prizes and industry recognition.",
       prizes: "$5000 in prizes",
-      registrationLink: "#",
       type: "Competition"
     },
     {
@@ -46,9 +44,7 @@ const Community = () => {
       date: "APR 02",
       time: "7:00 PM EST",
       location: "Los Angeles, CA",
-      description: "Connect with fellow producers, industry professionals, and artists in this exclusive networking event.",
-      features: "Live beat showcases, Industry panels",
-      registrationLink: "#",
+      features: "Live Showcases & Panels",
       type: "Networking"
     }
   ];
@@ -109,6 +105,102 @@ const Community = () => {
               </div>
             </section>
 
+            <section className="research-development">
+              <h2>Research & Development</h2>
+              <div className="research-grid">
+                <div className="research-card">
+                  <span className="research-badge">Latest Research</span>
+                  <div className="research-content">
+                    <h3>AI Integration in Music Production</h3>
+                    <p>New findings on neural networks in beat creation</p>
+                    <Link to="/research/ai-production" className="research-link">Read Study →</Link>
+                  </div>
+                </div>
+                
+                <div className="research-card">
+                  <span className="research-badge">Industry Analysis</span>
+                  <div className="research-content">
+                    <h3>Beat Market Trends 2024</h3>
+                    <p>Statistical analysis of producer market growth</p>
+                    <Link to="/research/market-analysis" className="research-link">View Report →</Link>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className="community-resources">
+              <div className="section-header">
+                <h2>Producer Resources</h2>
+                <Link to="/resources" className="view-all-link">Browse All →</Link>
+              </div>
+              <div className="resources-grid">
+                <div className="resource-card">
+                  <div className="resource-icon">🎹</div>
+                  <h3>Logic Pro</h3>
+                  <p>Professional music production software</p>
+                  <Link to="/logic-pro" className="resource-link">Learn More</Link>
+                </div>
+                
+                <div className="resource-card">
+                  <div className="resource-icon">🎛️</div>
+                  <h3>FL Studio</h3>
+                  <p>Complete music production software</p>
+                  <Link to="/fl-studio" className="resource-link">Learn More</Link>
+                </div>
+                
+                <div className="resource-card">
+                  <div className="resource-icon">⬇️</div>
+                  <h3>Downloads</h3>
+                  <p>Essential tools and resources</p>
+                  <Link to="/downloads" className="resource-link">Get Tools</Link>
+                </div>
+              </div>
+            </section>
+
+            <section className="collaboration-section">
+              <div className="collab-header">
+                <h2>Collaboration Corner</h2>
+                <p>Connect with fellow producers and artists</p>
+              </div>
+              <div className="collab-grid">
+                <div className="collab-card looking">
+                  <h3>Looking for Producers</h3>
+                  <div className="collab-posts">
+                    {/* Example collab posts */}
+                    <div className="collab-post">
+                      <span className="genre-tag">Hip Hop</span>
+                      <p>"Need trap beats for upcoming EP"</p>
+                      <span className="post-meta">Posted 2h ago</span>
+                    </div>
+                    <div className="collab-post">
+                      <span className="genre-tag">R&B</span>
+                      <p>"Seeking melodic productions"</p>
+                      <span className="post-meta">Posted 5h ago</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="collab-card offering">
+                  <h3>Producer Offerings</h3>
+                  <div className="collab-posts">
+                    <div className="collab-post">
+                      <span className="genre-tag">Drill</span>
+                      <p>"UK Drill producer available"</p>
+                      <span className="post-meta">Posted 1h ago</span>
+                    </div>
+                    <div className="collab-post">
+                      <span className="genre-tag">Pop</span>
+                      <p>"Pop beats, quick turnaround"</p>
+                      <span className="post-meta">Posted 3h ago</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <Link to="/collaborate" className="collab-cta">
+                Post a Collaboration Request
+              </Link>
+            </section>
+
             <section className="events-section">
               <div className="section-header">
                 <h2>Upcoming Events</h2>
@@ -127,7 +219,6 @@ const Community = () => {
                     <div className="event-details">
                       <h3>{event.title}</h3>
                       <p className="event-location">📍 {event.location}</p>
-                      <p className="event-description">{event.description}</p>
                       <div className="event-highlights">
                         {event.prizes && <span className="highlight">🏆 {event.prizes}</span>}
                         {event.features && <span className="highlight">✨ {event.features}</span>}
@@ -178,15 +269,37 @@ const Community = () => {
               </Link>
             </div>
 
-            <div className="quick-links">
-              <h3>Quick Links</h3>
-              <nav className="quick-nav">
-                <Link to="/blog/latest">Latest Articles</Link>
-                <Link to="/blog/popular">Popular Posts</Link>
-                <Link to="/blog/tutorials">Tutorials</Link>
-                <Link to="/events">Upcoming Events</Link>
-                <Link to="/resources">Producer Resources</Link>
-              </nav>
+            <div className="upcoming-events-widget">
+              <h3>Upcoming Events</h3>
+              <div className="events-timeline">
+                {upcomingEvents.map(event => (
+                  <div key={event.id} className="timeline-event">
+                    <div className="event-time">
+                      <div className="date-badge">
+                        <span className="month">{event.date.split(' ')[0]}</span>
+                        <span className="day">{event.date.split(' ')[1]}</span>
+                      </div>
+                      <span className="time">{event.time}</span>
+                    </div>
+                    <div className="event-content">
+                      <span className="event-type">{event.type}</span>
+                      <h4>{event.title}</h4>
+                      <div className="event-meta">
+                        <span className="location">📍 {event.location}</span>
+                        {event.prizes && <span className="prize">🏆 {event.prizes}</span>}
+                        {event.features && <span className="features">✨ {event.features}</span>}
+                      </div>
+                      <Link to={`/events/${event.id}`} className="event-link">
+                        Learn More →
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+                <Link to="/events" className="view-all-events">
+                  View All Events
+                  <span className="arrow">→</span>
+                </Link>
+              </div>
             </div>
           </aside>
         </div>
