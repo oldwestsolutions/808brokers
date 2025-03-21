@@ -5,12 +5,12 @@ const app = express();
 // Serve static files from the React build directory
 app.use(express.static(path.join(__dirname, 'build')));
 
-// Health check endpoint
+// Health check endpoint for DigitalOcean
 app.get('/health', (req, res) => {
   res.status(200).send('OK');
 });
 
-// Serve React app
+// Handle all routes - serve React app
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });

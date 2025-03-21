@@ -12,4 +12,4 @@ services:
     health_check:
       http_path: /health
       initial_delay_seconds: 30
-      period_seconds: 10 
+      period_seconds: 10
