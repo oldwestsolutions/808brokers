@@ -197,7 +197,7 @@ const Community = () => {
   const renderCollaborationTools = () => {
     if (activeBubble !== 'collaboration') return null;
 
-    return (
+  return (
       <motion.div
         className="collaboration-tools"
         initial={{ opacity: 0 }}
@@ -223,7 +223,7 @@ const Community = () => {
           >
             Join Project
           </button>
-        </div>
+      </div>
 
         {collabStatus === 'browse' && (
           <div className="active-projects">
@@ -234,13 +234,13 @@ const Community = () => {
                   <div className="project-header">
                     <h5>{project.title}</h5>
                     <span className="project-genre">{project.genre}</span>
-                  </div>
+              </div>
                   <div className="project-info">
                     <p>Creator: {project.creator}</p>
                     <p>Status: {project.status}</p>
                     <div className="participants">
                       <span>👥 {project.participants}/{project.maxParticipants}</span>
-                    </div>
+                </div>
                   </div>
                   <button className="join-project-btn">Join Project</button>
                 </div>
@@ -310,7 +310,7 @@ const Community = () => {
                     <p>Status: {project.status}</p>
                     <div className="participants">
                       <span>👥 {project.participants}/{project.maxParticipants}</span>
-                    </div>
+                </div>
                   </div>
                   <button className="join-project-btn">Join Project</button>
                 </div>
@@ -351,7 +351,7 @@ const Community = () => {
           >
             Past Challenges
           </button>
-        </div>
+              </div>
 
         {challengeStatus === 'current' && (
           <div className="current-challenge">
@@ -371,7 +371,7 @@ const Community = () => {
                   </div>
                   <div className="meta-item">
                     <span>🏆</span> $500 Prize Pool
-                  </div>
+                </div>
                 </div>
                 <div className="challenge-requirements">
                   <h5>Requirements</h5>
@@ -419,10 +419,10 @@ const Community = () => {
                     <div className="challenge-meta">
                       <div className="meta-item">
                         <span>📅</span> {challenge.date}
-                      </div>
+              </div>
                       <div className="meta-item">
                         <span>🏆</span> {challenge.prize}
-                      </div>
+                    </div>
                     </div>
                     <button className="remind-me-btn">Remind Me</button>
                   </div>
@@ -466,14 +466,14 @@ const Community = () => {
                       </div>
                       <div className="meta-item">
                         <span>🏆</span> Winner: {challenge.winner}
-                      </div>
+                    </div>
                     </div>
                     <button className="view-results-btn">View Results</button>
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
+                </div>
+              </div>
         )}
       </motion.div>
     );
@@ -508,8 +508,8 @@ const Community = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
+              </div>
+                      </div>
 
         <div className="bubbles-grid">
           {communityFeatures.map((feature) => (
@@ -555,13 +555,13 @@ const Community = () => {
                       {feature.quickLinks.map((link, index) => (
                         <a key={index} href="#" className="quick-link">{link}</a>
                       ))}
-                    </div>
+                  </div>
                   </>
                 )}
               </div>
             </motion.div>
           ))}
-        </div>
+            </div>
 
         <div className="community-stats">
           <div className="stat-item">
@@ -580,8 +580,8 @@ const Community = () => {
             <h3>45</h3>
             <p>Active Mentors</p>
           </div>
-        </div>
-      </div>
+                </div>
+                </div>
 
       <div className="community-sidebar">
         <div className="learning-paths-section">
@@ -600,7 +600,7 @@ const Community = () => {
               </div>
             ))}
           </div>
-        </div>
+            </div>
 
         <div className="events-sidebar">
           <h2>Upcoming Events</h2>
@@ -624,7 +624,7 @@ const Community = () => {
                 </div>
               </div>
             ))}
-          </div>
+            </div>
         </div>
       </div>
     </div>

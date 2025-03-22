@@ -10,6 +10,7 @@ import Cloud from './pages/Cloud';
 import Shop from './pages/Shop';
 import Studio from './pages/Studio';
 import Community from './pages/Community';
+import Charts from './pages/Charts';
 import AuthCallback from './components/AuthCallback';
 import './styles/App.css';
 
@@ -26,9 +27,10 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/dashboard/mailbox" element={<Mailbox />} />
               <Route path="/dashboard/cloud" element={<Cloud />} />
-              <Route path="/dashboard/shop" element={<Shop />} />
+              <Route path="/shop" element={<Shop />} />
               <Route path="/dashboard/studio" element={<Studio />} />
               <Route path="/community" element={<Community />} />
+              <Route path="/charts" element={<Charts />} />
               <Route path="/auth/callback" element={<AuthCallback />} />
             </Routes>
           </main>

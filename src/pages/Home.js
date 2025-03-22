@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import '../styles/Home.css';
 import heroImage from '../images/downtown.gif';
@@ -42,9 +43,9 @@ const Home = () => {
       </div>
       
       <div className="features">
-        <div className="feature-card">
-          <h3>Top 100 Artists</h3>
-        </div>
+        <Link to="/charts" className="feature-card">
+          <h3>Charts</h3>
+        </Link>
         <div className="feature-card">
           <h3>Top 100 Instrumentals</h3>
         </div>
