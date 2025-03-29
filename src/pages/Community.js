@@ -73,24 +73,73 @@ const Community = () => {
       quickLinks: ['Find Collaborators', 'Project Sharing', 'Real-time Jamming'],
       category: 'Community',
       accentColor: '#8A2BE2',
-      articles: [
-        {
-          id: 'collab1',
-          title: 'Effective Collaboration in Music Production',
-          description: 'Learn the best practices for collaborating with other producers, from project organization to communication strategies.',
-          icon: FaUsers,
-          category: 'Collaboration',
-          accentColor: '#8A2BE2'
-        },
-        {
-          id: 'collab2',
-          title: 'Version Control for Music Projects',
-          description: 'Master the art of version control in music production to keep track of changes and maintain project history.',
-          icon: FaCodeBranch,
-          category: 'Workflow',
-          accentColor: '#9B30FF'
+      details: {
+        collaborationTools: {
+          activeProjects: [
+            {
+              id: 'proj1',
+              title: 'Trap Beat Collab',
+              genre: 'Trap',
+              creator: 'Mike D.',
+              status: 'In Progress',
+              participants: 3,
+              maxParticipants: 5
+            },
+            {
+              id: 'proj2',
+              title: 'House Remix',
+              genre: 'House',
+              creator: 'Sarah L.',
+              status: 'Open',
+              participants: 1,
+              maxParticipants: 4
+            },
+            {
+              id: 'proj3',
+              title: 'Future Bass Track',
+              genre: 'Future Bass',
+              creator: 'Alex R.',
+              status: 'In Progress',
+              participants: 2,
+              maxParticipants: 3
+            }
+          ],
+          projectTypes: [
+            {
+              id: 'beat',
+              name: 'Beat Making',
+              icon: '🎵'
+            },
+            {
+              id: 'remix',
+              name: 'Remix',
+              icon: '🔄'
+            },
+            {
+              id: 'original',
+              name: 'Original Track',
+              icon: '🎼'
+            }
+          ],
+          skillLevels: [
+            {
+              id: 'beginner',
+              name: 'Beginner',
+              icon: '🌱'
+            },
+            {
+              id: 'intermediate',
+              name: 'Intermediate',
+              icon: '🌿'
+            },
+            {
+              id: 'advanced',
+              name: 'Advanced',
+              icon: '🌳'
+            }
+          ]
         }
-      ]
+      }
     },
     {
       id: 'challenges',
@@ -506,209 +555,40 @@ const Community = () => {
     <div className="community-container">
       <div className="community-main">
         <section className="learning-center-section">
-          <div className="learning-bubbles-grid">
-            <motion.div
-              className="learning-bubble large"
-              style={{ 
-                background: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
-                borderColor: '#8B008B'
-              }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <div className="bubble-content">
-                <div className="bubble-icon" style={{ color: '#8B008B' }}>
-                  <FaMusic className="icon" />
-                </div>
-                <span className="bubble-category" style={{ background: 'rgba(139, 0, 139, 0.2)' }}>Music Theory</span>
-                <h3 className="bubble-title">Essential Music Theory for Producers</h3>
-                <div className="theory-sections">
-                  <div className="theory-section">
-                    <h4>Scales & Modes</h4>
-                    <p>Master the fundamental scales and modes used in modern music production. Learn about major, minor, pentatonic, and modal scales to create memorable melodies.</p>
-                    <ul className="theory-list">
-                      <li>Major & Minor Scales</li>
-                      <li>Pentatonic Scales</li>
-                      <li>Modal Scales</li>
-                      <li>Scale Degrees</li>
-                    </ul>
-                  </div>
-                  <div className="theory-section">
-                    <h4>Chords & Progressions</h4>
-                    <p>Understand chord construction, inversions, and common progressions. Learn how to create emotional depth and movement in your tracks.</p>
-                    <ul className="theory-list">
-                      <li>Chord Construction</li>
-                      <li>Chord Inversions</li>
-                      <li>Common Progressions</li>
-                      <li>Voice Leading</li>
-                    </ul>
-                  </div>
-                  <div className="theory-section">
-                    <h4>Rhythm & Harmony</h4>
-                    <p>Explore rhythmic concepts and harmonic relationships. Discover how to create compelling grooves and maintain musical coherence.</p>
-                    <ul className="theory-list">
-                      <li>Time Signatures</li>
-                      <li>Rhythmic Patterns</li>
-                      <li>Harmonic Functions</li>
-                      <li>Cadences</li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="bubble-links">
-                  <a 
-                    href="#" 
-                    className="bubble-link"
-                    style={{ 
-                      background: 'rgba(139, 0, 139, 0.2)',
-                      borderColor: 'rgba(139, 0, 139, 0.4)'
-                    }}
-                  >
-                    Start Learning
-                  </a>
-                </div>
+          <h2>Latest News</h2>
+          <p className="section-description">Stay updated with the latest news from the New York Times</p>
+          <div className="news-grid">
+            <div className="news-card" onClick={() => window.location.href = '/news/technology'}>
+              <div className="news-image"></div>
+              <div className="news-icon">
+                <i className="fas fa-microchip"></i>
               </div>
-              <div className="bubble-decoration"></div>
-            </motion.div>
-            {communityFeatures.find(feature => feature.id === 'learning').articles.slice(1).map((article, index) => (
-              <motion.div
-                key={article.id}
-                className="learning-bubble small"
-                style={{ 
-                  background: article.color,
-                  borderColor: article.accentColor
-                }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className="bubble-content">
-                  <div className="bubble-icon" style={{ color: article.accentColor }}>
-                    <article.icon className="icon" />
-                  </div>
-                  <span className="bubble-category" style={{ background: `${article.accentColor}20` }}>{article.category}</span>
-                  <h3 className="bubble-title">{article.title}</h3>
-                  <p className="bubble-description">
-                  {article.description}
-                </p>
-                  <div className="bubble-links">
-                    <a 
-                      href="#" 
-                      className="bubble-link"
-                      style={{ 
-                        background: `${article.accentColor}20`,
-                        borderColor: `${article.accentColor}40`
-                      }}
-                    >
-                      Read More
-                    </a>
-                  </div>
-                </div>
-                <div className="bubble-decoration"></div>
-              </motion.div>
-            ))}
+              <span className="news-category">Technology</span>
+              <h3 className="news-title">AI in Music Production</h3>
+              <p className="news-description">How artificial intelligence is revolutionizing the way we create and produce music.</p>
+              <span className="news-link">Read More</span>
+            </div>
+            <div className="news-card" onClick={() => window.location.href = '/news/business'}>
+              <div className="news-image"></div>
+              <div className="news-icon">
+                <i className="fas fa-chart-line"></i>
+              </div>
+              <span className="news-category">Business</span>
+              <h3 className="news-title">Music Industry Trends</h3>
+              <p className="news-description">The latest developments in the music business and streaming platforms.</p>
+              <span className="news-link">Read More</span>
+            </div>
+            <div className="news-card" onClick={() => window.location.href = '/news/culture'}>
+              <div className="news-image"></div>
+              <div className="news-icon">
+                <i className="fas fa-music"></i>
+              </div>
+              <span className="news-category">Culture</span>
+              <h3 className="news-title">Music Culture</h3>
+              <p className="news-description">Exploring the intersection of music, culture, and society.</p>
+              <span className="news-link">Read More</span>
+            </div>
           </div>
-        </section>
-
-        <section className="learning-center-section">
-          <div className="learning-bubbles-grid">
-            <motion.div
-              className="learning-bubble large"
-              style={{ 
-                background: 'linear-gradient(145deg, #1a1a2e 0%, #16213e 100%)',
-                borderColor: '#4a90e2'
-              }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <div className="bubble-content">
-                <div className="bubble-icon" style={{ color: '#4a90e2' }}>
-                  <FaMusic className="icon" />
-                </div>
-                <span className="bubble-category" style={{ background: 'rgba(74, 144, 226, 0.2)' }}>Music Theory</span>
-                <h3 className="bubble-title">Essential Music Theory for Producers</h3>
-                <div className="theory-sections">
-                  <div className="theory-section">
-                    <h4>Scales & Modes</h4>
-                    <p>Master the fundamental scales and modes used in modern music production. Learn about major, minor, pentatonic, and modal scales to create memorable melodies.</p>
-                    <ul className="theory-list">
-                      <li>Major & Minor Scales</li>
-                      <li>Pentatonic Scales</li>
-                      <li>Modal Scales</li>
-                      <li>Scale Degrees</li>
-                    </ul>
-                  </div>
-                  <div className="theory-section">
-                    <h4>Chords & Progressions</h4>
-                    <p>Understand chord construction, inversions, and common progressions. Learn how to create emotional depth and movement in your tracks.</p>
-                    <ul className="theory-list">
-                      <li>Chord Construction</li>
-                      <li>Chord Inversions</li>
-                      <li>Common Progressions</li>
-                      <li>Voice Leading</li>
-                    </ul>
-                  </div>
-                  <div className="theory-section">
-                    <h4>Rhythm & Harmony</h4>
-                    <p>Explore rhythmic concepts and harmonic relationships. Discover how to create compelling grooves and maintain musical coherence.</p>
-                    <ul className="theory-list">
-                      <li>Time Signatures</li>
-                      <li>Rhythmic Patterns</li>
-                      <li>Harmonic Functions</li>
-                      <li>Cadences</li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="bubble-links">
-                  <a 
-                    href="#" 
-                    className="bubble-link"
-                    style={{ 
-                      background: 'rgba(74, 144, 226, 0.2)',
-                      borderColor: 'rgba(74, 144, 226, 0.4)'
-                    }}
-                  >
-                    Start Learning
-                  </a>
-                </div>
-              </div>
-              <div className="bubble-decoration"></div>
-            </motion.div>
-            {communityFeatures.find(feature => feature.id === 'learning').articles.slice(1).map((article, index) => (
-              <motion.div
-                key={`duplicate-${article.id}`}
-                className="learning-bubble small"
-                style={{ 
-                  background: article.color,
-                  borderColor: article.accentColor
-                }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className="bubble-content">
-                  <div className="bubble-icon" style={{ color: article.accentColor }}>
-                    <article.icon className="icon" />
-                  </div>
-                  <span className="bubble-category" style={{ background: `${article.accentColor}20` }}>{article.category}</span>
-                  <h3 className="bubble-title">{article.title}</h3>
-                  <p className="bubble-description">
-                    {article.description}
-                  </p>
-                  <div className="bubble-links">
-                    <a 
-                      href="#" 
-                      className="bubble-link"
-                      style={{ 
-                        background: `${article.accentColor}20`,
-                        borderColor: `${article.accentColor}40`
-                      }}
-                    >
-                      Read More
-                    </a>
-                  </div>
-                </div>
-                <div className="bubble-decoration"></div>
-              </motion.div>
-            ))}
-                      </div>
         </section>
 
         <div className="bubbles-grid">
@@ -726,54 +606,11 @@ const Community = () => {
                 {feature.description}
               </p>
               <div className="bubble-details">
-                {feature.id === 'collaboration' ? (
-                  renderCollaborationTools()
-                ) : feature.id === 'challenges' ? (
-                  renderChallengeTools()
-                ) : (
-                  <div className="feature-articles">
-                    <h4>Featured Articles</h4>
-                    <div className="articles-grid">
-                      {feature.articles.map(article => (
-                        <motion.div
-                          key={article.id}
-                          className="article-card"
-                          style={{ 
-                            background: feature.color,
-                            borderColor: article.accentColor
-                          }}
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                        >
-                          <div className="article-icon" style={{ color: article.accentColor }}>
-                            <article.icon className="icon" />
-                    </div>
-                          <span className="article-category" style={{ background: `${article.accentColor}20` }}>{article.category}</span>
-                          <h3 className="article-title">{article.title}</h3>
-                          <p className="article-description">
-                            {article.description}
-                          </p>
-                          <div className="article-links">
-                            <a 
-                              href="#" 
-                              className="article-link"
-                              style={{ 
-                                background: `${article.accentColor}20`,
-                                borderColor: `${article.accentColor}40`
-                              }}
-                            >
-                              Read More
-                            </a>
-                          </div>
-                        </motion.div>
-                        ))}
-                    </div>
-                  </div>
-                )}
+                {feature.id === 'collaboration' && renderCollaborationTools()}
               </div>
             </motion.div>
           ))}
-            </div>
+        </div>
 
         <div className="community-stats">
           <div className="stat-item">
@@ -792,8 +629,8 @@ const Community = () => {
             <h3>45</h3>
             <p>Active Mentors</p>
           </div>
-                </div>
-                </div>
+        </div>
+      </div>
 
       <div className="community-sidebar">
         <div className="learning-paths-section">
@@ -812,7 +649,7 @@ const Community = () => {
               </div>
             ))}
           </div>
-            </div>
+        </div>
 
         <div className="events-sidebar">
           <h2>Upcoming Events</h2>
@@ -838,7 +675,7 @@ const Community = () => {
                 </div>
               </div>
             ))}
-            </div>
+          </div>
         </div>
 
         <div className="producer-spotlight">
