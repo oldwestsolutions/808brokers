@@ -1,5 +1,23 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { 
+  FaUsers, 
+  FaTrophy, 
+  FaSlidersH, 
+  FaRobot, 
+  FaMusic, 
+  FaMicrophone, 
+  FaUserFriends, 
+  FaCalendarAlt,
+  FaClock,
+  FaUser,
+  FaStar,
+  FaChartLine,
+  FaGraduationCap,
+  FaBook,
+  FaCertificate,
+  FaCodeBranch
+} from 'react-icons/fa';
 import './Community.css';
 
 const UPCOMING_EVENTS = [
@@ -9,7 +27,7 @@ const UPCOMING_EVENTS = [
     date: 'March 25, 2024',
     time: '8:00 PM EST',
     participants: 128,
-    icon: '🎵'
+    icon: FaMusic
   },
   {
     id: 'event2',
@@ -17,7 +35,7 @@ const UPCOMING_EVENTS = [
     date: 'March 28, 2024',
     time: '6:00 PM EST',
     participants: 64,
-    icon: '🎹'
+    icon: FaSlidersH
   },
   {
     id: 'event3',
@@ -25,7 +43,7 @@ const UPCOMING_EVENTS = [
     date: 'April 1, 2024',
     time: '7:00 PM EST',
     participants: 256,
-    icon: '👥'
+    icon: FaUserFriends
   },
   {
     id: 'event4',
@@ -33,7 +51,7 @@ const UPCOMING_EVENTS = [
     date: 'April 5, 2024',
     time: '5:00 PM EST',
     participants: 96,
-    icon: '🎚️'
+    icon: FaMicrophone
   }
 ];
 
@@ -50,99 +68,108 @@ const Community = () => {
       id: 'collaboration',
       title: 'Collaboration Hub',
       description: 'Connect with other producers, share projects, and work together on tracks. Our collaboration hub provides real-time project sharing, version control, and seamless communication tools to help you create amazing music together.',
-      icon: '🤝',
-      color: '#FF6B6B',
+      icon: FaUsers,
+      color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
       quickLinks: ['Find Collaborators', 'Project Sharing', 'Real-time Jamming'],
-      details: {
-        features: [
-          'Real-time project synchronization',
-          'Built-in chat and voice communication',
-          'Project version history',
-          'Collaborative mixing tools',
-          'Talent matching algorithm',
-          'Project templates',
-          'Feedback system',
-          'Progress tracking'
-        ],
-        stats: {
-          activeProjects: '2,345',
-          successfulCollabs: '1,234',
-          averageProjectTime: '2 weeks',
-          activeUsers: '5,678',
-          totalProjects: '8,901',
-          averageRating: '4.8/5'
+      category: 'Community',
+      accentColor: '#8A2BE2',
+      articles: [
+        {
+          id: 'collab1',
+          title: 'Effective Collaboration in Music Production',
+          description: 'Learn the best practices for collaborating with other producers, from project organization to communication strategies.',
+          icon: FaUsers,
+          category: 'Collaboration',
+          accentColor: '#8A2BE2'
         },
-        collaborationTools: {
-          projectTypes: [
-            { id: 'beat', name: 'Beat Making', icon: '🎵', description: 'Create and share beats with other producers' },
-            { id: 'remix', name: 'Remix Project', icon: '🔄', description: 'Collaborate on remixing existing tracks' },
-            { id: 'original', name: 'Original Track', icon: '🎼', description: 'Work together on original compositions' },
-            { id: 'sound', name: 'Sound Design', icon: '🎹', description: 'Create and share unique sounds' },
-            { id: 'mix', name: 'Mixing Project', icon: '🎚️', description: 'Collaborate on mixing and mastering' },
-            { id: 'arrange', name: 'Arrangement', icon: '🎸', description: 'Work on track arrangement and structure' }
-          ],
-          skillLevels: [
-            { id: 'beginner', name: 'Beginner', icon: '🌱', description: 'Just starting out with music production' },
-            { id: 'intermediate', name: 'Intermediate', icon: '🌿', description: 'Some experience with production' },
-            { id: 'advanced', name: 'Advanced', icon: '🌳', description: 'Experienced producer looking to collaborate' }
-          ],
-          activeProjects: [
-            {
-              id: 'proj1',
-              title: 'Trap Beat Collab',
-              creator: 'Alex K.',
-              genre: 'Trap',
-              status: 'Looking for Producer',
-              participants: 1,
-              maxParticipants: 2,
-              description: 'Looking for a producer to help create a trap beat with unique 808 patterns',
-              skills: ['Beat Making', 'Sound Design'],
-              deadline: '2 weeks',
-              rating: 4.8
-            },
-            {
-              id: 'proj2',
-              title: 'House Remix',
-              creator: 'Sarah M.',
-              genre: 'House',
-              status: 'In Progress',
-              participants: 3,
-              maxParticipants: 4,
-              description: 'Working on a house remix of a popular track, need help with arrangement',
-              skills: ['Remixing', 'Arrangement'],
-              deadline: '1 week',
-              rating: 4.9
-            },
-            {
-              id: 'proj3',
-              title: 'Sound Design Workshop',
-              maxParticipants: 4
-            }
-          ]
+        {
+          id: 'collab2',
+          title: 'Version Control for Music Projects',
+          description: 'Master the art of version control in music production to keep track of changes and maintain project history.',
+          icon: FaCodeBranch,
+          category: 'Workflow',
+          accentColor: '#9B30FF'
         }
-      }
+      ]
     },
     {
       id: 'challenges',
       title: 'Weekly Challenges',
       description: 'Participate in themed production challenges. Push your creative boundaries and compete with other producers in our weekly challenges.',
-      icon: '🏆',
-      color: '#FFEEAD',
+      icon: FaTrophy,
+      color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
       quickLinks: ['Current Challenge', 'Past Winners', 'Leaderboard'],
-      details: {
-        features: [
-          'Weekly themed challenges',
-          'Community voting system',
-          'Prize pool',
-          'Expert judging panel',
-          'Challenge archives'
-        ],
-        stats: {
-          activeParticipants: '1,000+',
-          totalChallenges: '52+',
-          prizePool: '$10,000+'
+      category: 'Competition',
+      accentColor: '#9B30FF',
+      articles: [
+        {
+          id: 'challenge1',
+          title: 'Winning Strategies for Production Challenges',
+          description: 'Discover proven strategies to excel in production challenges and stand out from the competition.',
+          icon: FaTrophy,
+          category: 'Competition',
+          accentColor: '#9B30FF'
+        },
+        {
+          id: 'challenge2',
+          title: 'Time Management in Music Production',
+          description: 'Learn how to effectively manage your time during production challenges to create your best work.',
+          icon: FaClock,
+          category: 'Productivity',
+          accentColor: '#8B008B'
         }
-      }
+      ]
+    },
+    {
+      id: 'learning',
+      title: 'Learning Center',
+      description: 'Access comprehensive tutorials, guides, and resources to improve your music production skills.',
+      icon: FaGraduationCap,
+      color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
+      quickLinks: ['Tutorials', 'Resources', 'Courses'],
+      category: 'Education',
+      accentColor: '#8B008B',
+      articles: [
+        {
+          id: 'learn1',
+          title: 'Essential Music Theory for Producers',
+          description: 'Master the fundamental music theory concepts that every producer should know. Learn about scales, chords, progressions, and how to apply them in your productions.',
+          icon: FaMusic,
+          category: 'Theory',
+          accentColor: '#8B008B'
+        },
+        {
+          id: 'learn2',
+          title: 'Advanced Sound Design Techniques',
+          description: 'Explore advanced sound design methods to create unique and professional sounds. From synthesis to effects processing, learn how to craft your signature sound.',
+          icon: FaSlidersH,
+          category: 'Sound Design',
+          accentColor: '#9B30FF'
+        }
+      ]
+    }
+  ];
+
+  const newsCards = [
+    {
+      id: 'collaboration',
+      title: 'Collaboration Hub',
+      description: 'Connect with other producers, share projects, and work together on tracks. Our collaboration hub provides real-time project sharing, version control, and seamless communication tools to help you create amazing music together.',
+      icon: FaUsers,
+      color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
+      quickLinks: ['Find Collaborators', 'Project Sharing', 'Real-time Jamming'],
+      category: 'Community',
+      accentColor: '#8A2BE2'
+    },
+    {
+      id: 'challenges',
+      title: 'Weekly Challenges',
+      description: 'Participate in themed production challenges. Push your creative boundaries and compete with other producers in our weekly challenges.',
+      icon: FaTrophy,
+      color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
+      quickLinks: ['Current Challenge', 'Past Winners', 'Leaderboard'],
+      category: 'Competition',
+      accentColor: '#9B30FF'
     }
   ];
 
@@ -170,27 +197,23 @@ const Community = () => {
   const featuredArticles = [
     {
       id: 'article1',
-      title: 'The Art of Sound Design: Creating Unique Bass Sounds',
-      description: 'Learn how to create distinctive bass sounds that will make your tracks stand out in the mix. Discover advanced techniques for shaping and processing bass frequencies.',
-      icon: '🎸',
-      color: '#9B59B6',
-      quickLinks: ['Read Full Article', 'Related Tutorials', 'Sound Examples']
+      title: 'Essential Music Theory for Producers',
+      description: 'Master the fundamental music theory concepts that every producer should know. Learn about scales, chords, progressions, and how to apply them in your productions.',
+      icon: FaMusic,
+      color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
+      quickLinks: ['Scales', 'Chords', 'Progressions'],
+      category: 'Theory',
+      accentColor: '#8B008B'
     },
     {
       id: 'article2',
-      title: 'Mixing Techniques for Professional Producers',
-      description: 'Discover advanced mixing techniques used by top producers to achieve that professional sound. Learn about EQ, compression, and spatial effects.',
-      icon: '🎚️',
-      color: '#3498DB',
-      quickLinks: ['Read Full Article', 'Mix Examples', 'Pro Tips']
-    },
-    {
-      id: 'article3',
-      title: 'The Future of Music Production: AI and Creativity',
-      description: 'Explore how artificial intelligence is shaping the future of music production and creativity. Understand the impact of AI tools on the industry.',
-      icon: '🤖',
-      color: '#E67E22',
-      quickLinks: ['Read Full Article', 'AI Tools', 'Industry Trends']
+      title: 'Advanced Sound Design Techniques',
+      description: 'Explore advanced sound design methods to create unique and professional sounds. From synthesis to effects processing, learn how to craft your signature sound.',
+      icon: FaSlidersH,
+      color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
+      quickLinks: ['Synthesis', 'Effects', 'Processing'],
+      category: 'Sound Design',
+      accentColor: '#9B30FF'
     }
   ];
 
@@ -482,34 +505,211 @@ const Community = () => {
   return (
     <div className="community-container">
       <div className="community-main">
-        <h1 className="community-title">808 Brokers Community</h1>
-        <p className="community-subtitle">Connect, Create, and Collaborate with Fellow Producers</p>
-        
-        <div className="featured-articles-section">
-          <h2>Featured Articles</h2>
-          <div className="articles-grid">
-            {featuredArticles.map(article => (
+        <section className="learning-center-section">
+          <div className="learning-bubbles-grid">
+            <motion.div
+              className="learning-bubble large"
+              style={{ 
+                background: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
+                borderColor: '#8B008B'
+              }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="bubble-content">
+                <div className="bubble-icon" style={{ color: '#8B008B' }}>
+                  <FaMusic className="icon" />
+                </div>
+                <span className="bubble-category" style={{ background: 'rgba(139, 0, 139, 0.2)' }}>Music Theory</span>
+                <h3 className="bubble-title">Essential Music Theory for Producers</h3>
+                <div className="theory-sections">
+                  <div className="theory-section">
+                    <h4>Scales & Modes</h4>
+                    <p>Master the fundamental scales and modes used in modern music production. Learn about major, minor, pentatonic, and modal scales to create memorable melodies.</p>
+                    <ul className="theory-list">
+                      <li>Major & Minor Scales</li>
+                      <li>Pentatonic Scales</li>
+                      <li>Modal Scales</li>
+                      <li>Scale Degrees</li>
+                    </ul>
+                  </div>
+                  <div className="theory-section">
+                    <h4>Chords & Progressions</h4>
+                    <p>Understand chord construction, inversions, and common progressions. Learn how to create emotional depth and movement in your tracks.</p>
+                    <ul className="theory-list">
+                      <li>Chord Construction</li>
+                      <li>Chord Inversions</li>
+                      <li>Common Progressions</li>
+                      <li>Voice Leading</li>
+                    </ul>
+                  </div>
+                  <div className="theory-section">
+                    <h4>Rhythm & Harmony</h4>
+                    <p>Explore rhythmic concepts and harmonic relationships. Discover how to create compelling grooves and maintain musical coherence.</p>
+                    <ul className="theory-list">
+                      <li>Time Signatures</li>
+                      <li>Rhythmic Patterns</li>
+                      <li>Harmonic Functions</li>
+                      <li>Cadences</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="bubble-links">
+                  <a 
+                    href="#" 
+                    className="bubble-link"
+                    style={{ 
+                      background: 'rgba(139, 0, 139, 0.2)',
+                      borderColor: 'rgba(139, 0, 139, 0.4)'
+                    }}
+                  >
+                    Start Learning
+                  </a>
+                </div>
+              </div>
+              <div className="bubble-decoration"></div>
+            </motion.div>
+            {communityFeatures.find(feature => feature.id === 'learning').articles.slice(1).map((article, index) => (
               <motion.div
                 key={article.id}
-                className="article-card"
-                style={{ backgroundColor: article.color }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="learning-bubble small"
+                style={{ 
+                  background: article.color,
+                  borderColor: article.accentColor
+                }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <div className="article-icon">{article.icon}</div>
-                <h3 className="article-title">{article.title}</h3>
-                <p className="article-description">
+                <div className="bubble-content">
+                  <div className="bubble-icon" style={{ color: article.accentColor }}>
+                    <article.icon className="icon" />
+                  </div>
+                  <span className="bubble-category" style={{ background: `${article.accentColor}20` }}>{article.category}</span>
+                  <h3 className="bubble-title">{article.title}</h3>
+                  <p className="bubble-description">
                   {article.description}
                 </p>
-                <div className="article-links">
-                  {article.quickLinks.map((link, index) => (
-                    <a key={index} href="#" className="article-link">{link}</a>
-                  ))}
+                  <div className="bubble-links">
+                    <a 
+                      href="#" 
+                      className="bubble-link"
+                      style={{ 
+                        background: `${article.accentColor}20`,
+                        borderColor: `${article.accentColor}40`
+                      }}
+                    >
+                      Read More
+                    </a>
+                  </div>
                 </div>
+                <div className="bubble-decoration"></div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="learning-center-section">
+          <div className="learning-bubbles-grid">
+            <motion.div
+              className="learning-bubble large"
+              style={{ 
+                background: 'linear-gradient(145deg, #1a1a2e 0%, #16213e 100%)',
+                borderColor: '#4a90e2'
+              }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="bubble-content">
+                <div className="bubble-icon" style={{ color: '#4a90e2' }}>
+                  <FaMusic className="icon" />
+                </div>
+                <span className="bubble-category" style={{ background: 'rgba(74, 144, 226, 0.2)' }}>Music Theory</span>
+                <h3 className="bubble-title">Essential Music Theory for Producers</h3>
+                <div className="theory-sections">
+                  <div className="theory-section">
+                    <h4>Scales & Modes</h4>
+                    <p>Master the fundamental scales and modes used in modern music production. Learn about major, minor, pentatonic, and modal scales to create memorable melodies.</p>
+                    <ul className="theory-list">
+                      <li>Major & Minor Scales</li>
+                      <li>Pentatonic Scales</li>
+                      <li>Modal Scales</li>
+                      <li>Scale Degrees</li>
+                    </ul>
+                  </div>
+                  <div className="theory-section">
+                    <h4>Chords & Progressions</h4>
+                    <p>Understand chord construction, inversions, and common progressions. Learn how to create emotional depth and movement in your tracks.</p>
+                    <ul className="theory-list">
+                      <li>Chord Construction</li>
+                      <li>Chord Inversions</li>
+                      <li>Common Progressions</li>
+                      <li>Voice Leading</li>
+                    </ul>
+                  </div>
+                  <div className="theory-section">
+                    <h4>Rhythm & Harmony</h4>
+                    <p>Explore rhythmic concepts and harmonic relationships. Discover how to create compelling grooves and maintain musical coherence.</p>
+                    <ul className="theory-list">
+                      <li>Time Signatures</li>
+                      <li>Rhythmic Patterns</li>
+                      <li>Harmonic Functions</li>
+                      <li>Cadences</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="bubble-links">
+                  <a 
+                    href="#" 
+                    className="bubble-link"
+                    style={{ 
+                      background: 'rgba(74, 144, 226, 0.2)',
+                      borderColor: 'rgba(74, 144, 226, 0.4)'
+                    }}
+                  >
+                    Start Learning
+                  </a>
+                </div>
               </div>
+              <div className="bubble-decoration"></div>
+            </motion.div>
+            {communityFeatures.find(feature => feature.id === 'learning').articles.slice(1).map((article, index) => (
+              <motion.div
+                key={`duplicate-${article.id}`}
+                className="learning-bubble small"
+                style={{ 
+                  background: article.color,
+                  borderColor: article.accentColor
+                }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="bubble-content">
+                  <div className="bubble-icon" style={{ color: article.accentColor }}>
+                    <article.icon className="icon" />
+                  </div>
+                  <span className="bubble-category" style={{ background: `${article.accentColor}20` }}>{article.category}</span>
+                  <h3 className="bubble-title">{article.title}</h3>
+                  <p className="bubble-description">
+                    {article.description}
+                  </p>
+                  <div className="bubble-links">
+                    <a 
+                      href="#" 
+                      className="bubble-link"
+                      style={{ 
+                        background: `${article.accentColor}20`,
+                        borderColor: `${article.accentColor}40`
+                      }}
+                    >
+                      Read More
+                    </a>
+                  </div>
+                </div>
+                <div className="bubble-decoration"></div>
+              </motion.div>
+            ))}
                       </div>
+        </section>
 
         <div className="bubbles-grid">
           {communityFeatures.map((feature) => (
@@ -531,32 +731,44 @@ const Community = () => {
                 ) : feature.id === 'challenges' ? (
                   renderChallengeTools()
                 ) : (
-                  <>
-                    <div className="features-list">
-                      <h4>Key Features</h4>
-                      <ul>
-                        {feature.details.features.map((feature, index) => (
-                          <li key={index}>{feature}</li>
-                        ))}
-                      </ul>
+                  <div className="feature-articles">
+                    <h4>Featured Articles</h4>
+                    <div className="articles-grid">
+                      {feature.articles.map(article => (
+                        <motion.div
+                          key={article.id}
+                          className="article-card"
+                          style={{ 
+                            background: feature.color,
+                            borderColor: article.accentColor
+                          }}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <div className="article-icon" style={{ color: article.accentColor }}>
+                            <article.icon className="icon" />
                     </div>
-                    <div className="feature-stats">
-                      <h4>Statistics</h4>
-                      <div className="stats-grid">
-                        {Object.entries(feature.details.stats).map(([key, value]) => (
-                          <div key={key} className="stat-item">
-                            <span className="stat-value">{value}</span>
-                            <span className="stat-label">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
+                          <span className="article-category" style={{ background: `${article.accentColor}20` }}>{article.category}</span>
+                          <h3 className="article-title">{article.title}</h3>
+                          <p className="article-description">
+                            {article.description}
+                          </p>
+                          <div className="article-links">
+                            <a 
+                              href="#" 
+                              className="article-link"
+                              style={{ 
+                                background: `${article.accentColor}20`,
+                                borderColor: `${article.accentColor}40`
+                              }}
+                            >
+                              Read More
+                            </a>
                           </div>
+                        </motion.div>
                         ))}
-                      </div>
                     </div>
-                    <div className="quick-links">
-                      {feature.quickLinks.map((link, index) => (
-                        <a key={index} href="#" className="quick-link">{link}</a>
-                      ))}
                   </div>
-                  </>
                 )}
               </div>
             </motion.div>
@@ -607,7 +819,9 @@ const Community = () => {
           <div className="events-feed">
             {UPCOMING_EVENTS.map(event => (
               <div key={event.id} className="event-card">
-                <div className="event-icon">{event.icon}</div>
+                <div className="event-icon">
+                  <event.icon className="icon" />
+                </div>
                 <div className="event-content">
                   <h3>{event.title}</h3>
                   <div className="event-details">
@@ -625,6 +839,58 @@ const Community = () => {
               </div>
             ))}
             </div>
+        </div>
+
+        <div className="producer-spotlight">
+          <h2>Producer Spotlight</h2>
+          <div className="spotlight-card">
+            <div className="spotlight-header">
+              <img src="https://via.placeholder.com/60" alt="Producer" className="spotlight-avatar" />
+              <div className="spotlight-info">
+                <h3>Alex K.</h3>
+                <span className="spotlight-genre">Trap / Future Bass</span>
+              </div>
+            </div>
+            <p className="spotlight-bio">Award-winning producer specializing in trap and future bass. Known for innovative sound design and complex arrangements.</p>
+            <div className="spotlight-stats">
+              <div className="stat">
+                <span>🎵</span> 1.2k Tracks
+              </div>
+              <div className="stat">
+                <span>👥</span> 45k Followers
+              </div>
+              <div className="stat">
+                <span>🏆</span> 12 Awards
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="trending-topics">
+          <h2>Trending Topics</h2>
+          <div className="topics-list">
+            <div className="topic-item">
+              <span className="topic-icon">🎵</span>
+              <div className="topic-content">
+                <h3>808 Bass Design</h3>
+                <span className="topic-posts">2.3k posts</span>
+              </div>
+            </div>
+            <div className="topic-item">
+              <span className="topic-icon">🎹</span>
+              <div className="topic-content">
+                <h3>Melody Writing</h3>
+                <span className="topic-posts">1.8k posts</span>
+              </div>
+            </div>
+            <div className="topic-item">
+              <span className="topic-icon">🎚️</span>
+              <div className="topic-content">
+                <h3>Mix Techniques</h3>
+                <span className="topic-posts">1.5k posts</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
