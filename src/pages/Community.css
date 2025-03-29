@@ -756,12 +756,12 @@
   .community-container {
     flex-direction: column;
     padding: 0.5rem;
-    gap: 1rem;
+    gap: 0.8rem;
   }
 
   .community-main {
     width: 100%;
-    gap: 1rem;
+    gap: 0.8rem;
   }
 
   .community-sidebar {
@@ -770,7 +770,7 @@
     height: auto;
     top: 0;
     padding-right: 0;
-    gap: 1rem;
+    gap: 0.8rem;
     order: 0;
     display: flex;
     flex-direction: column;
@@ -779,352 +779,182 @@
   }
 
   .learning-center-section {
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    border-radius: 20px;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
   }
 
   .learning-center-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.6rem;
   }
 
   .learning-center-section .section-description {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    padding: 0 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    padding: 0 0.3rem;
   }
 
   .learning-bubbles-grid {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    gap: 1rem;
-    padding: 0.5rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .learning-bubbles-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .learning-bubble {
-    flex: 0 0 85%;
-    scroll-snap-align: start;
-    min-height: auto;
-    padding: 1.2rem;
-  }
-
-  .learning-bubble.large {
-    flex: 0 0 85%;
-    min-height: auto;
-  }
-
-  .learning-bubble.small {
-    padding: 1.5rem;
-    min-height: auto;
-  }
-
-  .learning-bubble.small .bubble-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .learning-bubble.small .bubble-description {
-    margin-bottom: 0.5rem;
-  }
-
-  .learning-bubble.small .bubble-links {
-    margin-top: 0.5rem;
-  }
-
-  .learning-bubble:hover {
-    transform: scale(1.02) !important;
-    z-index: 3;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-  }
-
-  .bubble-content {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  .bubble-decoration {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-
-  .learning-bubble:hover .bubble-decoration {
-    opacity: 1;
-  }
-
-  .learning-bubble .bubble-icon {
-    font-size: 3.5rem;
-    margin-bottom: 2rem;
-    display: inline-block;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    transition: all 0.4s ease;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .learning-bubble:hover .bubble-icon {
-    transform: scale(1.1) rotate(5deg);
-    background: rgba(255, 255, 255, 0.15);
-  }
-
-  .learning-bubble .bubble-category {
-    display: inline-block;
-    padding: 0.5rem 1.2rem;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 25px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  .learning-bubble .bubble-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    color: white;
-    line-height: 1.3;
-    letter-spacing: -0.5px;
-  }
-
-  .learning-bubble .bubble-description {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
-    opacity: 0.9;
-    color: rgba(255, 255, 255, 0.8);
-    flex-grow: 1;
-  }
-
-  .learning-bubble .bubble-link {
-    color: white;
-    text-decoration: none;
-    padding: 0.8rem 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    display: inline-block;
-    text-align: center;
-    width: fit-content;
-  }
-
-  .learning-bubble .bubble-link:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-  }
-
-  .theory-sections {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    gap: 1rem;
-    margin: 1rem 0;
-    padding: 0.5rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    width: 100%;
-  }
-
-  .theory-sections::-webkit-scrollbar {
-    display: none;
-  }
-
-  .theory-section {
-    flex: 0 0 85%;
-    scroll-snap-align: start;
-    padding: 1.2rem;
-    min-width: 85%;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .theory-section h4 {
-    font-size: 1.2rem;
-    margin-bottom: 0.8rem;
-    color: #fff;
-    white-space: normal;
-  }
-
-  .theory-section p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 0.8rem;
-    color: rgba(255, 255, 255, 0.8);
-    white-space: normal;
-  }
-
-  .theory-list {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-  }
-
-  .theory-list li {
-    font-size: 0.9rem;
-    padding: 0.4rem 0;
-    color: rgba(255, 255, 255, 0.7);
-    white-space: normal;
-  }
-}
-
-@media (max-width: 480px) {
-  .learning-center-section {
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .learning-bubbles-grid {
-    gap: 0.8rem;
-    padding: 0.3rem;
+    padding: 0.2rem;
   }
 
   .learning-bubble,
   .learning-bubble.large {
-    flex: 0 0 100%;
-    padding: 1rem;
+    width: 100%;
+    padding: 0.8rem;
     min-height: auto;
   }
 
   .learning-bubble .bubble-icon {
-    font-size: 1.8rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    padding: 0.4rem;
   }
 
   .learning-bubble .bubble-category {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.75rem;
-    margin-bottom: 0.8rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
   }
 
   .learning-bubble .bubble-title {
-    font-size: 1.2rem;
-    margin-bottom: 0.6rem;
-    line-height: 1.3;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
   }
 
   .learning-bubble .bubble-description {
-    font-size: 0.85rem;
-    line-height: 1.5;
-    margin-bottom: 0.8rem;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    margin-bottom: 0.6rem;
   }
 
   .theory-sections {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin: 1rem 0;
-    padding: 0.5rem;
-    width: 100%;
-    overflow: visible;
+    gap: 0.5rem;
+    margin: 0.6rem 0;
+    padding: 0.2rem;
   }
 
   .theory-section {
-    width: 100%;
-    padding: 1rem;
-    margin: 0;
-    box-sizing: border-box;
+    padding: 0.6rem;
   }
 
   .theory-section h4 {
-    font-size: 1.1rem;
-    margin-bottom: 0.8rem;
-    word-wrap: break-word;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
   }
 
   .theory-section p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 0.8rem;
-    word-wrap: break-word;
-  }
-
-  .theory-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.3;
+    margin-bottom: 0.4rem;
   }
 
   .theory-list li {
-    font-size: 0.85rem;
-    padding: 0.4rem 0;
-    word-wrap: break-word;
+    font-size: 0.75rem;
+    padding: 0.2rem 0;
   }
 
-  .bubble-link {
-    padding: 0.6rem 1rem;
-    font-size: 0.85rem;
+  .learning-bubble .bubble-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
   }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 480px) {
+  .community-container {
+    padding: 0.3rem;
+  }
+
   .learning-center-section {
-    padding: 0.8rem;
+    padding: 0.6rem;
+  }
+
+  .learning-center-section h2 {
+    font-size: 1.2rem;
   }
 
   .learning-bubble,
   .learning-bubble.large,
   .theory-section {
-    padding: 0.8rem;
+    padding: 0.6rem;
   }
 
   .learning-bubble .bubble-title {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
   }
 
   .learning-bubble .bubble-description {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
   .theory-section h4 {
-    font-size: 1rem;
-  }
-
-  .theory-section p {
     font-size: 0.85rem;
   }
 
+  .theory-section p {
+    font-size: 0.7rem;
+  }
+
   .theory-list li {
+    font-size: 0.7rem;
+  }
+
+  .learning-bubble .bubble-link {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .community-container {
+    padding: 0.2rem;
+  }
+
+  .learning-center-section {
+    padding: 0.5rem;
+  }
+
+  .learning-center-section h2 {
+    font-size: 1.1rem;
+  }
+
+  .learning-bubble,
+  .learning-bubble.large,
+  .theory-section {
+    padding: 0.5rem;
+  }
+
+  .learning-bubble .bubble-title {
+    font-size: 0.9rem;
+  }
+
+  .learning-bubble .bubble-description {
+    font-size: 0.7rem;
+  }
+
+  .theory-section h4 {
     font-size: 0.8rem;
   }
 
-  .bubble-link {
-    padding: 0.5rem 0.8rem;
-    font-size: 0.8rem;
+  .theory-section p {
+    font-size: 0.65rem;
+  }
+
+  .theory-list li {
+    font-size: 0.65rem;
+  }
+
+  .learning-bubble .bubble-link {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
   }
 }
 
@@ -1266,25 +1096,25 @@
 }
 
 .learning-center-section {
-  margin-bottom: 3rem;
-  padding: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
   background: rgba(138, 43, 226, 0.05);
-  border-radius: 20px;
+  border-radius: 15px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(138, 43, 226, 0.1);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  max-width: 1200px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .learning-center-section h2 {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   color: var(--primary-purple);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   text-align: center;
   position: relative;
-  padding-bottom: 1rem;
+  padding-bottom: 0.8rem;
 }
 
 .learning-center-section h2::after {
@@ -1293,17 +1123,17 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
+  width: 60px;
   height: 3px;
   background: var(--primary-purple);
   border-radius: 2px;
 }
 
 .learning-center-section .section-description {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -1312,20 +1142,20 @@
 .learning-bubbles-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  padding: 0.5rem;
+  gap: 1rem;
+  padding: 0.3rem;
   position: relative;
   margin-top: 0;
 }
 
 .learning-bubble {
-  padding: 1.5rem;
-  border-radius: 15px;
+  padding: 1rem;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
-  min-height: 250px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -1334,7 +1164,7 @@
 
 .learning-bubble.large {
   grid-column: span 2;
-  min-height: 300px;
+  min-height: 250px;
 }
 
 .learning-bubble:hover {
@@ -1344,11 +1174,11 @@
 }
 
 .learning-bubble .bubble-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
   color: #fff;
   display: inline-block;
-  padding: 0.8rem;
+  padding: 0.6rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   transition: all 0.3s ease;
@@ -1361,26 +1191,26 @@
 
 .learning-bubble .bubble-category {
   display: inline-block;
-  padding: 0.4rem 0.8rem;
+  padding: 0.3rem 0.6rem;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  margin-bottom: 0.8rem;
   color: rgba(255, 255, 255, 0.9);
 }
 
 .learning-bubble .bubble-title {
-  font-size: 1.4rem;
-  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
   color: #fff;
   line-height: 1.3;
 }
 
 .learning-bubble .bubble-description {
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.4;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   flex-grow: 1;
 }
 
@@ -1405,15 +1235,15 @@
 .theory-sections {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin: 1.5rem 0;
-  padding: 0.5rem;
+  gap: 0.8rem;
+  margin: 1rem 0;
+  padding: 0.3rem;
 }
 
 .theory-section {
-  padding: 1rem;
+  padding: 0.8rem;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
 }
@@ -1425,16 +1255,16 @@
 }
 
 .theory-section h4 {
-  font-size: 1.1rem;
-  margin-bottom: 0.6rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
   color: #fff;
 }
 
 .theory-section p {
-  font-size: 0.85rem;
-  line-height: 1.4;
+  font-size: 0.8rem;
+  line-height: 1.3;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
 }
 
 .theory-list {
@@ -1444,12 +1274,12 @@
 }
 
 .theory-list li {
-  padding: 0.4rem 0;
-  font-size: 0.85rem;
+  padding: 0.3rem 0;
+  font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.7);
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.3rem;
 }
 
 .theory-list li::before {
@@ -1470,132 +1300,91 @@
 
 @media (max-width: 768px) {
   .learning-center-section {
-    padding: 1rem;
-    margin-bottom: 2rem;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
   }
 
   .learning-center-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
-
-  .learning-center-section .section-description {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
   }
 
   .learning-bubbles-grid {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
-    padding: 0.3rem;
+    gap: 0.6rem;
+    padding: 0.2rem;
   }
 
   .learning-bubble,
   .learning-bubble.large {
     width: 100%;
-    padding: 1rem;
+    padding: 0.8rem;
     min-height: auto;
   }
 
   .learning-bubble .bubble-icon {
-    font-size: 1.8rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .learning-bubble .bubble-category {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.75rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .learning-bubble .bubble-title {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin-bottom: 0.6rem;
   }
 
+  .learning-bubble .bubble-category {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .learning-bubble .bubble-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+
   .learning-bubble .bubble-description {
-    font-size: 0.85rem;
-    margin-bottom: 0.8rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
   }
 
   .theory-sections {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
-    margin: 1rem 0;
-    padding: 0.3rem;
+    gap: 0.6rem;
+    margin: 0.8rem 0;
+    padding: 0.2rem;
   }
 
   .theory-section {
-    padding: 0.8rem;
+    padding: 0.6rem;
   }
 
   .theory-section h4 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
   }
 
   .theory-section p {
-    font-size: 0.8rem;
-    margin-bottom: 0.6rem;
+    font-size: 0.75rem;
+    margin-bottom: 0.4rem;
   }
 
   .theory-list li {
-    font-size: 0.8rem;
-    padding: 0.3rem 0;
+    font-size: 0.75rem;
+    padding: 0.2rem 0;
   }
 }
 
 @media (max-width: 480px) {
   .learning-center-section {
-    padding: 0.8rem;
-  }
-
-  .learning-center-section h2 {
-    font-size: 1.6rem;
-  }
-
-  .learning-bubble,
-  .learning-bubble.large,
-  .theory-section {
-    padding: 0.8rem;
-  }
-
-  .learning-bubble .bubble-title {
-    font-size: 1.1rem;
-  }
-
-  .learning-bubble .bubble-description {
-    font-size: 0.8rem;
-  }
-
-  .theory-section h4 {
-    font-size: 0.95rem;
-  }
-
-  .theory-section p {
-    font-size: 0.75rem;
-  }
-
-  .theory-list li {
-    font-size: 0.75rem;
-  }
-}
-
-@media (max-width: 375px) {
-  .learning-center-section {
     padding: 0.6rem;
   }
 
   .learning-center-section h2 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   .learning-bubble,
   .learning-bubble.large,
   .theory-section {
-    padding: 0.7rem;
+    padding: 0.6rem;
   }
 
   .learning-bubble .bubble-title {
@@ -1607,7 +1396,7 @@
   }
 
   .theory-section h4 {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .theory-section p {
@@ -1616,5 +1405,41 @@
 
   .theory-list li {
     font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .learning-center-section {
+    padding: 0.5rem;
+  }
+
+  .learning-center-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .learning-bubble,
+  .learning-bubble.large,
+  .theory-section {
+    padding: 0.5rem;
+  }
+
+  .learning-bubble .bubble-title {
+    font-size: 0.95rem;
+  }
+
+  .learning-bubble .bubble-description {
+    font-size: 0.7rem;
+  }
+
+  .theory-section h4 {
+    font-size: 0.8rem;
+  }
+
+  .theory-section p {
+    font-size: 0.65rem;
+  }
+
+  .theory-list li {
+    font-size: 0.65rem;
   }
 } 
