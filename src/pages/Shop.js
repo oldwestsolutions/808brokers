@@ -1,152 +1,130 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FaShoppingCart, FaTruck, FaHeadset, FaLock } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import './Shop.css';
+import '../styles/Shop.css';
 
 const Shop = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [sortBy, setSortBy] = useState('featured');
-
-  const categories = [
-    { id: 'all', name: 'All Products' },
-    { id: 'drumkits', name: 'Drum Kits' },
-    { id: 'samples', name: 'Sample Packs' },
-    { id: 'presets', name: 'Presets' },
-    { id: 'templates', name: 'Templates' }
-  ];
-
   const products = [
     {
       id: 1,
-      name: '808 Bass Drum Kit',
-      category: 'drumkits',
+      name: "808 Bass Drum Kit",
+      description: "Premium 808 samples for trap and hip hop production",
       price: 29.99,
-      image: '/images/products/808-kit.jpg',
-      description: 'Premium 808 bass drum samples with multiple variations',
       rating: 4.8,
-      sales: 1200
+      sales: 1200,
+      image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      category: "Drum Kits"
     },
     {
       id: 2,
-      name: 'Trap Melody Sample Pack',
-      category: 'samples',
+      name: "Trap Melody Sample Pack",
+      description: "Melodic samples and loops for trap music",
       price: 39.99,
-      image: '/images/products/trap-melody.jpg',
-      description: 'Collection of trap melody samples and loops',
-      rating: 4.6,
-      sales: 850
+      rating: 4.9,
+      sales: 850,
+      image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      category: "Sample Packs"
     },
     {
       id: 3,
-      name: 'FL Studio Trap Template',
-      category: 'templates',
+      name: "FL Studio Trap Template",
+      description: "Professional trap music template for FL Studio",
       price: 49.99,
-      image: '/images/products/trap-template.jpg',
-      description: 'Professional trap production template for FL Studio',
-      rating: 4.9,
-      sales: 650
-    },
-    {
-      id: 4,
-      name: '808 Preset Pack',
-      category: 'presets',
-      price: 24.99,
-      image: '/images/products/808-presets.jpg',
-      description: 'Custom 808 presets for various DAWs',
       rating: 4.7,
-      sales: 950
+      sales: 600,
+      image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      category: "Templates"
     }
   ];
 
-  const filteredProducts = selectedCategory === 'all'
-    ? products
-    : products.filter(product => product.category === selectedCategory);
-
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
-    switch (sortBy) {
-      case 'price-low':
-        return a.price - b.price;
-      case 'price-high':
-        return b.price - a.price;
-      case 'rating':
-        return b.rating - a.rating;
-      case 'sales':
-        return b.sales - a.sales;
-      default:
-        return 0;
+  const features = [
+    {
+      icon: <FaTruck />,
+      title: "Instant Delivery",
+      description: "Get your products immediately after purchase"
+    },
+    {
+      icon: <FaHeadset />,
+      title: "Free Support",
+      description: "24/7 customer support for all products"
+    },
+    {
+      icon: <FaLock />,
+      title: "Secure Payment",
+      description: "100% secure payment processing"
     }
-  });
+  ];
 
   return (
-    <div className="shop-page">
-      <div className="shop-header">
-        <h1>808 Brokers Shop</h1>
-        <p>Premium sounds and resources for your music production</p>
-      </div>
+    <div className="page-container">
+      <header className="page-header">
+        <Link to="/" className="logo-link">
+          <img src="/logo.png" alt="808 Brokers Logo" className="header-logo" />
+        </Link>
+      </header>
 
-      <div className="shop-filters">
-        <div className="category-filters">
-          {categories.map(category => (
-            <button
-              key={category.id}
-              className={`category-btn ${selectedCategory === category.id ? 'active' : ''}`}
-              onClick={() => setSelectedCategory(category.id)}
-            >
-              {category.name}
-            </button>
-          ))}
+      <motion.div 
+        className="shop-page"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="shop-header">
+          <h1>Shop</h1>
+          <p className="subtitle">Premium music production resources</p>
         </div>
 
-        <div className="sort-filters">
-          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-            <option value="featured">Featured</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-            <option value="rating">Highest Rated</option>
-            <option value="sales">Most Popular</option>
-          </select>
-        </div>
-      </div>
-
-      <div className="products-grid">
-        {sortedProducts.map(product => (
-          <div key={product.id} className="product-card">
-            <div className="product-image">
-              <img src={product.image} alt={product.name} />
-              <div className="product-overlay">
-                <button className="add-to-cart">Add to Cart</button>
-                <button className="preview">Preview</button>
-              </div>
+        <div className="shop-content">
+          <section className="products-section">
+            <h2>Featured Products</h2>
+            <div className="products-grid">
+              {products.map(product => (
+                <motion.div
+                  key={product.id}
+                  className="product-card"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="product-image">
+                    <img src={product.image} alt={product.name} />
+                  </div>
+                  <div className="product-info">
+                    <h3>{product.name}</h3>
+                    <p className="description">{product.description}</p>
+                    <div className="product-meta">
+                      <span className="price">${product.price}</span>
+                      <span className="rating">★ {product.rating}</span>
+                      <span className="sales">{product.sales} sales</span>
+                    </div>
+                    <button className="add-to-cart">
+                      <FaShoppingCart /> Add to Cart
+                    </button>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-            <div className="product-info">
-              <h3>{product.name}</h3>
-              <p className="product-description">{product.description}</p>
-              <div className="product-meta">
-                <span className="price">${product.price}</span>
-                <span className="rating">★ {product.rating}</span>
-                <span className="sales">{product.sales} sales</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+          </section>
 
-      <div className="shop-features">
-        <div className="feature">
-          <i className="fas fa-truck"></i>
-          <h3>Instant Delivery</h3>
-          <p>Get your products immediately after purchase</p>
+          <section className="features-section">
+            <h2>Why Choose Us</h2>
+            <div className="features-grid">
+              {features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  className="feature-card"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="feature-icon">{feature.icon}</div>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </section>
         </div>
-        <div className="feature">
-          <i className="fas fa-headphones"></i>
-          <h3>Free Support</h3>
-          <p>24/7 customer support for all products</p>
-        </div>
-        <div className="feature">
-          <i className="fas fa-shield-alt"></i>
-          <h3>Secure Payment</h3>
-          <p>100% secure payment processing</p>
-        </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

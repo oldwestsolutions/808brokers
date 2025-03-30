@@ -1,0 +1,307 @@
+.page-container {
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.page-header {
+  background-color: #2d2d2d;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-link {
+  display: inline-block;
+}
+
+.header-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.foryou-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.foryou-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.foryou-header h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.foryou-header .subtitle {
+  color: #b3b3b3;
+  font-size: 1.1rem;
+}
+
+.foryou-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Recommended Section */
+.recommended-section h2,
+.genres-section h2,
+.producers-section h2 {
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.beats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.beat-card {
+  background: #2d2d2d;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.beat-image {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.beat-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-button {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.play-button:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.beat-info {
+  padding: 1rem;
+  text-align: center;
+}
+
+.beat-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  color: #ffffff;
+}
+
+.producer {
+  color: #b3b3b3;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.beat-details {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  color: #b3b3b3;
+  flex-wrap: wrap;
+}
+
+.beat-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.like-button,
+.share-button {
+  background: none;
+  border: none;
+  color: #b3b3b3;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.like-button:hover,
+.share-button:hover {
+  color: #ffffff;
+}
+
+.like-button.liked {
+  color: #ff4b4b;
+}
+
+/* Genres Section */
+.genres-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.genres-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.genre-card {
+  background: #2d2d2d;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.genre-card:hover {
+  transform: translateY(-5px);
+}
+
+.genre-card h3 {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.genre-card p {
+  color: #b3b3b3;
+  font-size: 0.9rem;
+}
+
+/* Producers Section */
+.producers-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.producers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-content: center;
+}
+
+.producer-card {
+  text-align: center;
+}
+
+.producer-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.producer-card h3 {
+  font-size: 1rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.producer-card p {
+  color: #b3b3b3;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .foryou-page {
+    padding: 1rem;
+  }
+
+  .beats-grid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .beat-card {
+    max-width: 100%;
+  }
+
+  .genres-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .producers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .foryou-header h1 {
+    font-size: 2rem;
+  }
+
+  .foryou-header .subtitle {
+    font-size: 1rem;
+  }
+
+  .recommended-section h2,
+  .genres-section h2,
+  .producers-section h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .genres-grid,
+  .producers-grid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+  }
+
+  .beat-details {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .producer-avatar {
+    width: 80px;
+    height: 80px;
+  }
+} 

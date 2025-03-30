@@ -46,12 +46,12 @@ const Home = () => {
         <Link to="/charts" className="feature-card">
           <h3>Charts</h3>
         </Link>
-        <div className="feature-card">
-          <h3>Top 100 Instrumentals</h3>
-        </div>
-        <div className="feature-card">
-          <h3>Trending</h3>
-        </div>
+        <Link to="/radio" className="feature-card">
+          <h3>Radio</h3>
+        </Link>
+        <Link to="/foryou" className="feature-card">
+          <h3>For You</h3>
+        </Link>
       </div>
 
       <Footer />
