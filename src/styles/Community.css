@@ -186,6 +186,10 @@
   * {
     max-width: 100vw !important;
     box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   body, html {
@@ -196,6 +200,13 @@
     padding: 0 !important;
     background: #000000 !important;
     position: relative !important;
+    min-height: 100% !important;
+  }
+
+  #root {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
   }
 
   .community-page {
@@ -204,11 +215,13 @@
     max-width: 100vw !important;
     background: #000000 !important;
     position: relative !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
   .community-container {
-    padding: 0.5rem !important;
-    padding-top: 5rem !important;
+    padding: 0 !important;
+    padding-top: 4.5rem !important;
     grid-template-columns: 1fr !important;
     width: 100% !important;
     max-width: 100vw !important;
@@ -217,6 +230,7 @@
     overflow-x: hidden !important;
     background: #000000 !important;
     position: relative !important;
+    display: block !important;
   }
 
   .community-header {
@@ -232,12 +246,13 @@
     left: 0 !important;
     right: 0 !important;
     z-index: 1000 !important;
+    margin: 0 !important;
   }
 
   .header-search {
     order: 3 !important;
-    max-width: 90% !important;
-    width: 90% !important;
+    max-width: 85% !important;
+    width: 85% !important;
     margin: 0 auto !important;
     box-sizing: border-box !important;
   }
@@ -249,19 +264,6 @@
     font-size: 0.8rem !important;
     box-sizing: border-box !important;
     background: rgba(0, 0, 0, 0.3) !important;
-  }
-
-  .header-logo {
-    width: auto !important;
-    flex-shrink: 0 !important;
-  }
-
-  .logo-image {
-    height: 28px !important;
-  }
-
-  .logo-text {
-    font-size: 1.1rem !important;
   }
 
   .quick-links-section,
@@ -277,48 +279,42 @@
   .research-card,
   .resource-card,
   .highlight-card {
-    width: 95% !important;
-    max-width: 95% !important;
+    width: 90% !important;
+    max-width: 90% !important;
     margin: 0.5rem auto !important;
-    padding: 1rem !important;
+    padding: 0.75rem !important;
     box-sizing: border-box !important;
     background: rgba(0, 0, 0, 0.2) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 10px !important;
+    border-radius: 8px !important;
   }
 
-  .content-wrapper {
-    padding: 0.5rem !important;
+  .articles-grid,
+  .quick-links-grid,
+  .topics-grid,
+  .events-grid,
+  .highlights-grid,
+  .resources-grid,
+  .collab-grid,
+  .research-grid {
+    display: block !important;
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
+    padding: 0 !important;
   }
 
-  .newsletter-section,
-  .education-portal,
-  .upcoming-events-widget {
-    background: rgba(0, 0, 0, 0.2) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  }
-
-  .date-badge,
-  .event-type,
-  .highlight-badge,
-  .research-badge,
-  .genre-tag {
-    background: rgba(0, 0, 0, 0.3) !important;
-  }
-
-  .section-header h2,
-  .resource-icon {
-    background: none !important;
-    -webkit-background-clip: initial !important;
-    -webkit-text-fill-color: white !important;
-    color: white !important;
-  }
-
-  .articles-grid {
-    grid-template-columns: 1fr;
+  .article-card,
+  .quick-link-item,
+  .topic-card,
+  .event-card,
+  .highlight-card,
+  .resource-card,
+  .collab-card,
+  .research-card {
+    width: 90% !important;
+    margin: 0.5rem auto !important;
+    display: block !important;
   }
 
   .community-title {
@@ -1727,4 +1723,11 @@
     max-width: 100%;
     background: #000000;
   }
+}
+
+/* Root level containment */
+:root {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
 } 
