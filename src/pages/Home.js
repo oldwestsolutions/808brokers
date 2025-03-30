@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import '../styles/Home.css';
 import heroImage from '../images/downtown.gif';
+import { FaChartBar, FaBroadcastTower, FaUser } from 'react-icons/fa';
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -43,14 +44,34 @@ const Home = () => {
       </div>
       
       <div className="features">
-        <Link to="/charts" className="feature-card">
-          <h3>Charts</h3>
+        <Link to="/charts" style={{ textDecoration: 'none' }}>
+          <div className="feature-card">
+            <div className="feature-icon">
+              <FaChartBar />
+            </div>
+            <h3>Charts</h3>
+            <p>Track the hottest beats and trending artists</p>
+          </div>
         </Link>
-        <Link to="/radio" className="feature-card">
-          <h3>Radio</h3>
+
+        <Link to="/radio" style={{ textDecoration: 'none' }}>
+          <div className="feature-card">
+            <div className="feature-icon">
+              <FaBroadcastTower />
+            </div>
+            <h3>Radio</h3>
+            <p>Listen to curated stations and playlists</p>
+          </div>
         </Link>
-        <Link to="/foryou" className="feature-card">
-          <h3>For You</h3>
+
+        <Link to="/foryou" style={{ textDecoration: 'none' }}>
+          <div className="feature-card">
+            <div className="feature-icon">
+              <FaUser />
+            </div>
+            <h3>For You</h3>
+            <p>Personalized recommendations just for you</p>
+          </div>
         </Link>
       </div>
 
