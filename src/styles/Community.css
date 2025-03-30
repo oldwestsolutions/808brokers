@@ -1435,20 +1435,18 @@
 
 /* Override any existing header styles */
 .community-header {
-  background-color: #000000 !important;
-  background: #000000 !important;
-  background-image: none !important;
-  padding: 0.8rem 2rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #000000;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 9999;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .header-logo {
@@ -1479,17 +1477,19 @@
 
 .header-search {
   position: relative;
-  width: 250px;
+  max-width: 300px;
+  width: 100%;
 }
 
 .search-input {
   width: 100%;
-  padding: 0.6rem 0.8rem 0.6rem 2.2rem;
-  background: #1a1a1a !important;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  color: #ffffff;
-  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 0.9rem;
+  box-sizing: border-box;
 }
 
 .search-input:focus {
@@ -1509,18 +1509,24 @@
 
 @media (max-width: 768px) {
   .community-header {
-    padding: 0.8rem 1rem;
-  }
-
-  .logo-image {
-    height: 35px;
-  }
-
-  .logo-text {
-    font-size: 1.3rem;
+    padding: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   .header-search {
-    width: 180px;
+    order: 3;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .community-container {
+    padding: 1rem;
+    padding-top: 7rem;
   }
 } 
