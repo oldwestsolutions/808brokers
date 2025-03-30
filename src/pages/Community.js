@@ -506,12 +506,23 @@ const Community = () => {
   };
 
   return (
-    <>
-      <header className="community-header">
+    <div className="community-page">
+      <header 
+        className="community-header" 
+        style={{ 
+          background: '#000000', 
+          backgroundColor: '#000000',
+          backgroundImage: 'none'
+        }}
+      >
         <Link to="/" className="header-logo">
           <img src="/favicon.ico" alt="808 Brokers Logo" className="logo-image" />
           <span className="logo-text">808 Brokers</span>
         </Link>
+        <div className="header-search">
+          <input type="text" placeholder="Search community..." className="search-input" />
+          <i className="fas fa-search search-icon"></i>
+        </div>
       </header>
       <div className="community-container">
         <div className="community-main">
@@ -792,7 +803,7 @@ const Community = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
