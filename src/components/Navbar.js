@@ -18,7 +18,7 @@ const Navbar = ({ hideWalletButton }) => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <img src={dicelogo} alt="808 Brokers" className="logo-image" />
+        <img src={dicelogo} alt="806brokers" className="logo-image" />
       </div>
       <div className="navbar-actions">
         {!hideWalletButton && !user && (

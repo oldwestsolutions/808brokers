@@ -516,8 +516,8 @@ const Community = () => {
         }}
       >
         <Link to="/" className="header-logo">
-          <img src="/favicon.ico" alt="808 Brokers Logo" className="logo-image" />
-          <span className="logo-text">808 Brokers</span>
+          <img src="/favicon.ico" alt="806brokers Logo" className="logo-image" />
+          <span className="logo-text">806brokers</span>
         </Link>
         <div className="header-search">
           <input type="text" placeholder="Search community..." className="search-input" />

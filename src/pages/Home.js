@@ -18,11 +18,11 @@ const Home = () => {
       <div className="hero">
         <img 
           src={heroImage}
-          alt="808 Brokers Hero"
+          alt="806brokers Hero"
           className="hero-image"
         />
         
-        <h1 className="hero-title">808 Brokers</h1>
+        <h1 className="hero-title">806 Brokers</h1>
         <div className="hero-description">
           <small>Your Premium Marketplace for Beats and Samples</small>
         </div>

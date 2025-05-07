@@ -60,7 +60,7 @@ const Shop = () => {
     <div className="page-container">
       <header className="page-header">
         <Link to="/" className="logo-link">
-          <img src="/logo.png" alt="808 Brokers Logo" className="header-logo" />
+          <img src="/logo.png" alt="806brokers Logo" className="header-logo" />
         </Link>
       </header>
 

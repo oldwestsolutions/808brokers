@@ -1,75 +1,69 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FaGoogle } from 'react-icons/fa';
+import { useAuth } from '../context/AuthContext';
 import '../styles/Login.css';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth();
 
-  useEffect(() => {
-    document.querySelector('.navbar')?.style.setProperty('display', 'none');
-    document.body.classList.add('login-active');
-    
-    return () => {
-      document.querySelector('.navbar')?.style.setProperty('display', 'flex');
-      document.body.classList.remove('login-active');
-    };
-  }, []);
-
-  const handleCoinbaseLogin = () => {
-    navigate('/dashboard');
+  const handleGoogleLogin = () => {
+    // Implement Google login logic here
+    console.log('Google login clicked');
   };
 
-  const handleRobinhoodLogin = () => {
-    navigate('/dashboard');
+  const handleEmailLogin = (e) => {
+    e.preventDefault();
+    // For demo purposes, we'll just log in with any email/password
+    // In a real app, you would validate credentials with your backend
+    login({ email });
+    navigate('/dashboard/studio');
   };
 
   return (
-    <div className="login-page">
-      <Link to="/" className="back-to-home">
-        <i className="fas fa-arrow-left"></i>
-        Back to Home
-      </Link>
-      
-      <div className="login-modal">
-        <div className="modal-header">
-          <h2>Connect Your Wallet</h2>
-          <p>Choose your preferred platform to continue</p>
+    <div className="login-container">
+      <div className="login-card">
+        <div className="login-header">
+          <img src="/DiceLogoTransparent.png" alt="806 Brokers" className="login-logo" />
         </div>
-        
+
         <div className="login-options">
-          <button 
-            className="login-option coinbase"
-            onClick={handleCoinbaseLogin}
-          >
-            <div className="option-icon">
-              <img src="/coinbase-icon.svg" alt="Coinbase" />
-            </div>
-            <div className="option-info">
-              <h3>Coinbase</h3>
-              <p>Connect using Coinbase Wallet</p>
-            </div>
-          </button>
+          <form className="email-login" onSubmit={handleEmailLogin}>
+            <input 
+              type="email" 
+              placeholder="Email address" 
+              className="login-input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input 
+              type="password" 
+              placeholder="Password" 
+              className="login-input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button type="submit" className="email-login-btn">Sign in with Email</button>
+          </form>
 
           <div className="divider">
             <span>or</span>
           </div>
 
-          <button 
-            className="login-option robinhood"
-            onClick={handleRobinhoodLogin}
-          >
-            <div className="option-icon">
-              <img src="/robinhood-icon.svg" alt="Robinhood" />
-            </div>
-            <div className="option-info">
-              <h3>Robinhood</h3>
-              <p>Connect using Robinhood Account</p>
-            </div>
+          <button className="google-login-btn" onClick={handleGoogleLogin}>
+            <FaGoogle className="google-icon" />
+            <span>Continue with Google</span>
           </button>
         </div>
 
-        <div className="modal-footer">
-          <p>By connecting, you agree to our <a href="/terms">Terms of Service</a></p>
+        <div className="login-footer">
+          <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
+          <Link to="/forgot-password" className="forgot-password">Forgot password?</Link>
         </div>
       </div>
     </div>
