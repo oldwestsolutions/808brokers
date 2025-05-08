@@ -6,6 +6,7 @@ import '../styles/Dashboard.css';
 const Dashboard = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('recent');
+  const [activeView, setActiveView] = useState('library');
 
   const storyItems = [
     {
@@ -186,6 +187,10 @@ const Dashboard = () => {
     navigate(`/dashboard/${path}`);
   };
 
+  const handleViewChange = (view) => {
+    setActiveView(view);
+  };
+
   useEffect(() => {
     document.querySelector('.navbar')?.style.setProperty('display', 'none');
     
@@ -268,45 +273,43 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="dashboard-header">
-            <h1>Your Portal</h1>
-          </div>
-
           <div className="portal-grid">
-            <div className="portal-card followers">
+            <div className="portal-card studio" onClick={() => handleViewChange('studio')}>
               <div className="portal-icon">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 12.75c1.63 0 3.07.39 4.24.9 1.08.48 1.76 1.56 1.76 2.73V18H6v-1.62c0-1.17.68-2.25 1.76-2.73 1.17-.51 2.61-.9 4.24-.9zM4 13c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm1.13 1.1c-.37-.06-.74-.1-1.13-.1-.99 0-1.93.21-2.78.58C.48 14.9 0 15.62 0 16.43V18h4.5v-1.61c0-.83.23-1.61.63-2.29zM20 13c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4 3.43c0-.81-.48-1.53-1.22-1.85-.85-.37-1.79-.58-2.78-.58-.39 0-.76.04-1.13.1.4.68.63 1.46.63 2.29V18H24v-1.57zM12 6c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3z" fill="currentColor"/>
+                  <path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zM13 21v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zM21 13v-2H11v2h10zM15 9h2V7h4V5h-4V3h-2v6z" fill="currentColor"/>
                 </svg>
               </div>
               <div className="portal-info">
-                <h3>Followers</h3>
-                <p>Your community</p>
+                <h3>Studio</h3>
+                <p>Your music workspace</p>
               </div>
               <div className="portal-stats">
-                <span>24 new</span>
+                <span>3 projects</span>
               </div>
             </div>
 
-            <div className="portal-card favorites">
+            <div className="portal-card foryou" onClick={() => handleViewChange('foryou')}>
               <div className="portal-icon">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
                 </svg>
               </div>
               <div className="portal-info">
-                <h3>Favorites</h3>
-                <p>Your favorite tracks</p>
+                <h3>For You</h3>
+                <p>Personalized recommendations</p>
               </div>
               <div className="portal-stats">
-                <span>128 saved</span>
+                <span>12 new</span>
               </div>
             </div>
 
-            <div className="portal-card library">
+            <div className="portal-card library" onClick={() => handleViewChange('library')}>
               <div className="portal-icon">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z" fill="currentColor"/>
+                  <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z" fill="currentColor" transform="translate(0, -2)"/>
+                  <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z" fill="currentColor" transform="translate(0, -4)"/>
                 </svg>
               </div>
               <div className="portal-info">
@@ -319,6 +322,7 @@ const Dashboard = () => {
             </div>
           </div>
 
+          {activeView === 'library' && (
           <div className="files-section">
             <div className="section-header">
               <h2>Files & Folders</h2>
@@ -532,6 +536,221 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
+          )}
+
+          {activeView === 'studio' && (
+            <div className="studio-section">
+              <div className="studio-main">
+                <div className="track-list">
+                  <div className="track-header">
+                    <div className="track-name">Track</div>
+                    <div className="track-controls">Controls</div>
+                  </div>
+                  <div className="track">
+                    <div className="track-info">
+                      <div className="track-name">Vocals</div>
+                      <div className="track-type">Audio</div>
+                      <div className="track-color" style={{ backgroundColor: '#FF4444' }}></div>
+                    </div>
+                    <div className="track-controls">
+                      <div className="volume-fader">
+                        <input type="range" min="0" max="100" defaultValue="80" />
+                        <span className="fader-value">-6 dB</span>
+                      </div>
+                      <div className="pan-control">
+                        <input type="range" min="-50" max="50" defaultValue="0" />
+                        <span className="pan-value">C</span>
+                      </div>
+                      <div className="track-buttons">
+                        <button className="track-mute">
+                          <i className="fas fa-volume-mute"></i>
+                        </button>
+                        <button className="track-solo">
+                          <i className="fas fa-headphones"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="track">
+                    <div className="track-info">
+                      <div className="track-name">Instrumental</div>
+                      <div className="track-type">Audio</div>
+                      <div className="track-color" style={{ backgroundColor: '#44FF44' }}></div>
+                    </div>
+                    <div className="track-controls">
+                      <div className="volume-fader">
+                        <input type="range" min="0" max="100" defaultValue="75" />
+                        <span className="fader-value">-8 dB</span>
+                      </div>
+                      <div className="pan-control">
+                        <input type="range" min="-50" max="50" defaultValue="0" />
+                        <span className="pan-value">C</span>
+                      </div>
+                      <div className="track-buttons">
+                        <button className="track-mute">
+                          <i className="fas fa-volume-mute"></i>
+                        </button>
+                        <button className="track-solo">
+                          <i className="fas fa-headphones"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="timeline">
+                  <div className="timeline-ruler">
+                    <div className="time-marker">0:00</div>
+                    <div className="time-marker">0:30</div>
+                    <div className="time-marker">1:00</div>
+                    <div className="time-marker">1:30</div>
+                    <div className="time-marker">2:00</div>
+                  </div>
+                  <div className="timeline-tracks">
+                    <div className="timeline-track">
+                      <div className="track-region" style={{ left: '10%', width: '80%', backgroundColor: '#FF4444' }}></div>
+                    </div>
+                    <div className="timeline-track">
+                      <div className="track-region" style={{ left: '5%', width: '90%', backgroundColor: '#44FF44' }}></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mixer">
+                  <div className="mixer-channel master">
+                    <div className="channel-name">Master</div>
+                    <div className="channel-fader">
+                      <input type="range" min="0" max="100" defaultValue="90" />
+                      <span className="fader-value">-2 dB</span>
+                    </div>
+                    <div className="channel-meter">
+                      <div className="meter-level" style={{ height: '60%' }}></div>
+                      <div className="meter-peak"></div>
+                    </div>
+                  </div>
+                  <div className="mixer-channel">
+                    <div className="channel-name">Vocals</div>
+                    <div className="channel-fader">
+                      <input type="range" min="0" max="100" defaultValue="80" />
+                      <span className="fader-value">-6 dB</span>
+                    </div>
+                    <div className="channel-meter">
+                      <div className="meter-level" style={{ height: '45%' }}></div>
+                      <div className="meter-peak"></div>
+                    </div>
+                  </div>
+                  <div className="mixer-channel">
+                    <div className="channel-name">Instrumental</div>
+                    <div className="channel-fader">
+                      <input type="range" min="0" max="100" defaultValue="75" />
+                      <span className="fader-value">-8 dB</span>
+                    </div>
+                    <div className="channel-meter">
+                      <div className="meter-level" style={{ height: '50%' }}></div>
+                      <div className="meter-peak"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeView === 'foryou' && (
+            <div className="foryou-section">
+              <div className="foryou-header">
+                <div className="category-scroll">
+                  <button className="category-btn active">All</button>
+                  <button className="category-btn">Music</button>
+                  <button className="category-btn">Beats</button>
+                  <button className="category-btn">Live</button>
+                  <button className="category-btn">Mixes</button>
+                  <button className="category-btn">Tutorials</button>
+                  <button className="category-btn">Producers</button>
+                  <button className="category-btn">Artists</button>
+                </div>
+              </div>
+
+              <div className="content-grid">
+                {/* Video Card 1 */}
+                <div className="video-card">
+                  <div className="video-thumbnail">
+                    <img src="/DiceLogoTransparent.png" alt="Video thumbnail" />
+                    <span className="video-duration">12:34</span>
+                  </div>
+                  <div className="video-info">
+                    <h3>Summer Trap Beat 2024</h3>
+                    <p className="channel-name">808 Brokers</p>
+                    <p className="video-stats">1.2M views • 2 days ago</p>
+                  </div>
+                </div>
+
+                {/* Video Card 2 */}
+                <div className="video-card">
+                  <div className="video-thumbnail">
+                    <img src="/DiceLogoTransparent.png" alt="Video thumbnail" />
+                    <span className="video-duration">8:45</span>
+                  </div>
+                  <div className="video-info">
+                    <h3>Chill Vibes Mix</h3>
+                    <p className="channel-name">808 Brokers</p>
+                    <p className="video-stats">856K views • 1 week ago</p>
+                  </div>
+                </div>
+
+                {/* Video Card 3 */}
+                <div className="video-card">
+                  <div className="video-thumbnail">
+                    <img src="/DiceLogoTransparent.png" alt="Video thumbnail" />
+                    <span className="video-duration">15:20</span>
+                  </div>
+                  <div className="video-info">
+                    <h3>Producer Live Stream</h3>
+                    <p className="channel-name">808 Brokers</p>
+                    <p className="video-stats">2.3M views • 3 days ago</p>
+                  </div>
+                </div>
+
+                {/* Video Card 4 */}
+                <div className="video-card">
+                  <div className="video-thumbnail">
+                    <img src="/DiceLogoTransparent.png" alt="Video thumbnail" />
+                    <span className="video-duration">5:30</span>
+                  </div>
+                  <div className="video-info">
+                    <h3>Beat Making Tutorial</h3>
+                    <p className="channel-name">808 Brokers</p>
+                    <p className="video-stats">450K views • 1 month ago</p>
+                  </div>
+                </div>
+
+                {/* Video Card 5 */}
+                <div className="video-card">
+                  <div className="video-thumbnail">
+                    <img src="/DiceLogoTransparent.png" alt="Video thumbnail" />
+                    <span className="video-duration">10:15</span>
+                  </div>
+                  <div className="video-info">
+                    <h3>Artist Spotlight</h3>
+                    <p className="channel-name">808 Brokers</p>
+                    <p className="video-stats">678K views • 2 weeks ago</p>
+                  </div>
+                </div>
+
+                {/* Video Card 6 */}
+                <div className="video-card">
+                  <div className="video-thumbnail">
+                    <img src="/DiceLogoTransparent.png" alt="Video thumbnail" />
+                    <span className="video-duration">7:45</span>
+                  </div>
+                  <div className="video-info">
+                    <h3>New Beat Release</h3>
+                    <p className="channel-name">808 Brokers</p>
+                    <p className="video-stats">923K views • 5 days ago</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>
