@@ -20,14 +20,14 @@ const Login = () => {
     // For demo purposes, we'll just log in with any email/password
     // In a real app, you would validate credentials with your backend
     login({ email });
-    navigate('/dashboard/studio');
+    navigate('/dashboard');
   };
 
   return (
     <div className="login-container">
       <div className="login-card">
         <div className="login-header">
-          <img src="/DiceLogoTransparent.png" alt="806 Brokers" className="login-logo" />
+          <img src="/DiceLogoTransparent.png" alt="808 Brokers" className="login-logo" />
         </div>
 
         <div className="login-options">

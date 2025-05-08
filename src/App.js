@@ -19,10 +19,11 @@ import './styles/App.css';
 function AppContent() {
   const location = useLocation();
   const showNavbar = !['/foryou', '/radio', '/charts'].includes(location.pathname);
+  const isHomePage = location.pathname === '/';
 
   return (
     <div className="app">
-      {showNavbar && <Navbar />}
+      {showNavbar && <Navbar isHomePage={isHomePage} />}
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />

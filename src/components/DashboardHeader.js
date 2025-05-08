@@ -21,7 +21,7 @@ const DashboardHeader = () => {
     <header className="dashboard-header-nav">
       <div className="header-left">
         <div className="header-logo">
-          <span className="logo-text">806brokers</span>
+          <span className="logo-text">808 Brokers</span>
         </div>
         <form className="search-bar" onSubmit={handleSearch}>
           <input

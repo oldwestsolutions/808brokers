@@ -146,15 +146,22 @@ body {
   align-items: center;
   margin-top: 1.5rem;
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 20px;
+  transform: translateX(-40px);
+}
+
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
 }
 
 .hero .search-input {
   width: 100%;
-  padding: 1.2rem 3.5rem 1.2rem 2rem;
-  border-radius: 9999px;  /* Changed to 9999px for perfectly circular ends */
+  padding: 1.2rem 1.2rem 1.2rem 3rem;
+  border-radius: 9999px;
   border: 2px solid rgba(255, 255, 255, 0.1);
   background: rgba(0, 0, 0, 0.3);
   color: white;
@@ -176,31 +183,20 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.hero .search-button {
+.search-icon {
   position: absolute;
-  right: 8px;
+  left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  padding: 0.8rem;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.hero .search-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-50%) scale(1.05);
-}
-
-.search-icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   fill: rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero .search-button {
+  display: none;
 }
 
 /* Animations */
@@ -228,7 +224,8 @@ body {
   }
 
   .search-container {
-    max-width: 80%; /* Skinnier on mobile */
+    max-width: 90%;
+    padding: 0 15px;
   }
 
   .search-input {
@@ -415,6 +412,9 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   font-family: 'Orbitron', sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .hero-title::before {
@@ -434,7 +434,7 @@ body {
 
 .hero-description {
   font-family: 'Inter', sans-serif;
-  font-size: 1.3rem; /* Even larger size */
+  font-size: 1.3rem;
   color: rgba(230, 230, 230, 0.9);
   margin-bottom: 1rem;
   z-index: 1;
@@ -444,6 +444,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   line-height: 1.2;
+  text-align: center;
 }
 
 /* Login page container */

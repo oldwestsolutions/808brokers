@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import '../styles/Navbar.css';
 import dicelogo from '../images/DiceLogoTransparent.png';
 
-const Navbar = ({ hideWalletButton }) => {
+const Navbar = ({ hideWalletButton, isHomePage }) => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
@@ -16,9 +16,9 @@ const Navbar = ({ hideWalletButton }) => {
   };
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isHomePage ? 'navbar-home' : ''}`}>
       <div className="navbar-logo">
-        <img src={dicelogo} alt="806brokers" className="logo-image" />
+        <img src={dicelogo} alt="808brokers" className="logo-image" />
       </div>
       <div className="navbar-actions">
         {!hideWalletButton && !user && (
