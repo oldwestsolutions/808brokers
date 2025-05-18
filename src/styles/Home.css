@@ -153,7 +153,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding: 0 20px;
-  transform: none;
+  transform: translateX(-40px);
 }
 
 .search-input-wrapper {
@@ -229,8 +229,6 @@ body {
   .search-container {
     max-width: 85%;
     padding: 0 15px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .search-input {
@@ -293,9 +291,7 @@ body {
   }
 
   .search-container {
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 80%; /* Reduce width for smaller mobile devices */
   }
 }
 
