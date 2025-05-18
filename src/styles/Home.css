@@ -291,7 +291,7 @@ body {
   }
 
   .search-container {
-    max-width: 85%; /* Slightly wider for very small devices */
+    max-width: 80%; /* Reduce width for smaller mobile devices */
   }
 }
 
