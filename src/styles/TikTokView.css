@@ -1,0 +1,177 @@
+.tiktok-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000000;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.back-button {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.tiktok-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.video-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.video-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.video-info {
+  max-width: 600px;
+}
+
+.video-info h2 {
+  font-size: 2rem;
+  color: white;
+  margin: 0 0 0.5rem 0;
+}
+
+.video-info .producer {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 0.5rem 0;
+}
+
+.video-info .description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.interaction-buttons {
+  position: absolute;
+  right: 2rem;
+  bottom: 8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.interaction-btn {
+  background: none;
+  border: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.interaction-btn svg {
+  font-size: 2rem;
+  transition: all 0.3s ease;
+}
+
+.interaction-btn span {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.interaction-btn:hover svg {
+  transform: scale(1.1);
+}
+
+.interaction-btn .liked {
+  color: #fe2c55;
+  fill: #fe2c55;
+}
+
+.beat-details {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  gap: 2rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.detail-item .label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.detail-item .value {
+  font-size: 1rem;
+  color: white;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .video-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .video-info .producer {
+    font-size: 1rem;
+  }
+
+  .interaction-buttons {
+    right: 1rem;
+    bottom: 6rem;
+  }
+
+  .beat-details {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.75rem 1.5rem;
+    gap: 1.5rem;
+  }
+} 

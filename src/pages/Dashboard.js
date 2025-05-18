@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import DashboardHeader from '../components/DashboardHeader';
+import TikTokView from './TikTokView';
 import '../styles/Dashboard.css';
 
 const Dashboard = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('beats');
+  const [selectedBeat, setSelectedBeat] = useState(null);
 
   const featuredBeats = [
     {
       id: 1,
-      title: "Summer Trap Beat",
+      title: "Trending",
       producer: "808 Brokers",
       image: "/DiceLogoTransparent.png",
       genre: "Trap",
@@ -195,69 +198,97 @@ const Dashboard = () => {
     }
   ];
 
+  const handleBeatClick = (beat) => {
+    setSelectedBeat(beat);
+  };
+
+  const handleBack = () => {
+    setSelectedBeat(null);
+  };
+
   return (
     <div className="dashboard-container">
       <DashboardHeader />
       
-      <div className="dashboard-content">
-        {/* Featured Section */}
-        <div className="featured-section">
-          <div className="featured-beat">
-            <div className="featured-info">
-              <div className="featured-title">
-                <h1>{featuredBeats[0].title}</h1>
-                <div className="featured-meta">
-                  <span className="maturity-rating">{featuredBeats[0].maturityRating}</span>
-                  <span className="year">{featuredBeats[0].year}</span>
-                  <span className="duration">{featuredBeats[0].duration}</span>
+      <AnimatePresence mode="wait">
+        {selectedBeat ? (
+          <TikTokView beat={selectedBeat} onBack={handleBack} />
+        ) : (
+          <motion.div 
+            className="dashboard-content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {/* Featured Section */}
+            <div className="featured-section">
+              <div 
+                className="featured-beat"
+                onClick={() => handleBeatClick(featuredBeats[0])}
+                style={{ cursor: 'pointer' }}
+              >
+                <div className="featured-info">
+                  <div className="featured-title">
+                    <h1>{featuredBeats[0].title}</h1>
+                    <div className="featured-meta">
+                      <span className="maturity-rating">{featuredBeats[0].maturityRating}</span>
+                      <span className="year">{featuredBeats[0].year}</span>
+                      <span className="duration">{featuredBeats[0].duration}</span>
+                    </div>
+                  </div>
                 </div>
+                <div className="featured-gradient"></div>
+                <img src={featuredBeats[0].image} alt={featuredBeats[0].title} />
               </div>
             </div>
-            <div className="featured-gradient"></div>
-            <img src={featuredBeats[0].image} alt={featuredBeats[0].title} />
-          </div>
-        </div>
 
-        {/* Categories */}
-        {categories.map(category => (
-          <div key={category.id} className="category-section">
-            <div className="category-header">
-              <h2>{category.title}</h2>
-              <p className="category-description">{category.description}</p>
-            </div>
-            <div className="beats-row">
-              {category.beats.map(beat => (
-                <div key={beat.id} className="beat-card">
-                  <div className="beat-image">
-                    <img src={beat.image} alt={beat.title} />
-                    <div className="beat-overlay">
-                      <button className="play-btn">
-                        <i className="fas fa-play"></i>
-                      </button>
-                      <button className="more-info-btn">
-                        <i className="fas fa-info-circle"></i>
-                      </button>
-                    </div>
-                    <div className="beat-meta">
-                      <span className="maturity-rating">{beat.maturityRating}</span>
-                      <span className="duration">{beat.duration}</span>
-                    </div>
-                  </div>
-                  <div className="beat-info">
-                    <h3>{beat.title}</h3>
-                    <p className="producer">by {beat.producer}</p>
-                    <p className="description">{beat.description}</p>
-                    <div className="beat-details">
-                      <span>{beat.genre}</span>
-                      <span>{beat.bpm} BPM</span>
-                    </div>
-                  </div>
+            {/* Categories */}
+            {categories.map(category => (
+              <div key={category.id} className="category-section">
+                <div className="category-header">
+                  <h2>{category.title}</h2>
+                  <p className="category-description">{category.description}</p>
                 </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+                <div className="beats-row">
+                  {category.beats.map(beat => (
+                    <div 
+                      key={beat.id} 
+                      className="beat-card"
+                      onClick={() => handleBeatClick(beat)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <div className="beat-image">
+                        <img src={beat.image} alt={beat.title} />
+                        <div className="beat-overlay">
+                          <button className="play-btn">
+                            <i className="fas fa-play"></i>
+                          </button>
+                          <button className="more-info-btn">
+                            <i className="fas fa-info-circle"></i>
+                          </button>
+                        </div>
+                        <div className="beat-meta">
+                          <span className="maturity-rating">{beat.maturityRating}</span>
+                          <span className="duration">{beat.duration}</span>
+                        </div>
+                      </div>
+                      <div className="beat-info">
+                        <h3>{beat.title}</h3>
+                        <p className="producer">by {beat.producer}</p>
+                        <p className="description">{beat.description}</p>
+                        <div className="beat-details">
+                          <span>{beat.genre}</span>
+                          <span>{beat.bpm} BPM</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/DashboardHeader.css';
 
 const DashboardHeader = () => {
@@ -8,6 +9,9 @@ const DashboardHeader = () => {
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showForYou, setShowForYou] = useState(false);
+  const [showFinalBrokers, setShowFinalBrokers] = useState(false);
+  const location = useLocation();
 
   const handleLogout = () => {
     logout();
@@ -32,11 +36,60 @@ const DashboardHeader = () => {
     setShowDropdown(false);
   };
 
+  useEffect(() => {
+    // Initial sequence: 808 Brokers -> For You -> 808 Brokers
+    const sequence = async () => {
+      // Wait 1 second before showing "For You"
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setShowForYou(true);
+      
+      // Wait 2 seconds before showing final "808 Brokers"
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      setShowForYou(false);
+      setShowFinalBrokers(true);
+    };
+
+    sequence();
+  }, []);
+
   return (
     <header className="dashboard-header-nav">
       <div className="header-left">
         <div className="header-logo">
-          <span className="logo-text">808 Brokers</span>
+          <AnimatePresence mode="wait">
+            {!showForYou && !showFinalBrokers ? (
+              <motion.span
+                key="initial-brokers"
+                className="logo-text"
+                initial={{ opacity: 1 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                808 Brokers
+              </motion.span>
+            ) : showForYou ? (
+              <motion.span
+                key="foryou"
+                className="logo-text"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                For You
+              </motion.span>
+            ) : (
+              <motion.span
+                key="final-brokers"
+                className="logo-text"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                808 Brokers
+              </motion.span>
+            )}
+          </AnimatePresence>
         </div>
         <form className="search-bar" onSubmit={handleSearch}>
           <input
