@@ -11,7 +11,8 @@ const Navbar = ({ isHomePage }) => {
   const { user } = useAuth();
   const isLibraryPage = location.pathname === '/library';
   const isStudioPage = location.pathname === '/dashboard/studio';
-  const showConnectWallet = !user && !isLibraryPage && !isStudioPage;
+  const isLoginPage = location.pathname === '/login';
+  const showConnectWallet = !user && !isLibraryPage && !isStudioPage && !isLoginPage;
 
   const handleConnectWallet = () => {
     navigate('/login');
