@@ -18,9 +18,6 @@ const Dashboard = () => {
       title: "Trending",
       producer: "808 Brokers",
       image: "/DiceLogoTransparent.png",
-      genre: "Trap",
-      bpm: 140,
-      key: "C# Minor",
       featured: true,
       description: "A high-energy trap anthem perfect for your next hit",
       maturityRating: "TV-MA",
@@ -32,9 +29,6 @@ const Dashboard = () => {
       title: "Chill Vibes Mix",
       producer: "808 Brokers",
       image: "/DiceLogoTransparent.png",
-      genre: "Lo-fi",
-      bpm: 90,
-      key: "F Major",
       featured: true,
       description: "Relaxing lo-fi beats to study and chill to",
       maturityRating: "TV-14",
@@ -46,9 +40,6 @@ const Dashboard = () => {
       title: "Dark Trap Beat",
       producer: "808 Brokers",
       image: "/DiceLogoTransparent.png",
-      genre: "Trap",
-      bpm: 150,
-      key: "D Minor",
       featured: true,
       description: "Intense dark trap production with heavy 808s",
       maturityRating: "TV-MA",
@@ -60,17 +51,14 @@ const Dashboard = () => {
   const categories = [
     {
       id: 1,
-      title: "Trending Now",
-      description: "Most popular beats this week",
+      title: "Artists",
+      description: "",
       beats: [
         {
           id: 4,
           title: "Midnight Trap",
           producer: "808 Brokers",
           image: "/DiceLogoTransparent.png",
-          genre: "Trap",
-          bpm: 145,
-          key: "E Minor",
           description: "Late night vibes with deep bass",
           maturityRating: "TV-MA",
           year: "2024",
@@ -81,9 +69,6 @@ const Dashboard = () => {
           title: "Cloud Rap",
           producer: "808 Brokers",
           image: "/DiceLogoTransparent.png",
-          genre: "Cloud Rap",
-          bpm: 130,
-          key: "G Major",
           description: "Dreamy cloud rap production",
           maturityRating: "TV-14",
           year: "2024",
@@ -94,9 +79,6 @@ const Dashboard = () => {
           title: "Drill Beat",
           producer: "808 Brokers",
           image: "/DiceLogoTransparent.png",
-          genre: "Drill",
-          bpm: 160,
-          key: "A Minor",
           description: "Hard-hitting drill production",
           maturityRating: "TV-MA",
           year: "2024",
@@ -106,17 +88,14 @@ const Dashboard = () => {
     },
     {
       id: 2,
-      title: "Popular in Trap",
-      description: "Top trap beats this month",
+      title: "Producers",
+      description: "",
       beats: [
         {
           id: 7,
           title: "Trap Anthem",
           producer: "808 Brokers",
           image: "/DiceLogoTransparent.png",
-          genre: "Trap",
-          bpm: 150,
-          key: "B Minor",
           description: "Epic trap anthem with cinematic elements",
           maturityRating: "TV-MA",
           year: "2024",
@@ -127,9 +106,6 @@ const Dashboard = () => {
           title: "Trap Wave",
           producer: "808 Brokers",
           image: "/DiceLogoTransparent.png",
-          genre: "Trap",
-          bpm: 140,
-          key: "C# Minor",
           description: "Wave-inspired trap production",
           maturityRating: "TV-14",
           year: "2024",
@@ -140,9 +116,6 @@ const Dashboard = () => {
           title: "Trap Dreams",
           producer: "808 Brokers",
           image: "/DiceLogoTransparent.png",
-          genre: "Trap",
-          bpm: 145,
-          key: "D Minor",
           description: "Dreamy trap with ethereal melodies",
           maturityRating: "TV-14",
           year: "2024",
@@ -152,17 +125,14 @@ const Dashboard = () => {
     },
     {
       id: 3,
-      title: "New Releases",
-      description: "Fresh beats just dropped",
+      title: "Samples",
+      description: "",
       beats: [
         {
           id: 10,
           title: "Future Trap",
           producer: "808 Brokers",
           image: "/DiceLogoTransparent.png",
-          genre: "Trap",
-          bpm: 155,
-          key: "F# Minor",
           description: "Futuristic trap with synth elements",
           maturityRating: "TV-MA",
           year: "2024",
@@ -173,9 +143,6 @@ const Dashboard = () => {
           title: "Melodic Trap",
           producer: "808 Brokers",
           image: "/DiceLogoTransparent.png",
-          genre: "Trap",
-          bpm: 135,
-          key: "A Major",
           description: "Melodic trap with emotional depth",
           maturityRating: "TV-14",
           year: "2024",
@@ -186,9 +153,6 @@ const Dashboard = () => {
           title: "Trap Soul",
           producer: "808 Brokers",
           image: "/DiceLogoTransparent.png",
-          genre: "Trap",
-          bpm: 125,
-          key: "G Minor",
           description: "Soulful trap with R&B influences",
           maturityRating: "TV-14",
           year: "2024",
@@ -263,23 +227,14 @@ const Dashboard = () => {
                           <button className="play-btn">
                             <i className="fas fa-play"></i>
                           </button>
-                          <button className="more-info-btn">
-                            <i className="fas fa-info-circle"></i>
-                          </button>
                         </div>
                         <div className="beat-meta">
-                          <span className="maturity-rating">{beat.maturityRating}</span>
                           <span className="duration">{beat.duration}</span>
                         </div>
                       </div>
                       <div className="beat-info">
                         <h3>{beat.title}</h3>
                         <p className="producer">by {beat.producer}</p>
-                        <p className="description">{beat.description}</p>
-                        <div className="beat-details">
-                          <span>{beat.genre}</span>
-                          <span>{beat.bpm} BPM</span>
-                        </div>
                       </div>
                     </div>
                   ))}
