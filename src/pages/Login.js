@@ -41,7 +41,7 @@ const Login = () => {
       <div className="login-container">
         <div className="login-card">
           <div className="login-header">
-            <h1>Welcome to 808 Brokers</h1>
+            <h1>Welcome Back</h1>
           </div>
 
           <div className="login-options">
@@ -62,7 +62,7 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <button type="submit" className="email-login-btn">Sign in with Email</button>
+              <button type="submit" className="email-login-btn">Login</button>
             </form>
 
             <div className="divider">
