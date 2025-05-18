@@ -1,13 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 2rem;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
 }
 
 .navbar-home {
@@ -19,13 +24,19 @@
 .navbar-logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  text-decoration: none;
 }
 
 .logo-image {
   height: 40px;
   width: auto;
-  object-fit: contain;
+  filter: grayscale(100%) contrast(120%) brightness(90%);
+  transition: all 0.3s ease;
+}
+
+.logo-image:hover {
+  filter: grayscale(100%) contrast(150%) brightness(100%);
+  transform: scale(1.05);
 }
 
 .navbar-logo a {
@@ -146,6 +157,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-left: auto;
 }
 
 .profile-menu {

@@ -50,10 +50,13 @@ body {
 .hero h1 {
   font-size: 4.5rem;
   margin-bottom: 1.5rem;
-  background: linear-gradient(to right, #fff, var(--light-purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+  color: #6b4c93;
+  text-shadow: 
+    0 1px 1px rgba(255, 255, 255, 0.3),
+    0 2px 2px rgba(0, 0, 0, 0.4),
+    0 3px 3px rgba(0, 0, 0, 0.3),
+    0 4px 4px rgba(0, 0, 0, 0.2),
+    0 0 15px rgba(107, 76, 147, 0.6);
 }
 
 .hero p {
@@ -304,131 +307,37 @@ body {
 
 .hero-title {
   font-size: 4rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #000000;
+  font-weight: 600;
+  color: #6b4c93;
   text-shadow: 
-    0 0 1px #000,
-    0 0 2px #000,
-    0 0 3px #000,
-    0 0 4px #000,
-    0 0 5px #000,
-    0 0 6px #000,
-    0 0 7px #000,
-    0 0 8px #000,
-    0 0 9px #000,
-    0 0 10px #000,
-    0 0 11px #000,
-    0 0 12px #000,
-    0 0 13px #000,
-    0 0 14px #000,
-    0 0 15px #000,
-    0 0 16px #000,
-    0 0 17px #000,
-    0 0 18px #000,
-    0 0 19px #000,
-    0 0 20px #000,
-    0 0 21px #000,
-    0 0 22px #000,
-    0 0 23px #000,
-    0 0 24px #000,
-    0 0 25px #000,
-    0 0 26px #000,
-    0 0 27px #000,
-    0 0 28px #000,
-    0 0 29px #000,
-    0 0 30px #000,
-    0 0 31px #000,
-    0 0 32px #000,
-    0 0 33px #000,
-    0 0 34px #000,
-    0 0 35px #000,
-    0 0 36px #000,
-    0 0 37px #000,
-    0 0 38px #000,
-    0 0 39px #000,
-    0 0 40px #000,
-    0 0 41px #000,
-    0 0 42px #000,
-    0 0 43px #000,
-    0 0 44px #000,
-    0 0 45px #000,
-    0 0 46px #000,
-    0 0 47px #000,
-    0 0 48px #000,
-    0 0 49px #000,
-    0 0 50px #000,
-    0 0 51px #000,
-    0 0 52px #000,
-    0 0 53px #000,
-    0 0 54px #000,
-    0 0 55px #000,
-    0 0 56px #000,
-    0 0 57px #000,
-    0 0 58px #000,
-    0 0 59px #000,
-    0 0 60px #000,
-    0 0 61px #000,
-    0 0 62px #000,
-    0 0 63px #000,
-    0 0 64px #000,
-    0 0 65px #000,
-    0 0 66px #000,
-    0 0 67px #000,
-    0 0 68px #000,
-    0 0 69px #000,
-    0 0 70px #000,
-    0 0 71px #000,
-    0 0 72px #000,
-    0 0 73px #000,
-    0 0 74px #000,
-    0 0 75px #000,
-    0 0 76px #000,
-    0 0 77px #000,
-    0 0 78px #000,
-    0 0 79px #000,
-    0 0 80px #000,
-    0 0 81px #000,
-    0 0 82px #000,
-    0 0 83px #000,
-    0 0 84px #000,
-    0 0 85px #000,
-    0 0 86px #000,
-    0 0 87px #000,
-    0 0 88px #000,
-    0 0 89px #000,
-    0 0 90px #000,
-    0 0 91px #000,
-    0 0 92px #000,
-    0 0 93px #000,
-    0 0 94px #000,
-    0 0 95px #000,
-    0 0 96px #000,
-    0 0 97px #000,
-    0 0 98px #000,
-    0 0 99px #000,
-    0 0 100px #000;
+    0 1px 1px rgba(255, 255, 255, 0.3),
+    0 2px 2px rgba(0, 0, 0, 0.4),
+    0 3px 3px rgba(0, 0, 0, 0.3),
+    0 4px 4px rgba(0, 0, 0, 0.2),
+    0 0 15px rgba(107, 76, 147, 0.6);
   position: relative;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Inter', sans-serif;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
 .hero-title::before {
-  content: '806 Brokers';
+  content: '808 Brokers';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, #000000, #1a1a1a, #000000);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: blur(1px);
+  color: #6b4c93;
+  text-shadow: 
+    0 1px 1px rgba(255, 255, 255, 0.3),
+    0 2px 2px rgba(0, 0, 0, 0.4),
+    0 3px 3px rgba(0, 0, 0, 0.3),
+    0 4px 4px rgba(0, 0, 0, 0.2),
+    0 0 15px rgba(107, 76, 147, 0.6);
   z-index: -1;
 }
 
@@ -554,4 +463,35 @@ body {
   .wallet-option h3 {
     font-size: 0.8rem;
   }
+}
+
+.hero .connect-wallet-btn {
+  background: rgba(138, 43, 226, 0.1);
+  color: white;
+  border: 2px solid #8A2BE2;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.3),
+              inset 0 0 15px rgba(138, 43, 226, 0.3);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  margin-top: 2rem;
+}
+
+.hero .connect-wallet-btn:hover {
+  background: rgba(138, 43, 226, 0.2);
+  box-shadow: 0 0 25px rgba(138, 43, 226, 0.5),
+              inset 0 0 20px rgba(138, 43, 226, 0.4);
+  transform: translateY(-2px);
+}
+
+.hero .connect-wallet-btn:active {
+  transform: translateY(0);
 }

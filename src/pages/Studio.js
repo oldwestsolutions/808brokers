@@ -15,6 +15,7 @@ const Studio = () => {
   const mainWaveformRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isEditingTitle, setIsEditingTitle] = useState(false);
+  const [activeTab, setActiveTab] = useState('projects');
 
   // Hide navbar when Studio component mounts
   useEffect(() => {
@@ -101,112 +102,93 @@ const Studio = () => {
 
   return (
     <div className="studio-page">
-      <BackButton />
-      <div className="studio-container">
-        <div className="studio-header">
-          <div className="song-info">
-            <h1 className="song-title">{songTitle}</h1>
-            <div className="save-status">
-              Last saved {lastSaved.toLocaleTimeString()}
-            </div>
-          </div>
-          <div className="transport-controls">
-            <button className="transport-btn">
-              <i className="fas fa-backward"></i>
-            </button>
-            <button 
-              className={`play-btn ${isPlaying ? 'playing' : ''}`}
-              onClick={handlePlayPause}
-            >
-              <i className={`fas ${isPlaying ? 'fa-pause' : 'fa-play'}`}></i>
-            </button>
-            <button className="transport-btn">
-              <i className="fas fa-forward"></i>
-            </button>
-          </div>
+      <div className="studio-header">
+        <h1>Studio</h1>
+        <div className="studio-actions">
+          <button className="action-btn">
+            <i className="fas fa-plus"></i>
+            New Project
+          </button>
         </div>
+      </div>
 
-        <div className="lyrics-section">
-          <div className="lyrics-editor">
-            <h2>Written Lyrics</h2>
-            <textarea
-              value={lyrics}
-              onChange={(e) => setLyrics(e.target.value)}
-              placeholder="Write your lyrics here..."
-            />
-          </div>
+      <div className="studio-tabs">
+        <button 
+          className={`tab-btn ${activeTab === 'projects' ? 'active' : ''}`}
+          onClick={() => setActiveTab('projects')}
+        >
+          <i className="fas fa-folder"></i>
+          Projects
+        </button>
+        <button 
+          className={`tab-btn ${activeTab === 'templates' ? 'active' : ''}`}
+          onClick={() => setActiveTab('templates')}
+        >
+          <i className="fas fa-layer-group"></i>
+          Templates
+        </button>
+        <button 
+          className={`tab-btn ${activeTab === 'collaborations' ? 'active' : ''}`}
+          onClick={() => setActiveTab('collaborations')}
+        >
+          <i className="fas fa-users"></i>
+          Collaborations
+        </button>
+      </div>
 
-          <div className="ai-lyrics">
-            <h2>AI Lyrics</h2>
-            <textarea
-              value={aiLyrics}
-              onChange={(e) => setAiLyrics(e.target.value)}
-              placeholder="AI generated lyrics will appear here..."
-              readOnly
-            />
-          </div>
-        </div>
-
-        <div className="tracks-workspace">
-          {!mainTrack ? (
-            <div 
-              className="track-dropzone"
-              onDragOver={handleDragOver}
-              onDrop={handleDrop}
-            >
-              <div className="upload-prompt">
-                <i className="fas fa-cloud-upload-alt"></i>
-                <input 
-                  type="file" 
-                  id="audio-upload" 
-                  accept="audio/*" 
-                  onChange={handleFileUpload}
-                  style={{ display: 'none' }}
-                />
-                <label htmlFor="audio-upload" className="upload-btn">
-                  Upload Beat
-                </label>
-                <span className="or-text">or drag and drop audio file</span>
-              </div>
-            </div>
-          ) : (
-            <div className="main-track">
-              <div className="track-header">
-                <span className="track-name">{mainTrack.name}</span>
-                <button 
-                  className="play-btn"
-                  onClick={handlePlayPause}
-                >
-                  <i className={`fas ${isPlaying ? 'fa-pause' : 'fa-play'}`}></i>
-                </button>
-              </div>
-              <div ref={mainWaveformRef} className="waveform-container"></div>
-            </div>
-          )}
-
-          <div className="recordings-section">
-            <AudioTrackRecorder onRecordingComplete={handleRecordingComplete} />
-            
-            <div className="recordings-list">
-              {recordings.map(recording => (
-                <div key={recording.id} className="recording-track">
-                  <div className="track-header">
-                    <span className="track-name">{recording.name}</span>
-                    <div className="track-controls">
-                      <button 
-                        className="play-btn"
-                        onClick={handlePlayPause}
-                      >
-                        <i className={`fas ${isPlaying ? 'fa-pause' : 'fa-play'}`}></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="waveform-container recording"></div>
+      <div className="studio-content">
+        {activeTab === 'projects' && (
+          <div className="projects-grid">
+            <div className="project-card">
+              <div className="project-thumbnail">
+                <img src="/DiceLogoTransparent.png" alt="Project thumbnail" />
+                <div className="project-overlay">
+                  <button className="play-btn">
+                    <i className="fas fa-play"></i>
+                  </button>
                 </div>
-              ))}
+              </div>
+              <div className="project-info">
+                <h3>Summer Trap Beat</h3>
+                <p>Last modified: 2 hours ago</p>
+              </div>
             </div>
+            {/* Add more project cards here */}
           </div>
-        </div>
+        )}
+
+        {activeTab === 'templates' && (
+          <div className="templates-grid">
+            <div className="template-card">
+              <div className="template-icon">
+                <i className="fas fa-music"></i>
+              </div>
+              <div className="template-info">
+                <h3>Hip Hop Template</h3>
+                <p>120 BPM • 4/4 Time</p>
+              </div>
+            </div>
+            {/* Add more template cards here */}
+          </div>
+        )}
+
+        {activeTab === 'collaborations' && (
+          <div className="collaborations-list">
+            <div className="collaboration-item">
+              <div className="collaboration-avatar">
+                <img src="/DiceLogoTransparent.png" alt="Collaborator" />
+              </div>
+              <div className="collaboration-info">
+                <h3>John Doe</h3>
+                <p>Working on: Summer Trap Beat</p>
+              </div>
+              <div className="collaboration-status">
+                <span className="status-badge online">Online</span>
+              </div>
+            </div>
+            {/* Add more collaboration items here */}
+          </div>
+        )}
       </div>
     </div>
   );

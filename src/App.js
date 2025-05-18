@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import SignUp from './pages/SignUp.js';
 import Dashboard from './pages/Dashboard';
 import Mailbox from './pages/Mailbox';
 import Cloud from './pages/Cloud';
@@ -14,6 +15,8 @@ import Charts from './pages/Charts';
 import ForYou from './pages/ForYou';
 import Radio from './pages/Radio';
 import AuthCallback from './components/AuthCallback';
+import Profile from './pages/Profile';
+import Settings from './pages/Settings';
 import './styles/App.css';
 
 function AppContent() {
@@ -28,6 +31,7 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/mailbox" element={<Mailbox />} />
           <Route path="/dashboard/cloud" element={<Cloud />} />
@@ -38,6 +42,8 @@ function AppContent() {
           <Route path="/foryou" element={<ForYou />} />
           <Route path="/radio" element={<Radio />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </main>
     </div>
