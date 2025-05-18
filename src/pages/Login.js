@@ -43,7 +43,6 @@ const Login = () => {
           <div className="login-header">
             <img src="/DiceLogoTransparent.png" alt="808 Brokers" className="login-logo" />
             <h1>Welcome to 808 Brokers</h1>
-            <p>Sign in to access your music production workspace</p>
           </div>
 
           <div className="login-options">
