@@ -49,22 +49,9 @@
   letter-spacing: 1px;
 }
 
+/* Remove streak effect under navbar on mobile */
 .navbar-logo a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--gradient-1);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
-}
-
-.navbar-logo a:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+  display: none;
 }
 
 .navbar-links {

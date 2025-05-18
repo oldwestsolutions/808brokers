@@ -149,7 +149,7 @@ body {
   align-items: center;
   margin-top: 1.5rem;
   width: 100%;
-  max-width: 500px;
+  max-width: 450px;
   margin-left: auto;
   margin-right: auto;
   padding: 0 20px;
@@ -227,7 +227,7 @@ body {
   }
 
   .search-container {
-    max-width: 90%;
+    max-width: 85%;
     padding: 0 15px;
   }
 
