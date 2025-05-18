@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -17,6 +18,7 @@ import Radio from './pages/Radio';
 import AuthCallback from './components/AuthCallback';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
+import Library from './pages/Library';
 import './styles/App.css';
 
 function AppContent() {
@@ -44,6 +46,7 @@ function AppContent() {
           <Route path="/auth/callback" element={<AuthCallback />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/library" element={<Library />} />
         </Routes>
       </main>
     </div>
@@ -52,11 +55,12 @@ function AppContent() {
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <AppContent />
-      </Router>
-    </AuthProvider>
+        <Analytics />
+      </AuthProvider>
+    </Router>
   );
 }
 

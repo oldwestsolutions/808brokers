@@ -24,6 +24,8 @@ const DashboardHeader = () => {
       navigate('/profile');
     } else if (path === 'settings') {
       navigate('/settings');
+    } else if (path === 'library') {
+      navigate('/library');
     } else {
       navigate(`/dashboard/${path}`);
     }
