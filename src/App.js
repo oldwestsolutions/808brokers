@@ -19,11 +19,14 @@ import AuthCallback from './components/AuthCallback';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Library from './pages/Library';
+import Wallet from './pages/Wallet';
+import Dropbox from './pages/Dropbox';
+import Favorites from './pages/Favorites';
 import './styles/App.css';
 
 function AppContent() {
   const location = useLocation();
-  const showNavbar = !['/foryou', '/radio', '/charts'].includes(location.pathname);
+  const showNavbar = !['/foryou', '/radio', '/charts', '/wallet', '/dashboard', '/settings', '/profile', '/dropbox', '/favorites'].includes(location.pathname);
   const isHomePage = location.pathname === '/';
 
   return (
@@ -47,6 +50,9 @@ function AppContent() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/library" element={<Library />} />
+          <Route path="/wallet" element={<Wallet />} />
+          <Route path="/dropbox" element={<Dropbox />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </main>
     </div>

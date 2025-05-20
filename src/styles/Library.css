@@ -376,4 +376,34 @@
   .header-actions, .item-actions {
     display: none;
   }
+}
+
+.studio-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a2a2a;
+}
+
+.studio-icon {
+  font-size: 4rem;
+  color: #e0e0e0;
+  stroke-width: 1.5;
+}
+
+.mailbox-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a2a2a;
+}
+
+.mailbox-icon {
+  font-size: 4rem;
+  color: #e0e0e0;
+  stroke-width: 1.5;
 } 

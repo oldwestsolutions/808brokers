@@ -133,11 +133,14 @@ const DashboardHeader = () => {
 
           {showDropdown && (
             <div className="profile-dropdown">
-              <div className="wallet-status connected">
+              <button className="wallet-status connected" onClick={() => handleNavigation('wallet')}>
                 <i className="fas fa-circle"></i>
                 Wallet Connected
-              </div>
-
+              </button>
+              <button className="profile-dropdown-item" onClick={() => handleNavigation('library')}>
+                <i className="fas fa-music"></i>
+                Library
+              </button>
               <button className="profile-dropdown-item" onClick={() => handleNavigation('profile')}>
                 <i className="fas fa-user"></i>
                 Profile
@@ -145,18 +148,6 @@ const DashboardHeader = () => {
               <button className="profile-dropdown-item" onClick={() => handleNavigation('settings')}>
                 <i className="fas fa-cog"></i>
                 Settings
-              </button>
-              <button className="profile-dropdown-item" onClick={() => handleNavigation('library')}>
-                <i className="fas fa-music"></i>
-                Library
-              </button>
-              <button className="profile-dropdown-item" onClick={() => handleNavigation('studio')}>
-                <i className="fas fa-microphone"></i>
-                Studio
-              </button>
-              <button className="profile-dropdown-item" onClick={() => handleNavigation('mailbox')}>
-                <i className="fas fa-envelope"></i>
-                Mailbox
               </button>
               <button 
                 className="profile-dropdown-item logout"

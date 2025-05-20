@@ -104,12 +104,42 @@
 .wallet-status {
   display: flex;
   align-items: center;
-  padding: 0.75rem;
-  margin-bottom: 0.5rem;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  border: none;
+  background: none;
+  color: #00C805;
   font-size: 0.9rem;
-  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.wallet-status:hover {
+  background: rgba(0, 200, 5, 0.1);
+}
+
+.wallet-status i {
+  font-size: 8px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.wallet-status.connected i {
+  color: #00C805;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }
 
 .profile-dropdown-item {
@@ -249,29 +279,6 @@
   .dashboard-dropdown {
     width: 280px;
     right: -1rem;
-  }
-}
-
-.wallet-status i {
-  font-size: 8px;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
-.wallet-status.connected i {
-  color: #00C805;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.5;
   }
 }
 

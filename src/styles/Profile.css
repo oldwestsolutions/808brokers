@@ -3,6 +3,8 @@
   background: #141414;
   color: var(--text);
   padding-top: 60px;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .profile-header {
@@ -388,6 +390,32 @@
 
 .cancel-btn:hover {
   background: #D1D5DB;
+}
+
+.back-button {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #00C805;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.back-button:hover {
+  transform: translateX(-5px);
+  color: #00a805;
+}
+
+.back-button svg {
+  font-size: 1.25rem;
 }
 
 @media (max-width: 768px) {

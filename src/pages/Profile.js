@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
-import DashboardHeader from '../components/DashboardHeader';
+import { useNavigate } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 import '../styles/Profile.css';
 
 const Profile = () => {
@@ -14,6 +15,7 @@ const Profile = () => {
     youtube: ''
   });
   const fileInputRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleImageClick = () => {
     setShowUploadModal(true);
@@ -45,7 +47,10 @@ const Profile = () => {
 
   return (
     <div className="profile-page">
-      <DashboardHeader />
+      <button className="back-button" onClick={() => navigate('/dashboard')}>
+        <FiArrowLeft />
+        <span>Back to Dashboard</span>
+      </button>
       <div className="profile-header">
         <div className="profile-cover">
           <div className="profile-avatar-large">

@@ -51,6 +51,9 @@
   height: 100%;
   object-fit: cover;
   filter: brightness(0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .video-overlay {
@@ -60,6 +63,17 @@
   width: 100%;
   padding: 2rem;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  z-index: 2;
+}
+
+.video-overlay video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
 }
 
 .video-info {
@@ -87,10 +101,11 @@
 .interaction-buttons {
   position: absolute;
   right: 2rem;
-  bottom: 8rem;
+  bottom: 12rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  z-index: 10;
 }
 
 .interaction-btn {
@@ -103,6 +118,8 @@
   gap: 0.25rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 50%;
 }
 
 .interaction-btn svg {
@@ -110,18 +127,85 @@
   transition: all 0.3s ease;
 }
 
-.interaction-btn span {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.8);
+.dropbox-container {
+  position: relative;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.interaction-btn .dropbox-icon {
+  font-size: 2.2rem;
+  color: #0061FF;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.flying-letter {
+  position: absolute;
+  z-index: 1;
+  font-size: 1.5rem;
+  pointer-events: none;
+}
+
+.checkmark {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  z-index: 3;
+  color: #4CAF50;
+  font-size: 1.2rem;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  width: 1.2rem;
+  height: 1.2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: shine 0.2s ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
+.interaction-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .interaction-btn:hover svg {
   transform: scale(1.1);
 }
 
-.interaction-btn .liked {
+.interaction-btn.liked {
+  background: rgba(254, 44, 85, 0.1);
+}
+
+.interaction-btn.liked svg {
   color: #fe2c55;
   fill: #fe2c55;
+}
+
+.interaction-btn.active {
+  background: rgba(0, 97, 255, 0.1);
+}
+
+.interaction-btn.active .dropbox-icon {
+  transform: scale(1.1);
+  filter: brightness(1.2);
 }
 
 .beat-details {
@@ -154,6 +238,103 @@
   font-weight: 500;
 }
 
+.playback-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6));
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.song-info {
+  color: white;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.song-info h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.song-info .producer {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0.25rem 0 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.controls-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.play-pause-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.play-pause-btn:hover {
+  transform: scale(1.1);
+}
+
+.time-display {
+  color: white;
+  font-size: 0.9rem;
+  min-width: 3rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  transition: height 0.2s ease;
+  min-width: 0;
+}
+
+.progress-bar:hover {
+  height: 6px;
+}
+
+.progress-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #fe2c55;
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
 @media (max-width: 768px) {
   .video-info h2 {
     font-size: 1.5rem;
@@ -165,7 +346,7 @@
 
   .interaction-buttons {
     right: 1rem;
-    bottom: 6rem;
+    bottom: 10rem;
   }
 
   .beat-details {
@@ -173,5 +354,26 @@
     right: 1rem;
     padding: 0.75rem 1.5rem;
     gap: 1.5rem;
+  }
+
+  .playback-controls {
+    padding: 1rem;
+  }
+
+  .song-info h2 {
+    font-size: 1rem;
+  }
+
+  .song-info .producer {
+    font-size: 0.8rem;
+  }
+
+  .time-display {
+    font-size: 0.8rem;
+    min-width: 2.5rem;
+  }
+
+  .play-pause-btn {
+    font-size: 1.2rem;
   }
 } 

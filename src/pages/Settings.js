@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 import '../styles/Settings.css';
 
 const Settings = () => {
@@ -10,6 +12,7 @@ const Settings = () => {
     push: true,
     marketing: false
   });
+  const navigate = useNavigate();
 
   const handleNotificationChange = (type) => {
     setNotifications(prev => ({
@@ -20,6 +23,10 @@ const Settings = () => {
 
   return (
     <div className="settings-page">
+      <button className="back-button" onClick={() => navigate('/dashboard')}>
+        <FiArrowLeft />
+        <span>Back to Dashboard</span>
+      </button>
       <div className="settings-header">
         <h1>Settings</h1>
       </div>
