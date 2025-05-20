@@ -276,6 +276,34 @@
   font-weight: 500;
 }
 
+.back-button {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.back-button svg {
+  width: 20px;
+  height: 20px;
+}
+
 @media (max-width: 768px) {
   .video-info h2 {
     font-size: 1.5rem;
@@ -311,5 +339,17 @@
 
   .play-pause-btn {
     font-size: 1.2rem;
+  }
+
+  .back-button {
+    top: 1rem;
+    left: 1rem;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .back-button svg {
+    width: 18px;
+    height: 18px;
   }
 } 
