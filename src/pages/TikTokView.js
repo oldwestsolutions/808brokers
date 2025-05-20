@@ -168,22 +168,6 @@ const TikTokView = ({ beat, onBack }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <AnimatePresence>
-        {showControls && (
-          <motion.button 
-            className="back-button"
-            onClick={onBack}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            <FiArrowLeft />
-            <span>Back to Dashboard</span>
-          </motion.button>
-        )}
-      </AnimatePresence>
-
       <div 
         className="tiktok-container" 
         ref={containerRef}
@@ -205,83 +189,85 @@ const TikTokView = ({ beat, onBack }) => {
             />
             <AnimatePresence>
               {showControls && index === currentVideoIndex && (
-                <motion.div 
-                  className="playback-controls"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="song-info">
-                    <h2>{video.title}</h2>
-                    <p className="producer">by {video.producer}</p>
-                  </div>
-                  <div className="controls-container">
-                    <button className="play-pause-btn" onClick={handlePlayPause}>
-                      {isPlaying ? <FiPause /> : <FiPlay />}
-                    </button>
-                    <div className="time-display">{formatTime(currentTime)}</div>
-                    <div className="progress-bar" onClick={handleProgressClick}>
-                      <div 
-                        className="progress-fill" 
-                        style={{ width: `${(currentTime / duration) * 100}%` }}
-                      />
+                <>
+                  <motion.div 
+                    className="playback-controls"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="song-info">
+                      <h2>{video.title}</h2>
+                      <p className="producer">by {video.producer}</p>
                     </div>
-                    <div className="time-display">{formatTime(duration)}</div>
-                    <button 
-                      className={`playback-dropbox-btn ${dropboxActive ? 'active' : ''}`}
-                      onClick={handleDropbox}
-                    >
-                      <FontAwesomeIcon icon={faDropbox} className="playback-dropbox-icon" />
-                      <AnimatePresence>
-                        {showLetter && (
-                          <motion.div
-                            className="flying-letter"
-                            initial={{ 
-                              opacity: 1,
-                              x: -100,
-                              y: -100,
-                              scale: 1
-                            }}
-                            animate={{ 
-                              opacity: 0,
-                              x: 0,
-                              y: 0,
-                              scale: 0.5
-                            }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.5 }}
-                          >
-                            <span>📄</span>
-                          </motion.div>
-                        )}
-                        {showCheckmark && (
-                          <motion.div
-                            className="checkmark"
-                            initial={{ 
-                              opacity: 0,
-                              scale: 0.8
-                            }}
-                            animate={{ 
-                              opacity: 1,
-                              scale: 1
-                            }}
-                            exit={{ 
-                              opacity: 0,
-                              scale: 0.8
-                            }}
-                            transition={{ 
-                              duration: 0.2,
-                              ease: "easeInOut"
-                            }}
-                          >
-                            <FiCheck />
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </button>
-                  </div>
-                </motion.div>
+                    <div className="controls-container">
+                      <button className="play-pause-btn" onClick={handlePlayPause}>
+                        {isPlaying ? <FiPause /> : <FiPlay />}
+                      </button>
+                      <div className="time-display">{formatTime(currentTime)}</div>
+                      <div className="progress-bar" onClick={handleProgressClick}>
+                        <div 
+                          className="progress-fill" 
+                          style={{ width: `${(currentTime / duration) * 100}%` }}
+                        />
+                      </div>
+                      <div className="time-display">{formatTime(duration)}</div>
+                      <button 
+                        className={`playback-dropbox-btn ${dropboxActive ? 'active' : ''}`}
+                        onClick={handleDropbox}
+                      >
+                        <FontAwesomeIcon icon={faDropbox} className="playback-dropbox-icon" />
+                        <AnimatePresence>
+                          {showLetter && (
+                            <motion.div
+                              className="flying-letter"
+                              initial={{ 
+                                opacity: 1,
+                                x: -100,
+                                y: -100,
+                                scale: 1
+                              }}
+                              animate={{ 
+                                opacity: 0,
+                                x: 0,
+                                y: 0,
+                                scale: 0.5
+                              }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.5 }}
+                            >
+                              <span>📄</span>
+                            </motion.div>
+                          )}
+                          {showCheckmark && (
+                            <motion.div
+                              className="checkmark"
+                              initial={{ 
+                                opacity: 0,
+                                scale: 0.8
+                              }}
+                              animate={{ 
+                                opacity: 1,
+                                scale: 1
+                              }}
+                              exit={{ 
+                                opacity: 0,
+                                scale: 0.8
+                              }}
+                              transition={{ 
+                                duration: 0.2,
+                                ease: "easeInOut"
+                              }}
+                            >
+                              <FiCheck />
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </button>
+                    </div>
+                  </motion.div>
+                </>
               )}
             </AnimatePresence>
           </div>
