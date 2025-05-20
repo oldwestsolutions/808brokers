@@ -108,9 +108,11 @@ const DashboardHeader = () => {
       
       <div className="header-right">
         <div className="header-profile">
-          <button 
+          <motion.button 
             className="profile-trigger"
             onClick={() => setShowDropdown(!showDropdown)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             <div className="profile-avatar">
               {user?.avatar ? (
@@ -129,35 +131,65 @@ const DashboardHeader = () => {
                 </svg>
               )}
             </div>
-          </button>
+          </motion.button>
 
-          {showDropdown && (
-            <div className="profile-dropdown">
-              <button className="wallet-status connected" onClick={() => handleNavigation('wallet')}>
-                <i className="fas fa-circle"></i>
-                Wallet Connected
-              </button>
-              <button className="profile-dropdown-item" onClick={() => handleNavigation('library')}>
-                <i className="fas fa-music"></i>
-                Library
-              </button>
-              <button className="profile-dropdown-item" onClick={() => handleNavigation('profile')}>
-                <i className="fas fa-user"></i>
-                Profile
-              </button>
-              <button className="profile-dropdown-item" onClick={() => handleNavigation('settings')}>
-                <i className="fas fa-cog"></i>
-                Settings
-              </button>
-              <button 
-                className="profile-dropdown-item logout"
-                onClick={handleLogout}
+          <AnimatePresence>
+            {showDropdown && (
+              <motion.div 
+                className="profile-dropdown"
+                initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
               >
-                <i className="fas fa-sign-out-alt"></i>
-                Logout
-              </button>
-            </div>
-          )}
+                <motion.button 
+                  className="wallet-status connected" 
+                  onClick={() => handleNavigation('wallet')}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <i className="fas fa-circle"></i>
+                  Wallet Connected
+                </motion.button>
+                <motion.button 
+                  className="profile-dropdown-item" 
+                  onClick={() => handleNavigation('library')}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <i className="fas fa-music"></i>
+                  Library
+                </motion.button>
+                <motion.button 
+                  className="profile-dropdown-item" 
+                  onClick={() => handleNavigation('profile')}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <i className="fas fa-user"></i>
+                  Profile
+                </motion.button>
+                <motion.button 
+                  className="profile-dropdown-item" 
+                  onClick={() => handleNavigation('settings')}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <i className="fas fa-cog"></i>
+                  Settings
+                </motion.button>
+                <motion.button 
+                  className="profile-dropdown-item logout"
+                  onClick={handleLogout}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <i className="fas fa-sign-out-alt"></i>
+                  Logout
+                </motion.button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </header>
