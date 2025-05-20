@@ -80,8 +80,21 @@ const TikTokView = ({ beat, onBack }) => {
     
     controlsTimeoutRef.current = setTimeout(() => {
       setShowControls(false);
-    }, 8000);
+    }, 5000);
   };
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('mousemove', handleMouseMove);
+      container.addEventListener('touchmove', handleMouseMove);
+      
+      return () => {
+        container.removeEventListener('mousemove', handleMouseMove);
+        container.removeEventListener('touchmove', handleMouseMove);
+      };
+    }
+  }, []);
 
   const handleTimeUpdate = () => {
     if (videoRef.current) {
@@ -155,10 +168,21 @@ const TikTokView = ({ beat, onBack }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <button className="back-button" onClick={onBack}>
-        <FiArrowLeft />
-        <span>Back to Dashboard</span>
-      </button>
+      <AnimatePresence>
+        {showControls && (
+          <motion.button 
+            className="back-button"
+            onClick={onBack}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <FiArrowLeft />
+            <span>Back to Dashboard</span>
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       <div 
         className="tiktok-container" 
@@ -186,7 +210,7 @@ const TikTokView = ({ beat, onBack }) => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  transition={{ duration: 0.3 }}
                 >
                   <div className="song-info">
                     <h2>{video.title}</h2>
