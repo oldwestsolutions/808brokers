@@ -44,7 +44,7 @@ const Navbar = ({ isHomePage }) => {
   }
 
   return (
-    <nav className={`navbar ${isHomePage ? 'home-navbar' : ''}`}>
+    <nav className={`navbar ${isHomePage ? 'home-navbar' : ''} ${isVisible ? 'visible' : 'hidden'}`}>
       <div className="navbar-logo">
         <Link to="/">
           <img src={dicelogo} alt="808 Brokers" className="logo-image" />
