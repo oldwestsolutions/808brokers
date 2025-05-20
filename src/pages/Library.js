@@ -16,30 +16,14 @@ const Library = () => {
   const libraryItems = [
     {
       id: 1,
-      title: 'Favorites',
-      artist: 'Your Collection',
-      type: '',
-      duration: '',
-      isLikedSongs: true
-    },
-    {
-      id: 2,
       title: 'Dropbox',
       artist: 'Dropbox',
       type: 'Assets',
-      duration: 'Modified 2h ago',
+      duration: '2h ago',
       isDropbox: true
     },
     {
-      id: 3,
-      title: 'Analytics',
-      artist: 'Performance Metrics',
-      type: 'Streams',
-      duration: '2.5M plays',
-      isAnalytics: true
-    },
-    {
-      id: 4,
+      id: 2,
       title: 'University',
       artist: 'Educational Content',
       type: 'Harmony',
@@ -47,15 +31,15 @@ const Library = () => {
       isUniversity: true
     },
     {
-      id: 5,
+      id: 3,
       title: 'Studio',
       artist: 'Music Production',
-      type: 'Beat_808.mp3',
+      type: 'Beat_808',
       duration: '2h ago',
       isStudio: true
     },
     {
-      id: 6,
+      id: 4,
       title: 'Mailbox',
       artist: 'Messages & Notifications',
       type: 'Inbox',

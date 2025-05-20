@@ -98,146 +98,6 @@
   margin: 0;
 }
 
-.interaction-buttons {
-  position: absolute;
-  right: 2rem;
-  bottom: 12rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  z-index: 10;
-}
-
-.interaction-btn {
-  background: none;
-  border: none;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0.5rem;
-  border-radius: 50%;
-}
-
-.interaction-btn svg {
-  font-size: 2rem;
-  transition: all 0.3s ease;
-}
-
-.dropbox-container {
-  position: relative;
-  width: 2.2rem;
-  height: 2.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.interaction-btn .dropbox-icon {
-  font-size: 2.2rem;
-  color: #0061FF;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 2;
-}
-
-.flying-letter {
-  position: absolute;
-  z-index: 1;
-  font-size: 1.5rem;
-  pointer-events: none;
-}
-
-.checkmark {
-  position: absolute;
-  top: -0.5rem;
-  right: -0.5rem;
-  z-index: 3;
-  color: #4CAF50;
-  font-size: 1.2rem;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: white;
-  border-radius: 50%;
-  width: 1.2rem;
-  height: 1.2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  animation: shine 0.2s ease-in-out;
-}
-
-@keyframes shine {
-  0% {
-    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
-  }
-}
-
-.interaction-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.interaction-btn:hover svg {
-  transform: scale(1.1);
-}
-
-.interaction-btn.liked {
-  background: rgba(254, 44, 85, 0.1);
-}
-
-.interaction-btn.liked svg {
-  color: #fe2c55;
-  fill: #fe2c55;
-}
-
-.interaction-btn.active {
-  background: rgba(0, 97, 255, 0.1);
-}
-
-.interaction-btn.active .dropbox-icon {
-  transform: scale(1.1);
-  filter: brightness(1.2);
-}
-
-.beat-details {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  display: flex;
-  gap: 2rem;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 1rem 2rem;
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-}
-
-.detail-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.detail-item .label {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.detail-item .value {
-  font-size: 1rem;
-  color: white;
-  font-weight: 500;
-}
-
 .playback-controls {
   position: absolute;
   bottom: 0;
@@ -335,6 +195,102 @@
   transition: width 0.1s linear;
 }
 
+.playback-dropbox-btn {
+  background: none;
+  border: none;
+  color: #0061FF;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  margin-left: 1rem;
+  position: relative;
+}
+
+.playback-dropbox-btn:hover {
+  transform: scale(1.1);
+}
+
+.playback-dropbox-btn.active {
+  color: #0047b3;
+}
+
+.playback-dropbox-icon {
+  font-size: 1.5rem;
+}
+
+.flying-letter {
+  position: absolute;
+  z-index: 1;
+  font-size: 1.5rem;
+  pointer-events: none;
+}
+
+.checkmark {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  z-index: 3;
+  color: #4CAF50;
+  font-size: 1.2rem;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  width: 1.2rem;
+  height: 1.2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: shine 0.2s ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
+.beat-details {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  gap: 2rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.detail-item .label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.detail-item .value {
+  font-size: 1rem;
+  color: white;
+  font-weight: 500;
+}
+
 @media (max-width: 768px) {
   .video-info h2 {
     font-size: 1.5rem;
@@ -342,11 +298,6 @@
 
   .video-info .producer {
     font-size: 1rem;
-  }
-
-  .interaction-buttons {
-    right: 1rem;
-    bottom: 10rem;
   }
 
   .beat-details {

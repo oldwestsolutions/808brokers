@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FiDownload, FiShare2, FiTrash2, FiFile, FiLink, FiList, FiGrid } from 'react-icons/fi';
+import { FiLink, FiList, FiGrid, FiFile } from 'react-icons/fi';
 import { SiDropbox } from 'react-icons/si';
 import { Dropbox } from 'dropbox';
 import BackButton from '../components/BackButton';
@@ -37,48 +37,6 @@ const DropboxPage = () => {
     }
   };
 
-  const handleDownload = async (file) => {
-    if (!isConnected) return;
-    try {
-      const response = await dbx.filesDownload({ path: file.path_lower });
-      // Handle the downloaded file
-      const blob = response.result.fileBlob;
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = file.name;
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
-    } catch (error) {
-      console.error('Error downloading file:', error);
-    }
-  };
-
-  const handleShare = async (file) => {
-    if (!isConnected) return;
-    try {
-      const response = await dbx.sharingCreateSharedLink({ path: file.path_lower });
-      // Handle the shared link
-      const sharedLink = response.result.url;
-      navigator.clipboard.writeText(sharedLink);
-      alert('Share link copied to clipboard!');
-    } catch (error) {
-      console.error('Error sharing file:', error);
-    }
-  };
-
-  const handleDelete = async (file) => {
-    if (!isConnected) return;
-    try {
-      await dbx.filesDelete({ path: file.path_lower });
-      setFiles(files.filter(f => f.id !== file.id));
-    } catch (error) {
-      console.error('Error deleting file:', error);
-    }
-  };
-
   return (
     <div className="dropbox-page">
       <div className="dropbox-header">
@@ -102,27 +60,6 @@ const DropboxPage = () => {
           >
             <FiLink />
             <span>{isConnected ? 'Connected' : 'Connect to Dropbox'}</span>
-          </button>
-          <button 
-            className="toolbar-button"
-            disabled={!isConnected}
-          >
-            <FiDownload />
-            <span>Download</span>
-          </button>
-          <button 
-            className="toolbar-button"
-            disabled={!isConnected}
-          >
-            <FiShare2 />
-            <span>Share</span>
-          </button>
-          <button 
-            className="toolbar-button"
-            disabled={!isConnected}
-          >
-            <FiTrash2 />
-            <span>Delete</span>
           </button>
         </div>
         <div className="view-toggle">
@@ -148,17 +85,6 @@ const DropboxPage = () => {
               <div key={file.id} className="file-item">
                 <FiFile className="file-icon" />
                 <span>{file.name}</span>
-                <div className="file-actions">
-                  <button onClick={() => handleDownload(file)}>
-                    <FiDownload />
-                  </button>
-                  <button onClick={() => handleShare(file)}>
-                    <FiShare2 />
-                  </button>
-                  <button onClick={() => handleDelete(file)}>
-                    <FiTrash2 />
-                  </button>
-                </div>
               </div>
             ))
           ) : (
