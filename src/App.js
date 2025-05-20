@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import { AuthProvider } from './context/AuthContext';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
@@ -23,40 +24,46 @@ import Wallet from './pages/Wallet';
 import Dropbox from './pages/Dropbox';
 import Favorites from './pages/Favorites';
 import University from './pages/University';
+import PageTransition from './components/PageTransition';
 import './styles/App.css';
 
-function AppContent() {
+function AnimatedRoutes() {
   const location = useLocation();
-  const showNavbar = !['/foryou', '/radio', '/charts', '/wallet', '/dashboard', '/settings', '/profile', '/dropbox', '/favorites'].includes(location.pathname);
-  const isHomePage = location.pathname === '/';
 
   return (
-    <div className="app">
-      {showNavbar && <Navbar isHomePage={isHomePage} />}
-      <main className="main-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/dashboard/mailbox" element={<Mailbox />} />
-          <Route path="/dashboard/cloud" element={<Cloud />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/dashboard/studio" element={<Studio />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/charts" element={<Charts />} />
-          <Route path="/foryou" element={<ForYou />} />
-          <Route path="/radio" element={<Radio />} />
-          <Route path="/auth/callback" element={<AuthCallback />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/library" element={<Library />} />
-          <Route path="/wallet" element={<Wallet />} />
-          <Route path="/dropbox" element={<Dropbox />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/university" element={<University />} />
-        </Routes>
-      </main>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+        <Route path="/login" element={<PageTransition><Login /></PageTransition>} />
+        <Route path="/signup" element={<PageTransition><SignUp /></PageTransition>} />
+        <Route path="/dashboard" element={<PageTransition><Dashboard /></PageTransition>} />
+        <Route path="/dashboard/mailbox" element={<PageTransition><Mailbox /></PageTransition>} />
+        <Route path="/dashboard/cloud" element={<PageTransition><Cloud /></PageTransition>} />
+        <Route path="/shop" element={<PageTransition><Shop /></PageTransition>} />
+        <Route path="/dashboard/studio" element={<PageTransition><Studio /></PageTransition>} />
+        <Route path="/community" element={<PageTransition><Community /></PageTransition>} />
+        <Route path="/charts" element={<PageTransition><Charts /></PageTransition>} />
+        <Route path="/foryou" element={<PageTransition><ForYou /></PageTransition>} />
+        <Route path="/radio" element={<PageTransition><Radio /></PageTransition>} />
+        <Route path="/auth/callback" element={<PageTransition><AuthCallback /></PageTransition>} />
+        <Route path="/profile" element={<PageTransition><Profile /></PageTransition>} />
+        <Route path="/settings" element={<PageTransition><Settings /></PageTransition>} />
+        <Route path="/library" element={<PageTransition><Library /></PageTransition>} />
+        <Route path="/wallet" element={<PageTransition><Wallet /></PageTransition>} />
+        <Route path="/dropbox" element={<PageTransition><Dropbox /></PageTransition>} />
+        <Route path="/favorites" element={<PageTransition><Favorites /></PageTransition>} />
+        <Route path="/university" element={<PageTransition><University /></PageTransition>} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
+function AppContent() {
+  return (
+    <div className="App">
+      <Navbar />
+      <AnimatedRoutes />
+      <Analytics />
     </div>
   );
 }
@@ -66,7 +73,6 @@ function App() {
     <Router>
       <AuthProvider>
         <AppContent />
-        <Analytics />
       </AuthProvider>
     </Router>
   );
