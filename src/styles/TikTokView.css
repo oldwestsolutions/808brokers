@@ -26,18 +26,22 @@
   z-index: 9999;
   width: 40px;
   height: 40px;
+  box-shadow: none !important;
 }
 
 .tiktok-view .dashboard-back-button:hover {
   background-color: rgba(255, 255, 255, 0.1) !important;
   border-color: rgba(255, 255, 255, 0.5) !important;
   color: white !important;
+  box-shadow: none !important;
 }
 
 .tiktok-view .dashboard-back-button svg {
   color: rgba(255, 255, 255, 0.8) !important;
   width: 20px;
   height: 20px;
+  fill: none !important;
+  stroke: currentColor !important;
 }
 
 .tiktok-view .dashboard-back-button:hover svg {
@@ -346,5 +350,31 @@
 
   .play-pause-btn {
     font-size: 1.2rem;
+  }
+
+  .tiktok-view .dashboard-back-button {
+    top: 1rem;
+    left: 1rem;
+    background-color: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    box-shadow: none !important;
+  }
+
+  .tiktok-view .dashboard-back-button:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    color: white !important;
+    box-shadow: none !important;
+  }
+
+  .tiktok-view .dashboard-back-button svg {
+    color: rgba(255, 255, 255, 0.8) !important;
+    fill: none !important;
+    stroke: currentColor !important;
+  }
+
+  .tiktok-view .dashboard-back-button:hover svg {
+    color: white !important;
   }
 } 
