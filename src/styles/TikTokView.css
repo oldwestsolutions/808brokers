@@ -276,16 +276,22 @@
   font-weight: 500;
 }
 
-.back-button {
+/* Remove all back button styles */
+.tiktok-view .back-button,
+.tiktok-view .back-button:hover,
+.tiktok-view .back-button svg {
+  display: none;
+}
+
+.arrow-back-button {
   position: absolute;
   top: 2rem;
   left: 2rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.8);
+  color: #FFFFFF;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -294,14 +300,13 @@
   transition: all 0.3s ease;
 }
 
-.back-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
+.arrow-back-button svg {
+  width: 24px;
+  height: 24px;
 }
 
-.back-button svg {
-  width: 20px;
-  height: 20px;
+.arrow-back-button:hover {
+  transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
@@ -341,15 +346,15 @@
     font-size: 1.2rem;
   }
 
-  .back-button {
+  .arrow-back-button {
     top: 1rem;
     left: 1rem;
     width: 36px;
     height: 36px;
   }
   
-  .back-button svg {
-    width: 18px;
-    height: 18px;
+  .arrow-back-button svg {
+    width: 20px;
+    height: 20px;
   }
 } 

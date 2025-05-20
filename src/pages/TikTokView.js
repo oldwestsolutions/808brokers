@@ -191,7 +191,7 @@ const TikTokView = ({ beat, onBack }) => {
               {showControls && index === currentVideoIndex && (
                 <>
                   <motion.button
-                    className="back-button"
+                    className="arrow-back-button"
                     onClick={onBack}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
