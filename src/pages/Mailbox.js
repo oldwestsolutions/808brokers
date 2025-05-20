@@ -1,83 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import BackButton from '../components/BackButton';
+import { useNavigate } from 'react-router-dom';
+import { FiArrowLeft, FiSearch, FiSend, FiImage, FiMoreVertical, FiPaperclip, FiSmile } from 'react-icons/fi';
 import '../styles/Mailbox.css';
 
 const Mailbox = () => {
-  const [activeTab, setActiveTab] = useState('inbox');
-  const [selectedMessages, setSelectedMessages] = useState([]);
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedChat, setSelectedChat] = useState(null);
+  const [message, setMessage] = useState('');
 
-  const dummyMessages = {
-    inbox: [
-      {
-        id: 1,
-        from: 'Producer Mike',
-        subject: 'New Beat Collaboration',
-        preview: 'Hey, I checked out your recent beats and would love to...',
-        timestamp: '2:30 PM',
-        unread: true,
-        avatar: null
-      },
-      {
-        id: 2,
-        from: 'Studio Sessions',
-        subject: 'Your Studio Booking Confirmation',
-        preview: 'Your studio session has been confirmed for...',
-        timestamp: 'Yesterday',
-        unread: false,
-        avatar: null
-      },
-      {
-        id: 3,
-        from: 'Beat Marketing',
-        subject: 'Your Beat Stats Update',
-        preview: 'Your beats have reached new milestones this week...',
-        timestamp: 'Mar 20',
-        unread: true,
-        avatar: null
-      }
-    ],
-    sent: [
-      {
-        id: 4,
-        to: 'DJ Scratch',
-        subject: 'Re: Beat Pack Review',
-        preview: 'Thanks for checking out my beats. Here are some more...',
-        timestamp: 'Mar 19',
-        avatar: null
-      }
-    ],
-    drafts: [
-      {
-        id: 5,
-        to: 'Music Publisher',
-        subject: 'License Agreement Draft',
-        preview: 'Regarding the publishing rights for...',
-        timestamp: 'Mar 15',
-        avatar: null
-      }
-    ]
-  };
-
-  const handleSelectMessage = (messageId) => {
-    setSelectedMessages(prev => {
-      if (prev.includes(messageId)) {
-        return prev.filter(id => id !== messageId);
-      }
-      return [...prev, messageId];
-    });
-  };
-
-  const handleSelectAll = () => {
-    const currentMessages = dummyMessages[activeTab];
-    if (selectedMessages.length === currentMessages.length) {
-      setSelectedMessages([]);
-    } else {
-      setSelectedMessages(currentMessages.map(msg => msg.id));
-    }
-  };
-
-  // Hide navbar when component mounts
+  // Hide navbar when Mailbox component mounts
   useEffect(() => {
     document.querySelector('.navbar')?.style.setProperty('display', 'none');
     
@@ -87,119 +19,170 @@ const Mailbox = () => {
     };
   }, []);
 
+  const conversations = [
+    {
+      id: 1,
+      user: {
+        name: 'John Doe',
+        avatar: '/DiceLogoTransparent.png',
+        status: 'online'
+      },
+      lastMessage: 'Hey, I loved your latest beat!',
+      timestamp: '2m ago',
+      unread: 2
+    },
+    {
+      id: 2,
+      user: {
+        name: 'Sarah Smith',
+        avatar: '/DiceLogoTransparent.png',
+        status: 'offline'
+      },
+      lastMessage: 'Can we collaborate on a new project?',
+      timestamp: '1h ago',
+      unread: 0
+    },
+    {
+      id: 3,
+      user: {
+        name: 'Mike Johnson',
+        avatar: '/DiceLogoTransparent.png',
+        status: 'online'
+      },
+      lastMessage: 'The mix sounds great!',
+      timestamp: '3h ago',
+      unread: 1
+    },
+    {
+      id: 4,
+      user: {
+        name: 'Emma Wilson',
+        avatar: '/DiceLogoTransparent.png',
+        status: 'offline'
+      },
+      lastMessage: 'Thanks for the feedback!',
+      timestamp: '1d ago',
+      unread: 0
+    }
+  ];
+
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    if (message.trim()) {
+      // Handle sending message
+      console.log('Sending message:', message);
+      setMessage('');
+    }
+  };
+
   return (
     <div className="mailbox-page">
-      <BackButton />
       <div className="mailbox-container">
-        <div className="mailbox-sidebar">
-          <button className="compose-button">
-            <i className="fas fa-pen"></i>
-            Compose
-          </button>
+        {/* Conversations List */}
+        <div className="conversations-list">
+          <div className="conversations-header">
+            <button className="back-button" onClick={() => navigate('/dashboard')}>
+              <FiArrowLeft />
+            </button>
+            <h1>Messages</h1>
+          </div>
           
-          <div className="mailbox-nav">
-            <button 
-              className={`nav-item ${activeTab === 'inbox' ? 'active' : ''}`}
-              onClick={() => setActiveTab('inbox')}
-            >
-              <i className="fas fa-inbox"></i>
-              Inbox
-              <span className="unread-count">2</span>
-            </button>
-            
-            <button 
-              className={`nav-item ${activeTab === 'sent' ? 'active' : ''}`}
-              onClick={() => setActiveTab('sent')}
-            >
-              <i className="fas fa-paper-plane"></i>
-              Sent
-            </button>
-            
-            <button 
-              className={`nav-item ${activeTab === 'drafts' ? 'active' : ''}`}
-              onClick={() => setActiveTab('drafts')}
-            >
-              <i className="fas fa-file-alt"></i>
-              Drafts
-            </button>
-            
-            <button className="nav-item">
-              <i className="fas fa-trash-alt"></i>
-              Trash
-            </button>
-          </div>
-        </div>
-
-        <div className="mailbox-content">
-          <div className="mailbox-toolbar">
-            <div className="toolbar-left">
-              <label className="checkbox-container">
-                <input 
-                  type="checkbox"
-                  checked={selectedMessages.length === dummyMessages[activeTab].length}
-                  onChange={handleSelectAll}
-                />
-                <span className="checkmark"></span>
-              </label>
-              
-              <button className="toolbar-btn" disabled={selectedMessages.length === 0}>
-                <i className="fas fa-archive"></i>
-              </button>
-              <button className="toolbar-btn" disabled={selectedMessages.length === 0}>
-                <i className="fas fa-trash-alt"></i>
-              </button>
-              <button className="toolbar-btn">
-                <i className="fas fa-sync-alt"></i>
-              </button>
-            </div>
-
-            <div className="toolbar-right">
-              <span className="message-count">
-                {dummyMessages[activeTab].length} messages
-              </span>
-            </div>
+          <div className="search-bar">
+            <FiSearch />
+            <input
+              type="text"
+              placeholder="Search messages"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
 
-          <div className="messages-list">
-            {dummyMessages[activeTab].map(message => (
-              <div 
-                key={message.id}
-                className={`message-item ${message.unread ? 'unread' : ''} ${
-                  selectedMessages.includes(message.id) ? 'selected' : ''
-                }`}
+          <div className="conversations">
+            {conversations.map(chat => (
+              <div
+                key={chat.id}
+                className={`conversation-item ${selectedChat?.id === chat.id ? 'active' : ''}`}
+                onClick={() => setSelectedChat(chat)}
               >
-                <label className="checkbox-container">
-                  <input 
-                    type="checkbox"
-                    checked={selectedMessages.includes(message.id)}
-                    onChange={() => handleSelectMessage(message.id)}
-                  />
-                  <span className="checkmark"></span>
-                </label>
-
-                <div className="message-avatar">
-                  {message.avatar ? (
-                    <img src={message.avatar} alt="Avatar" />
-                  ) : (
-                    <div className="avatar-placeholder">
-                      {(message.from || message.to).charAt(0)}
-                    </div>
-                  )}
+                <div className="user-avatar">
+                  <img src={chat.user.avatar} alt={chat.user.name} />
+                  <span className={`status-indicator ${chat.user.status}`} />
                 </div>
-
-                <div className="message-content">
-                  <div className="message-header">
-                    <span className="message-from">
-                      {message.from || `To: ${message.to}`}
-                    </span>
-                    <span className="message-time">{message.timestamp}</span>
+                <div className="conversation-info">
+                  <div className="conversation-header">
+                    <h3>{chat.user.name}</h3>
+                    <span className="timestamp">{chat.timestamp}</span>
                   </div>
-                  <div className="message-subject">{message.subject}</div>
-                  <div className="message-preview">{message.preview}</div>
+                  <p className="last-message">{chat.lastMessage}</p>
                 </div>
+                {chat.unread > 0 && (
+                  <div className="unread-badge">{chat.unread}</div>
+                )}
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Chat View */}
+        <div className="chat-view">
+          {selectedChat ? (
+            <>
+              <div className="chat-header">
+                <div className="chat-user-info">
+                  <div className="user-avatar">
+                    <img src={selectedChat.user.avatar} alt={selectedChat.user.name} />
+                    <span className={`status-indicator ${selectedChat.user.status}`} />
+                  </div>
+                  <div className="user-details">
+                    <h2>{selectedChat.user.name}</h2>
+                    <span className="status-text">{selectedChat.user.status}</span>
+                  </div>
+                </div>
+                <button className="more-options">
+                  <FiMoreVertical />
+                </button>
+              </div>
+
+              <div className="messages-container">
+                {/* Messages will be rendered here */}
+                <div className="message-date">Today</div>
+                <div className="message received">
+                  <p>Hey, I loved your latest beat!</p>
+                  <span className="message-time">2:30 PM</span>
+                </div>
+                <div className="message sent">
+                  <p>Thanks! I'm glad you liked it. What specifically caught your attention?</p>
+                  <span className="message-time">2:32 PM</span>
+                </div>
+              </div>
+
+              <form className="message-input" onSubmit={handleSendMessage}>
+                <button type="button" className="input-action">
+                  <FiPaperclip />
+                </button>
+                <button type="button" className="input-action">
+                  <FiImage />
+                </button>
+                <input
+                  type="text"
+                  placeholder="Message..."
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
+                <button type="button" className="input-action">
+                  <FiSmile />
+                </button>
+                <button type="submit" className="send-button" disabled={!message.trim()}>
+                  <FiSend />
+                </button>
+              </form>
+            </>
+          ) : (
+            <div className="no-chat-selected">
+              <h2>Select a conversation</h2>
+              <p>Choose a chat from the list to start messaging</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

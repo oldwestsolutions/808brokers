@@ -22,6 +22,7 @@ import Library from './pages/Library';
 import Wallet from './pages/Wallet';
 import Dropbox from './pages/Dropbox';
 import Favorites from './pages/Favorites';
+import University from './pages/University';
 import './styles/App.css';
 
 function AppContent() {
@@ -53,6 +54,7 @@ function AppContent() {
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/dropbox" element={<Dropbox />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/university" element={<University />} />
         </Routes>
       </main>
     </div>

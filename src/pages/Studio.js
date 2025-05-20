@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import WaveSurfer from 'wavesurfer.js';
-import BackButton from '../components/BackButton';
+import { FiArrowLeft, FiFolder, FiFile, FiMusic, FiPlus, FiMoreVertical, FiGrid, FiList, FiUpload, FiDownload, FiShare2, FiTrash2 } from 'react-icons/fi';
 import AudioTrackRecorder from '../components/AudioTrackRecorder';
 import '../styles/Studio.css';
 
 const Studio = () => {
+  const navigate = useNavigate();
   const [mainTrack, setMainTrack] = useState(null);
   const [recordings, setRecordings] = useState([]);
   const [lyrics, setLyrics] = useState('');
@@ -16,6 +18,8 @@ const Studio = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [activeTab, setActiveTab] = useState('projects');
+  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
+  const [selectedItems, setSelectedItems] = useState([]);
 
   // Hide navbar when Studio component mounts
   useEffect(() => {
@@ -100,95 +104,145 @@ const Studio = () => {
     setIsPlaying(!isPlaying);
   };
 
+  const projects = [
+    {
+      id: 1,
+      name: 'Summer Vibes',
+      type: 'project',
+      lastModified: '2 hours ago',
+      size: '24.5 MB',
+      icon: FiMusic
+    },
+    {
+      id: 2,
+      name: 'Beat Collection',
+      type: 'folder',
+      lastModified: '1 day ago',
+      items: 12,
+      icon: FiFolder
+    },
+    {
+      id: 3,
+      name: 'Mixing Sessions',
+      type: 'folder',
+      lastModified: '3 days ago',
+      items: 8,
+      icon: FiFolder
+    },
+    {
+      id: 4,
+      name: 'Vocal Recordings',
+      type: 'folder',
+      lastModified: '1 week ago',
+      items: 15,
+      icon: FiFolder
+    },
+    {
+      id: 5,
+      name: 'Drum Patterns',
+      type: 'project',
+      lastModified: '2 days ago',
+      size: '18.2 MB',
+      icon: FiMusic
+    },
+    {
+      id: 6,
+      name: 'Sound Effects',
+      type: 'folder',
+      lastModified: '5 days ago',
+      items: 24,
+      icon: FiFolder
+    }
+  ];
+
+  const handleItemClick = (item) => {
+    if (item.type === 'folder') {
+      // Handle folder navigation
+      console.log('Opening folder:', item.name);
+    } else {
+      // Handle project opening
+      console.log('Opening project:', item.name);
+    }
+  };
+
+  const handleItemSelect = (itemId, event) => {
+    event.stopPropagation();
+    setSelectedItems(prev => 
+      prev.includes(itemId) 
+        ? prev.filter(id => id !== itemId)
+        : [...prev, itemId]
+    );
+  };
+
   return (
     <div className="studio-page">
       <div className="studio-header">
-        <h1>Studio</h1>
+        <div className="header-left">
+          <button className="back-button" onClick={() => navigate('/library')}>
+            <FiArrowLeft />
+          </button>
+          <h1>Studio</h1>
+        </div>
         <div className="studio-actions">
-          <button className="action-btn">
-            <i className="fas fa-plus"></i>
+          <button className="action-btn primary">
+            <FiPlus />
             New Project
           </button>
+          <button className="action-btn">
+            <FiUpload />
+            Upload
+          </button>
+          <div className="view-toggle">
+            <button 
+              className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`}
+              onClick={() => setViewMode('grid')}
+              title="Grid View"
+            >
+              <FiGrid />
+            </button>
+            <button 
+              className={`view-btn ${viewMode === 'list' ? 'active' : ''}`}
+              onClick={() => setViewMode('list')}
+              title="List View"
+            >
+              <FiList />
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="studio-tabs">
-        <button 
-          className={`tab-btn ${activeTab === 'projects' ? 'active' : ''}`}
-          onClick={() => setActiveTab('projects')}
-        >
-          <i className="fas fa-folder"></i>
-          Projects
-        </button>
-        <button 
-          className={`tab-btn ${activeTab === 'templates' ? 'active' : ''}`}
-          onClick={() => setActiveTab('templates')}
-        >
-          <i className="fas fa-layer-group"></i>
-          Templates
-        </button>
-        <button 
-          className={`tab-btn ${activeTab === 'collaborations' ? 'active' : ''}`}
-          onClick={() => setActiveTab('collaborations')}
-        >
-          <i className="fas fa-users"></i>
-          Collaborations
-        </button>
-      </div>
-
       <div className="studio-content">
-        {activeTab === 'projects' && (
-          <div className="projects-grid">
-            <div className="project-card">
-              <div className="project-thumbnail">
-                <img src="/DiceLogoTransparent.png" alt="Project thumbnail" />
-                <div className="project-overlay">
-                  <button className="play-btn">
-                    <i className="fas fa-play"></i>
-                  </button>
+        <div className={`items-container ${viewMode}`}>
+          {projects.map(item => (
+            <div 
+              key={item.id}
+              className={`item ${selectedItems.includes(item.id) ? 'selected' : ''}`}
+              onClick={() => handleItemClick(item)}
+            >
+              <div className="item-select" onClick={(e) => handleItemSelect(item.id, e)}>
+                <div className="select-checkbox"></div>
+              </div>
+              <div className="item-icon">
+                <item.icon />
+              </div>
+              <div className="item-info">
+                <h3>{item.name}</h3>
+                <div className="item-meta">
+                  <span className="item-type">{item.type}</span>
+                  <span className="item-date">{item.lastModified}</span>
+                  {item.type === 'folder' ? (
+                    <span className="item-count">{item.items} items</span>
+                  ) : (
+                    <span className="item-size">{item.size}</span>
+                  )}
                 </div>
               </div>
-              <div className="project-info">
-                <h3>Summer Trap Beat</h3>
-                <p>Last modified: 2 hours ago</p>
-              </div>
+              <button className="item-more">
+                <FiMoreVertical />
+              </button>
             </div>
-            {/* Add more project cards here */}
-          </div>
-        )}
-
-        {activeTab === 'templates' && (
-          <div className="templates-grid">
-            <div className="template-card">
-              <div className="template-icon">
-                <i className="fas fa-music"></i>
-              </div>
-              <div className="template-info">
-                <h3>Hip Hop Template</h3>
-                <p>120 BPM • 4/4 Time</p>
-              </div>
-            </div>
-            {/* Add more template cards here */}
-          </div>
-        )}
-
-        {activeTab === 'collaborations' && (
-          <div className="collaborations-list">
-            <div className="collaboration-item">
-              <div className="collaboration-avatar">
-                <img src="/DiceLogoTransparent.png" alt="Collaborator" />
-              </div>
-              <div className="collaboration-info">
-                <h3>John Doe</h3>
-                <p>Working on: Summer Trap Beat</p>
-              </div>
-              <div className="collaboration-status">
-                <span className="status-badge online">Online</span>
-              </div>
-            </div>
-            {/* Add more collaboration items here */}
-          </div>
-        )}
+          ))}
+        </div>
       </div>
     </div>
   );
