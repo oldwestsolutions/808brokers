@@ -1,15 +1,18 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 import '../styles/BackButton.css';
 
-const BackButton = ({ destination = '/dashboard', text = 'Back to Dashboard' }) => {
+const BackButton = ({ destination, text = 'Back' }) => {
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    navigate(destination);
+  };
+
   return (
-    <button className="back-button" onClick={() => navigate(destination)}>
-      <svg className="back-icon" viewBox="0 0 24 24">
-        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-      </svg>
+    <button className="back-button" onClick={handleClick}>
+      <FiArrowLeft className="back-icon" />
       <span>{text}</span>
     </button>
   );

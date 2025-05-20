@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiArrowLeft, FiBook, FiClock, FiUsers, FiAward, FiMic } from 'react-icons/fi';
+import { FiBook, FiClock, FiUsers, FiAward, FiMic, FiArrowLeft } from 'react-icons/fi';
 import '../styles/University.css';
 
 const University = () => {
   const navigate = useNavigate();
+  const [showBackButton, setShowBackButton] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     document.querySelector('.navbar')?.style.setProperty('display', 'none');
@@ -13,6 +15,25 @@ const University = () => {
       document.querySelector('.navbar')?.style.setProperty('display', 'flex');
     };
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down
+        setShowBackButton(false);
+      } else {
+        // Scrolling up
+        setShowBackButton(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const courses = [
     {
@@ -58,35 +79,12 @@ const University = () => {
 
   return (
     <div className="university-page">
-      <div className="university-header">
-        <button className="back-button" onClick={() => navigate('/library')}>
-          <FiArrowLeft />
-          Back to Library
-        </button>
-        <h1>University</h1>
-      </div>
-
-      <div className="university-stats">
-        <div className="stat-card">
-          <div className="stat-header">
-            <FiBook className="stat-icon" />
-            <h3>Courses Available</h3>
-          </div>
-          <div className="stat-content">
-            <span className="stat-value">12</span>
-          </div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-header">
-            <FiUsers className="stat-icon" />
-            <h3>Active Students</h3>
-          </div>
-          <div className="stat-content">
-            <span className="stat-value">3,456</span>
-          </div>
-        </div>
-      </div>
-
+      <button 
+        className={`subtle-back-button ${showBackButton ? 'visible' : 'hidden'}`} 
+        onClick={() => navigate('/library')}
+      >
+        <FiArrowLeft />
+      </button>
       <div className="university-content">
         <div className="course-list">
           {courses.map(course => (

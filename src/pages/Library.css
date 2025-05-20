@@ -114,6 +114,8 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.5rem;
   padding: 1rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .library-item {
@@ -202,7 +204,7 @@
   display: flex;
   justify-content: space-between;
   font-size: 0.75rem;
-  color: #666;
+  color: #999;
   width: 100%;
 }
 
@@ -210,6 +212,11 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  color: #999;
+}
+
+.item-type svg {
+  color: #999;
 }
 
 .item-more {
@@ -250,8 +257,16 @@
   }
 
   .library-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
+    justify-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .library-item {
+    width: 100%;
+    max-width: 280px;
   }
 }
 
@@ -972,13 +987,18 @@
   align-items: center;
   justify-content: center;
   background-color: #2a2a2a;
+  position: relative;
+  overflow: visible;
 }
 
 .mailbox-icon {
   font-size: 4rem;
   color: #e0e0e0;
   stroke-width: 1.5;
-  transform: translateY(-3.5rem);
+  position: absolute;
+  bottom: 4.7rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .mailbox-container:hover {
@@ -986,7 +1006,7 @@
 }
 
 .mailbox-container:hover .mailbox-icon {
-  transform: translateY(-3.5rem);
+  bottom: 4.7rem;
 }
 
 .university-stats {

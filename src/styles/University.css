@@ -166,6 +166,47 @@
   color: #a855f7;
 }
 
+.subtle-back-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e0e0e0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.subtle-back-button.hidden {
+  opacity: 0;
+  transform: translateX(-20px);
+  pointer-events: none;
+}
+
+.subtle-back-button.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.subtle-back-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(-2px);
+}
+
+.subtle-back-button svg {
+  width: 20px;
+  height: 20px;
+}
+
 @media (max-width: 768px) {
   .university-page {
     padding: 1rem;

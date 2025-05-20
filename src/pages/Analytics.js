@@ -1,13 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiArrowLeft, FiBarChart2, FiTrendingUp, FiUsers, FiMusic, FiDollarSign } from 'react-icons/fi';
-import './Analytics.css';
+import blockchainService from '../services/blockchain';
+import '../styles/Analytics.css';
 
 const Analytics = () => {
+  const [streamAnalytics, setStreamAnalytics] = useState([]);
+  const [ownershipHistory, setOwnershipHistory] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchAnalytics = async () => {
+      try {
+        setLoading(true);
+        // Fetch stream analytics for the current asset
+        const streamData = await blockchainService.getStreamAnalytics('current_asset_id');
+        setStreamAnalytics(JSON.parse(streamData));
+
+        // Fetch ownership history
+        const ownershipData = await blockchainService.getOwnershipHistory('current_asset_id');
+        setOwnershipHistory(JSON.parse(ownershipData));
+      } catch (err) {
+        setError(err.message);
+        console.error('Failed to fetch analytics:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAnalytics();
+  }, []);
+
   const metrics = [
     {
       id: 1,
       title: 'Total Plays',
-      value: '1.2M',
+      value: streamAnalytics.length.toString(),
       change: '+12.5%',
       icon: <FiMusic />,
       color: '#0066ff'
@@ -15,7 +43,7 @@ const Analytics = () => {
     {
       id: 2,
       title: 'Active Listeners',
-      value: '45.2K',
+      value: new Set(streamAnalytics.map(s => s.userId)).size.toString(),
       change: '+8.3%',
       icon: <FiUsers />,
       color: '#00c853'
@@ -23,7 +51,7 @@ const Analytics = () => {
     {
       id: 3,
       title: 'Revenue',
-      value: '$12.5K',
+      value: `$${(streamAnalytics.length * 0.004).toFixed(2)}`,
       change: '+15.2%',
       icon: <FiDollarSign />,
       color: '#ff6d00'
@@ -37,6 +65,22 @@ const Analytics = () => {
       color: '#7c4dff'
     }
   ];
+
+  if (loading) {
+    return (
+      <div className="analytics-page">
+        <div className="loading">Loading analytics data...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="analytics-page">
+        <div className="error">Error loading analytics: {error}</div>
+      </div>
+    );
+  }
 
   return (
     <div className="analytics-page">
@@ -72,25 +116,22 @@ const Analytics = () => {
           <h2>Performance Overview</h2>
           <div className="chart-placeholder">
             <FiBarChart2 />
-            <p>Chart visualization will be implemented here</p>
+            <p>Stream analytics visualization will be implemented here</p>
           </div>
         </div>
 
         <div className="insights-container">
-          <h2>Key Insights</h2>
+          <h2>Ownership & Rights</h2>
           <div className="insights-list">
-            <div className="insight-item">
-              <h3>Peak Listening Hours</h3>
-              <p>Your content performs best between 6 PM and 9 PM EST</p>
-            </div>
-            <div className="insight-item">
-              <h3>Top Performing Genre</h3>
-              <p>Hip Hop tracks show 25% higher engagement</p>
-            </div>
-            <div className="insight-item">
-              <h3>Audience Growth</h3>
-              <p>Monthly listener growth rate increased by 15%</p>
-            </div>
+            {ownershipHistory.map((ownership, index) => (
+              <div key={index} className="insight-item">
+                <h3>{ownership.type.charAt(0).toUpperCase() + ownership.type.slice(1)} Rights</h3>
+                <p>Owner: {ownership.ownerId}</p>
+                <p>Rights: {ownership.rights.join(', ')}</p>
+                <p>Terms: {ownership.terms}</p>
+                <p>Recorded: {new Date(ownership.timestamp).toLocaleDateString()}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

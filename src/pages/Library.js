@@ -1,17 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiSearch, FiFilter, FiMoreVertical, FiClock, FiMusic, FiList, FiFolder, FiFile, FiUpload, FiDownload, FiShare2, FiTrash2, FiArrowLeft, FiHeart, FiBarChart2, FiBook, FiTrendingUp, FiUsers, FiDollarSign, FiGlobe, FiMic, FiMail } from 'react-icons/fi';
+import { FiMoreVertical, FiClock, FiMusic, FiList, FiFolder, FiFile, FiUpload, FiDownload, FiShare2, FiTrash2, FiArrowLeft, FiHeart, FiBarChart2, FiBook, FiTrendingUp, FiUsers, FiDollarSign, FiGlobe, FiMic, FiMail } from 'react-icons/fi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDropbox } from '@fortawesome/free-brands-svg-icons';
 import './Library.css';
 
 const Library = () => {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [showFilters, setShowFilters] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState('All');
-
-  const filters = ['All', 'Albums', 'Playlists', 'Artists', 'Songs'];
 
   const libraryItems = [
     {
@@ -67,44 +62,7 @@ const Library = () => {
   return (
     <div className="library-container">
       <div className="library-header">
-        <div className="library-title">
-          <h1>Your Library</h1>
-        </div>
         <div className="library-controls">
-          <div className="search-bar">
-            <FiSearch className="search-icon" />
-            <input
-              type="text"
-              placeholder="Search in Your Library"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-          <div className="filter-container">
-            <button 
-              className="filter-button"
-              onClick={() => setShowFilters(!showFilters)}
-            >
-              <FiFilter />
-              <span>Filter</span>
-            </button>
-            {showFilters && (
-              <div className="filter-dropdown">
-                {filters.map((filter) => (
-                  <button
-                    key={filter}
-                    className={`filter-option ${selectedFilter === filter ? 'active' : ''}`}
-                    onClick={() => {
-                      setSelectedFilter(filter);
-                      setShowFilters(false);
-                    }}
-                  >
-                    {filter}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
         </div>
       </div>
 
