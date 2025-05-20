@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
@@ -13,6 +13,10 @@ const Login = () => {
   const [showTransition, setShowTransition] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleGoogleLogin = () => {
     // Implement Google login logic here
