@@ -13,8 +13,50 @@ const TikTokView = ({ beat, onBack }) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [showControls, setShowControls] = useState(true);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const videoRef = useRef(null);
   const controlsTimeoutRef = useRef(null);
+  const containerRef = useRef(null);
+
+  // Sample videos data - replace with your actual data
+  const videos = [
+    {
+      id: 1,
+      title: "Trending",
+      producer: "808 Brokers",
+      image: "/DiceLogoTransparent.png",
+      videoUrl: beat.videoUrl,
+      featured: true,
+      description: "A high-energy trap anthem perfect for your next hit",
+      maturityRating: "TV-MA",
+      year: "2024",
+      duration: "3:45"
+    },
+    {
+      id: 2,
+      title: "Chill Vibes Mix",
+      producer: "808 Brokers",
+      image: "/DiceLogoTransparent.png",
+      videoUrl: beat.videoUrl,
+      featured: true,
+      description: "Relaxing lo-fi beats to study and chill to",
+      maturityRating: "TV-14",
+      year: "2024",
+      duration: "4:20"
+    },
+    {
+      id: 3,
+      title: "Dark Trap Beat",
+      producer: "808 Brokers",
+      image: "/DiceLogoTransparent.png",
+      videoUrl: beat.videoUrl,
+      featured: true,
+      description: "Intense dark trap production with heavy 808s",
+      maturityRating: "TV-MA",
+      year: "2024",
+      duration: "3:15"
+    }
+  ];
 
   useEffect(() => {
     if (videoRef.current) {
@@ -27,7 +69,7 @@ const TikTokView = ({ beat, onBack }) => {
         }
       };
     }
-  }, []);
+  }, [currentVideoIndex]);
 
   const handleMouseMove = () => {
     setShowControls(true);
@@ -92,6 +134,20 @@ const TikTokView = ({ beat, onBack }) => {
     }, 500);
   };
 
+  const handleScroll = (e) => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const scrollPosition = container.scrollTop;
+    const videoHeight = container.clientHeight;
+    const newIndex = Math.round(scrollPosition / videoHeight);
+    
+    if (newIndex !== currentVideoIndex && newIndex >= 0 && newIndex < videos.length) {
+      setCurrentVideoIndex(newIndex);
+      setIsPlaying(true);
+    }
+  };
+
   return (
     <motion.div 
       className="tiktok-view"
@@ -104,99 +160,108 @@ const TikTokView = ({ beat, onBack }) => {
         <span>Back to Dashboard</span>
       </button>
 
-      <div className="tiktok-container" onMouseMove={handleMouseMove}>
-        <div className="video-container">
-          <img src={beat.image} alt={beat.title} className="video-background" />
-          <video
-            ref={videoRef}
-            src={beat.videoUrl}
-            className="video-overlay"
-            loop
-            autoPlay
-            muted
-          />
-          <AnimatePresence>
-            {showControls && (
-              <motion.div 
-                className="playback-controls"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-              >
-                <div className="song-info">
-                  <h2>{beat.title}</h2>
-                  <p className="producer">by {beat.producer}</p>
-                </div>
-                <div className="controls-container">
-                  <button className="play-pause-btn" onClick={handlePlayPause}>
-                    {isPlaying ? <FiPause /> : <FiPlay />}
-                  </button>
-                  <div className="time-display">{formatTime(currentTime)}</div>
-                  <div className="progress-bar" onClick={handleProgressClick}>
-                    <div 
-                      className="progress-fill" 
-                      style={{ width: `${(currentTime / duration) * 100}%` }}
-                    />
+      <div 
+        className="tiktok-container" 
+        ref={containerRef}
+        onScroll={handleScroll}
+      >
+        {videos.map((video, index) => (
+          <div 
+            key={video.id}
+            className={`video-container ${index === currentVideoIndex ? 'active' : ''}`}
+          >
+            <img src={video.image} alt={video.title} className="video-background" />
+            <video
+              ref={index === currentVideoIndex ? videoRef : null}
+              src={video.videoUrl}
+              className="video-overlay"
+              loop
+              autoPlay={index === currentVideoIndex}
+              muted
+            />
+            <AnimatePresence>
+              {showControls && index === currentVideoIndex && (
+                <motion.div 
+                  className="playback-controls"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                >
+                  <div className="song-info">
+                    <h2>{video.title}</h2>
+                    <p className="producer">by {video.producer}</p>
                   </div>
-                  <div className="time-display">{formatTime(duration)}</div>
-                  <button 
-                    className={`playback-dropbox-btn ${dropboxActive ? 'active' : ''}`}
-                    onClick={handleDropbox}
-                  >
-                    <FontAwesomeIcon icon={faDropbox} className="playback-dropbox-icon" />
-                    <AnimatePresence>
-                      {showLetter && (
-                        <motion.div
-                          className="flying-letter"
-                          initial={{ 
-                            opacity: 1,
-                            x: -100,
-                            y: -100,
-                            scale: 1
-                          }}
-                          animate={{ 
-                            opacity: 0,
-                            x: 0,
-                            y: 0,
-                            scale: 0.5
-                          }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <span>📄</span>
-                        </motion.div>
-                      )}
-                      {showCheckmark && (
-                        <motion.div
-                          className="checkmark"
-                          initial={{ 
-                            opacity: 0,
-                            scale: 0.8
-                          }}
-                          animate={{ 
-                            opacity: 1,
-                            scale: 1
-                          }}
-                          exit={{ 
-                            opacity: 0,
-                            scale: 0.8
-                          }}
-                          transition={{ 
-                            duration: 0.2,
-                            ease: "easeInOut"
-                          }}
-                        >
-                          <FiCheck />
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+                  <div className="controls-container">
+                    <button className="play-pause-btn" onClick={handlePlayPause}>
+                      {isPlaying ? <FiPause /> : <FiPlay />}
+                    </button>
+                    <div className="time-display">{formatTime(currentTime)}</div>
+                    <div className="progress-bar" onClick={handleProgressClick}>
+                      <div 
+                        className="progress-fill" 
+                        style={{ width: `${(currentTime / duration) * 100}%` }}
+                      />
+                    </div>
+                    <div className="time-display">{formatTime(duration)}</div>
+                    <button 
+                      className={`playback-dropbox-btn ${dropboxActive ? 'active' : ''}`}
+                      onClick={handleDropbox}
+                    >
+                      <FontAwesomeIcon icon={faDropbox} className="playback-dropbox-icon" />
+                      <AnimatePresence>
+                        {showLetter && (
+                          <motion.div
+                            className="flying-letter"
+                            initial={{ 
+                              opacity: 1,
+                              x: -100,
+                              y: -100,
+                              scale: 1
+                            }}
+                            animate={{ 
+                              opacity: 0,
+                              x: 0,
+                              y: 0,
+                              scale: 0.5
+                            }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.5 }}
+                          >
+                            <span>📄</span>
+                          </motion.div>
+                        )}
+                        {showCheckmark && (
+                          <motion.div
+                            className="checkmark"
+                            initial={{ 
+                              opacity: 0,
+                              scale: 0.8
+                            }}
+                            animate={{ 
+                              opacity: 1,
+                              scale: 1
+                            }}
+                            exit={{ 
+                              opacity: 0,
+                              scale: 0.8
+                            }}
+                            transition={{ 
+                              duration: 0.2,
+                              ease: "easeInOut"
+                            }}
+                          >
+                            <FiCheck />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        ))}
       </div>
     </motion.div>
   );
