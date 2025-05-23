@@ -17,6 +17,7 @@ import Community from './pages/Community';
 import Charts from './pages/Charts';
 import ForYou from './pages/ForYou';
 import Radio from './pages/Radio';
+import Company from './pages/Company';
 import AuthCallback from './components/AuthCallback';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
@@ -38,6 +39,11 @@ function AnimatedRoutes() {
         <Route path="/login" element={<PageTransition><Login /></PageTransition>} />
         <Route path="/signup" element={<PageTransition><SignUp /></PageTransition>} />
         <Route path="/auth/callback" element={<PageTransition><AuthCallback /></PageTransition>} />
+        <Route path="/shop" element={<PageTransition><Shop /></PageTransition>} />
+        <Route path="/community" element={<PageTransition><Community /></PageTransition>} />
+        <Route path="/charts" element={<PageTransition><Charts /></PageTransition>} />
+        <Route path="/radio" element={<PageTransition><Radio /></PageTransition>} />
+        <Route path="/company" element={<PageTransition><Company /></PageTransition>} />
         
         {/* Protected Routes */}
         <Route path="/dashboard" element={
@@ -61,13 +67,6 @@ function AnimatedRoutes() {
             </ProtectedRoute>
           </PageTransition>
         } />
-        <Route path="/shop" element={
-          <PageTransition>
-            <ProtectedRoute>
-              <Shop />
-            </ProtectedRoute>
-          </PageTransition>
-        } />
         <Route path="/dashboard/studio" element={
           <PageTransition>
             <ProtectedRoute>
@@ -75,31 +74,10 @@ function AnimatedRoutes() {
             </ProtectedRoute>
           </PageTransition>
         } />
-        <Route path="/community" element={
-          <PageTransition>
-            <ProtectedRoute>
-              <Community />
-            </ProtectedRoute>
-          </PageTransition>
-        } />
-        <Route path="/charts" element={
-          <PageTransition>
-            <ProtectedRoute>
-              <Charts />
-            </ProtectedRoute>
-          </PageTransition>
-        } />
         <Route path="/foryou" element={
           <PageTransition>
             <ProtectedRoute>
               <ForYou />
-            </ProtectedRoute>
-          </PageTransition>
-        } />
-        <Route path="/radio" element={
-          <PageTransition>
-            <ProtectedRoute>
-              <Radio />
             </ProtectedRoute>
           </PageTransition>
         } />

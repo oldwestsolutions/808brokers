@@ -17,7 +17,8 @@ import {
   FaGraduationCap,
   FaBook,
   FaCertificate,
-  FaCodeBranch
+  FaCodeBranch,
+  FaBriefcase
 } from 'react-icons/fa';
 import './Community.css';
 
@@ -93,7 +94,10 @@ const Community = () => {
               creator: 'Mike D.',
               status: 'In Progress',
               participants: 3,
-              maxParticipants: 5
+              maxParticipants: 5,
+              description: 'Creating a hard-hitting trap beat with unique 808 patterns and atmospheric melodies.',
+              skills: ['Sound Design', '808 Programming', 'Mixing'],
+              deadline: 'April 15, 2024'
             },
             {
               id: 'proj2',
@@ -102,7 +106,10 @@ const Community = () => {
               creator: 'Sarah L.',
               status: 'Open',
               participants: 1,
-              maxParticipants: 4
+              maxParticipants: 4,
+              description: 'Remixing a classic house track with modern production techniques and fresh sound design.',
+              skills: ['Remixing', 'House Production', 'Arrangement'],
+              deadline: 'April 20, 2024'
             },
             {
               id: 'proj3',
@@ -111,41 +118,56 @@ const Community = () => {
               creator: 'Alex R.',
               status: 'In Progress',
               participants: 2,
-              maxParticipants: 3
+              maxParticipants: 3,
+              description: 'Collaborative future bass track focusing on lush pads and complex sound design.',
+              skills: ['Sound Design', 'Synthesis', 'Arrangement'],
+              deadline: 'April 25, 2024'
             }
           ],
           projectTypes: [
             {
               id: 'beat',
               name: 'Beat Making',
-              icon: '🎵'
+              icon: '🎵',
+              description: 'Create beats and instrumentals for various genres',
+              requirements: ['Basic DAW knowledge', 'Understanding of rhythm']
             },
             {
               id: 'remix',
               name: 'Remix',
-              icon: '🔄'
+              icon: '🔄',
+              description: 'Remix existing tracks with your unique style',
+              requirements: ['Remixing experience', 'Creative interpretation']
             },
             {
               id: 'original',
               name: 'Original Track',
-              icon: '🎼'
+              icon: '🎼',
+              description: 'Create original compositions from scratch',
+              requirements: ['Composition skills', 'Arrangement knowledge']
             }
           ],
           skillLevels: [
             {
               id: 'beginner',
               name: 'Beginner',
-              icon: '🌱'
+              icon: '🌱',
+              description: 'New to production, learning the basics',
+              requirements: ['Basic DAW knowledge', 'Eagerness to learn']
             },
             {
               id: 'intermediate',
               name: 'Intermediate',
-              icon: '🌿'
+              icon: '🌿',
+              description: 'Comfortable with production, looking to grow',
+              requirements: ['Solid DAW skills', 'Basic mixing knowledge']
             },
             {
               id: 'advanced',
               name: 'Advanced',
-              icon: '🌳'
+              icon: '🌳',
+              description: 'Experienced producer, ready for complex projects',
+              requirements: ['Professional experience', 'Advanced mixing skills']
             }
           ]
         }
@@ -155,24 +177,37 @@ const Community = () => {
 
   const newsCards = [
     {
-      id: 'collaboration',
-      title: 'Collaboration Hub',
-      description: 'Connect with other producers, share projects, and work together on tracks. Our collaboration hub provides real-time project sharing, version control, and seamless communication tools to help you create amazing music together.',
-      icon: FaUsers,
+      id: 'ai-music',
+      title: 'AI & Music Research',
+      description: 'Latest studies on artificial intelligence in music creation and analysis.',
+      icon: FaRobot,
       color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
-      quickLinks: ['Find Collaborators', 'Project Sharing', 'Real-time Jamming'],
-      category: 'Community',
-      accentColor: '#8A2BE2'
+      quickLinks: ['AI Studies', 'Music Analysis', 'Machine Learning'],
+      category: 'Research',
+      accentColor: '#8A2BE2',
+      image: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=600&q=80'
     },
     {
-      id: 'challenges',
-      title: 'Weekly Challenges',
-      description: 'Participate in themed production challenges. Push your creative boundaries and compete with other producers in our weekly challenges.',
-      icon: FaTrophy,
+      id: 'blockchain-music',
+      title: 'Blockchain for Musicians',
+      description: "Research on blockchain's impact on music rights and royalties.",
+      icon: FaCodeBranch,
       color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
-      quickLinks: ['Current Challenge', 'Past Winners', 'Leaderboard'],
-      category: 'Competition',
-      accentColor: '#9B30FF'
+      quickLinks: ['Blockchain', 'Music Rights', 'Royalties'],
+      category: 'Research',
+      accentColor: '#9B30FF',
+      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80'
+    },
+    {
+      id: 'music-neuro',
+      title: 'Music & Neuroscience',
+      description: 'Insights from research on how music affects the brain and creativity.',
+      icon: FaGraduationCap,
+      color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
+      quickLinks: ['Neuroscience', 'Creativity', 'Music Therapy'],
+      category: 'Research',
+      accentColor: '#9370DB',
+      image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80'
     }
   ];
 
@@ -200,22 +235,82 @@ const Community = () => {
   const featuredArticles = [
     {
       id: 'article1',
-      title: 'Essential Music Theory for Producers',
-      description: 'Master the fundamental music theory concepts that every producer should know. Learn about scales, chords, progressions, and how to apply them in your productions.',
-      icon: FaMusic,
+      title: 'AI Revolution in Music Production',
+      description: 'How artificial intelligence is transforming the way we create and produce music, from automated mixing to AI-powered composition tools.',
+      icon: FaRobot,
       color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
-      quickLinks: ['Scales', 'Chords', 'Progressions'],
-      category: 'Theory',
+      quickLinks: ['AI Tools', 'Automation', 'Future'],
+      category: 'Technology',
       accentColor: '#8B008B'
     },
     {
       id: 'article2',
-      title: 'Advanced Sound Design Techniques',
-      description: 'Explore advanced sound design methods to create unique and professional sounds. From synthesis to effects processing, learn how to craft your signature sound.',
-      icon: FaSlidersH,
+      title: 'Music Industry Trends 2024',
+      description: 'The latest developments in the music business, streaming platforms, and emerging revenue models for artists and producers.',
+      icon: FaChartLine,
       color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
-      quickLinks: ['Synthesis', 'Effects', 'Processing'],
-      category: 'Sound Design',
+      quickLinks: ['Streaming', 'Revenue', 'Platforms'],
+      category: 'Business',
+      accentColor: '#9B30FF'
+    },
+    {
+      id: 'article3',
+      title: 'Blockchain in Music Rights',
+      description: 'How blockchain technology is revolutionizing music rights management, royalty distribution, and intellectual property protection.',
+      icon: FaCodeBranch,
+      color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
+      quickLinks: ['Blockchain', 'Rights', 'Royalties'],
+      category: 'Technology',
+      accentColor: '#9370DB'
+    },
+    {
+      id: 'article4',
+      title: 'Virtual Reality Concerts',
+      description: 'The rise of virtual reality concerts and immersive music experiences, changing how artists connect with their audience.',
+      icon: FaUsers,
+      color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
+      quickLinks: ['VR', 'Concerts', 'Immersive'],
+      category: 'Innovation',
+      accentColor: '#8A2BE2'
+    },
+    {
+      id: 'article5',
+      title: 'Music Streaming Economics',
+      description: 'Deep dive into the economics of music streaming platforms and their impact on artist revenue and industry sustainability.',
+      icon: FaBriefcase,
+      color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
+      quickLinks: ['Economics', 'Streaming', 'Revenue'],
+      category: 'Business',
+      accentColor: '#9932CC'
+    },
+    {
+      id: 'article6',
+      title: 'Social Media Impact on Music',
+      description: 'How social media platforms are shaping music discovery, artist promotion, and fan engagement in the digital age.',
+      icon: FaUsers,
+      color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
+      quickLinks: ['Social Media', 'Promotion', 'Engagement'],
+      category: 'Social',
+      accentColor: '#9400D3'
+    },
+    {
+      id: 'article7',
+      title: 'Music Tech Startups',
+      description: 'Emerging music technology startups and their innovative solutions for creators, labels, and music industry professionals.',
+      icon: FaRobot,
+      color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
+      quickLinks: ['Startups', 'Innovation', 'Tech'],
+      category: 'Technology',
+      accentColor: '#8B008B'
+    },
+    {
+      id: 'article8',
+      title: 'Music Education Evolution',
+      description: 'The transformation of music education through online platforms, AI tutors, and interactive learning technologies.',
+      icon: FaGraduationCap,
+      color: 'linear-gradient(145deg, #2a1b3d 0%, #1f1429 100%)',
+      quickLinks: ['Education', 'Online', 'Learning'],
+      category: 'Education',
       accentColor: '#9B30FF'
     }
   ];
@@ -515,13 +610,11 @@ const Community = () => {
           backgroundImage: 'none'
         }}
       >
-        <Link to="/" className="header-logo">
-          <img src="/favicon.ico" alt="806brokers Logo" className="logo-image" />
-          <span className="logo-text">806brokers</span>
-        </Link>
-        <div className="header-search">
-          <input type="text" placeholder="Search community..." className="search-input" />
-          <i className="fas fa-search search-icon"></i>
+        <div className="header-content">
+          <Link to="/" className="header-logo">
+            <img src="/favicon.ico" alt="808 Brokers Logo" className="logo-image" />
+            <span className="logo-text">808 Brokers</span>
+          </Link>
         </div>
       </header>
       <div className="community-container">
@@ -531,7 +624,7 @@ const Community = () => {
             <p className="section-description">Stay updated with the latest news from the New York Times</p>
             <div className="news-grid">
               <div className="news-card" onClick={() => window.location.href = '/news/technology'}>
-                <div className="news-image"></div>
+                <div className="news-image" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=600&q=80')" }}></div>
                 <div className="news-icon">
                   <i className="fas fa-microchip"></i>
                 </div>
@@ -541,7 +634,7 @@ const Community = () => {
                 <span className="news-link">Read More</span>
               </div>
               <div className="news-card" onClick={() => window.location.href = '/news/business'}>
-                <div className="news-image"></div>
+                <div className="news-image" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80')" }}></div>
                 <div className="news-icon">
                   <i className="fas fa-chart-line"></i>
                 </div>
@@ -551,7 +644,7 @@ const Community = () => {
                 <span className="news-link">Read More</span>
               </div>
               <div className="news-card" onClick={() => window.location.href = '/news/culture'}>
-                <div className="news-image"></div>
+                <div className="news-image" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80')" }}></div>
                 <div className="news-icon">
                   <i className="fas fa-music"></i>
                 </div>
@@ -563,7 +656,7 @@ const Community = () => {
             </div>
           </div>
 
-          <section className="learning-center-section">
+          <div className="learning-center-section">
             <div className="learning-bubbles-grid">
               <motion.div
                 className="learning-bubble large"
@@ -574,42 +667,25 @@ const Community = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
+                <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=600&q=80" alt="AI Music" style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '12px', marginBottom: '1rem' }} />
                 <div className="bubble-content">
                   <div className="bubble-icon" style={{ color: '#8B008B' }}>
-                    <FaMusic className="icon" />
+                    <FaRobot className="icon" />
                   </div>
-                  <span className="bubble-category" style={{ background: 'rgba(139, 0, 139, 0.2)' }}>Music Theory</span>
-                  <h3 className="bubble-title">Essential Music Theory for Producers</h3>
+                  <span className="bubble-category" style={{ background: 'rgba(139, 0, 139, 0.2)' }}>Technology</span>
+                  <h3 className="bubble-title">AI Revolution in Music Production</h3>
                   <div className="theory-sections">
                     <div className="theory-section">
-                      <h4>Scales & Modes</h4>
-                      <p>Master the fundamental scales and modes used in modern music production. Learn about major, minor, pentatonic, and modal scales to create memorable melodies.</p>
-                      <ul className="theory-list">
-                        <li>Major & Minor Scales</li>
-                        <li>Pentatonic Scales</li>
-                        <li>Modal Scales</li>
-                        <li>Scale Degrees</li>
-                      </ul>
+                      <h4>AI Tools & Automation</h4>
+                      <p>AI is transforming music production with automated mixing, smart composition, and sound design.</p>
                     </div>
                     <div className="theory-section">
-                      <h4>Chords & Progressions</h4>
-                      <p>Understand chord construction, inversions, and common progressions. Learn how to create emotional depth and movement in your tracks.</p>
-                      <ul className="theory-list">
-                        <li>Chord Construction</li>
-                        <li>Chord Inversions</li>
-                        <li>Common Progressions</li>
-                        <li>Voice Leading</li>
-                      </ul>
+                      <h4>Industry Impact</h4>
+                      <p>AI is reshaping music from creation to distribution, changing how the industry works.</p>
                     </div>
                     <div className="theory-section">
-                      <h4>Rhythm & Harmony</h4>
-                      <p>Explore rhythmic concepts and harmonic relationships. Discover how to create compelling grooves and maintain musical coherence.</p>
-                      <ul className="theory-list">
-                        <li>Time Signatures</li>
-                        <li>Rhythmic Patterns</li>
-                        <li>Harmonic Functions</li>
-                        <li>Cadences</li>
-                      </ul>
+                      <h4>Future of Music Tech</h4>
+                      <p>New tech will keep evolving how music is made and shared—stay tuned for the latest trends.</p>
                     </div>
                   </div>
                   <div className="bubble-links">
@@ -621,7 +697,7 @@ const Community = () => {
                         borderColor: 'rgba(139, 0, 139, 0.4)'
                       }}
                     >
-                      Start Learning
+                      Read More
                     </a>
                   </div>
                 </div>
@@ -636,14 +712,15 @@ const Community = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Business Trends" style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '12px', marginBottom: '1rem' }} />
                 <div className="bubble-content">
                   <div className="bubble-icon" style={{ color: '#4a90e2' }}>
-                    <FaMusic className="icon" />
+                    <FaChartLine className="icon" />
                   </div>
-                  <span className="bubble-category" style={{ background: 'rgba(74, 144, 226, 0.2)' }}>Sound Design</span>
-                  <h3 className="bubble-title">Advanced Sound Design Techniques</h3>
+                  <span className="bubble-category" style={{ background: 'rgba(74, 144, 226, 0.2)' }}>Business</span>
+                  <h3 className="bubble-title">Music Industry Trends 2024</h3>
                   <p className="bubble-description">
-                    Explore advanced sound design methods to create unique and professional sounds. From synthesis to effects processing, learn how to craft your signature sound.
+                    Stay informed about the latest developments in the music business, from streaming platforms to emerging revenue models and market analysis. The industry is evolving rapidly with new technologies and business models.
                   </p>
                   <div className="bubble-links">
                     <a 
@@ -661,10 +738,10 @@ const Community = () => {
                 <div className="bubble-decoration"></div>
               </motion.div>
             </div>
-          </section>
+          </div>
 
           <div className="bubbles-grid">
-            {communityFeatures.map((feature) => (
+            {newsCards.map((feature) => (
               <motion.div
                 key={feature.id}
                 className="bubble"
@@ -672,6 +749,9 @@ const Community = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
+                {feature.image && (
+                  <img src={feature.image} alt={feature.title} style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '12px', marginBottom: '1rem' }} />
+                )}
                 <div className="bubble-icon">{feature.icon}</div>
                 <h3 className="bubble-title">{feature.title}</h3>
                 <p className="bubble-description">
@@ -682,124 +762,6 @@ const Community = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
-
-          <div className="community-stats">
-            <div className="stat-item">
-              <h3>1,234</h3>
-              <p>Active Members</p>
-            </div>
-            <div className="stat-item">
-              <h3>567</h3>
-              <p>Projects Shared</p>
-            </div>
-            <div className="stat-item">
-              <h3>89</h3>
-              <p>Weekly Events</p>
-            </div>
-            <div className="stat-item">
-              <h3>45</h3>
-              <p>Active Mentors</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="community-sidebar">
-          <div className="learning-paths-section">
-            <h2>Learning Paths</h2>
-            <div className="learning-paths-grid">
-              {learningPaths.map((path, index) => (
-                <div key={index} className="learning-path-card">
-                  <h3>{path.title}</h3>
-                  <p>{path.description}</p>
-                  <div className="topics">
-                    {path.topics.map((topic, topicIndex) => (
-                      <span key={topicIndex} className="topic-tag">{topic}</span>
-                    ))}
-                  </div>
-                  <div className="duration">Duration: {path.duration}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="events-sidebar">
-            <h2>Upcoming Events</h2>
-            <div className="events-feed">
-              {UPCOMING_EVENTS.map(event => (
-                <div key={event.id} className="event-card">
-                  <div className="event-icon">
-                    <event.icon className="icon" />
-                  </div>
-                  <div className="event-content">
-                    <h3>{event.title}</h3>
-                    <div className="event-details">
-                      <div className="event-date">
-                        <span>📅</span> {event.date}
-                      </div>
-                      <div className="event-time">
-                        <span>⏰</span> {event.time}
-                      </div>
-                      <div className="event-participants">
-                        <span>👥</span> {event.participants} participants
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="producer-spotlight">
-            <h2>Producer Spotlight</h2>
-            <div className="spotlight-card">
-              <div className="spotlight-header">
-                <img src="https://via.placeholder.com/60" alt="Producer" className="spotlight-avatar" />
-                <div className="spotlight-info">
-                  <h3>Alex K.</h3>
-                  <span className="spotlight-genre">Trap / Future Bass</span>
-                </div>
-              </div>
-              <p className="spotlight-bio">Award-winning producer specializing in trap and future bass. Known for innovative sound design and complex arrangements.</p>
-              <div className="spotlight-stats">
-                <div className="stat">
-                  <span>🎵</span> 1.2k Tracks
-                </div>
-                <div className="stat">
-                  <span>👥</span> 45k Followers
-                </div>
-                <div className="stat">
-                  <span>🏆</span> 12 Awards
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="trending-topics">
-            <h2>Trending Topics</h2>
-            <div className="topics-list">
-              <div className="topic-item">
-                <span className="topic-icon">🎵</span>
-                <div className="topic-content">
-                  <h3>808 Bass Design</h3>
-                  <span className="topic-posts">2.3k posts</span>
-                </div>
-              </div>
-              <div className="topic-item">
-                <span className="topic-icon">🎹</span>
-                <div className="topic-content">
-                  <h3>Melody Writing</h3>
-                  <span className="topic-posts">1.8k posts</span>
-                </div>
-              </div>
-              <div className="topic-item">
-                <span className="topic-icon">🎚️</span>
-                <div className="topic-content">
-                  <h3>Mix Techniques</h3>
-                  <span className="topic-posts">1.5k posts</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
