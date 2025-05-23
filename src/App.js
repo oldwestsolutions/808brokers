@@ -27,6 +27,7 @@ import Dropbox from './pages/Dropbox';
 import Favorites from './pages/Favorites';
 import University from './pages/University';
 import PageTransition from './components/PageTransition';
+import SearchResults from './pages/SearchResults';
 import './styles/App.css';
 
 function AnimatedRoutes() {
@@ -130,6 +131,7 @@ function AnimatedRoutes() {
             </ProtectedRoute>
           </PageTransition>
         } />
+        <Route path="/search" element={<PageTransition><SearchResults /></PageTransition>} />
       </Routes>
     </AnimatePresence>
   );

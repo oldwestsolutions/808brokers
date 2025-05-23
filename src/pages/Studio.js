@@ -633,10 +633,10 @@ const Studio = () => {
         <div className="main-content">
           <div className="content-header">
             <div className="content-actions">
-              <button className="new-folder-btn" onClick={() => setShowNewFolderModal(true)}>
-                <FiFolderPlus />
-                New Folder
-              </button>
+            <button className="new-folder-btn" onClick={() => setShowNewFolderModal(true)}>
+              <FiFolderPlus />
+              New Folder
+            </button>
               <button className="dropbox-upload-btn" onClick={handleDropboxUpload}>
                 <FiUploadCloud />
                 Upload from Dropbox

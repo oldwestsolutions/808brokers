@@ -29,7 +29,10 @@ const DashboardHeader = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log('Searching for:', searchQuery);
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchModalOpen(false);
+    }
   };
 
   const handleNavigation = (path) => {
@@ -99,19 +102,19 @@ const DashboardHeader = () => {
           </AnimatePresence>
         </div>
         {windowWidth > 768 ? (
-          <form className="search-bar" onSubmit={handleSearch}>
-            <input
-              type="text"
-              placeholder="Search beats, artists, or samples..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <button type="submit" className="search-button">
-              <svg viewBox="0 0 24 24" className="search-icon">
-                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-              </svg>
-            </button>
-          </form>
+        <form className="search-bar" onSubmit={handleSearch}>
+          <input
+            type="text"
+            placeholder="Search beats, artists, or samples..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button type="submit" className="search-button">
+            <svg viewBox="0 0 24 24" className="search-icon">
+              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+          </button>
+        </form>
         ) : null}
       </div>
 
@@ -119,19 +122,21 @@ const DashboardHeader = () => {
         <div className="search-modal-overlay" onClick={() => setSearchModalOpen(false)}>
           <div className="search-modal" onClick={e => e.stopPropagation()}>
             <button className="close-modal" onClick={() => setSearchModalOpen(false)}>&times;</button>
-            <input
-              type="text"
-              className="search-modal-input"
-              placeholder="Search for beats, artists, or samples..."
-              value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
-              autoFocus
-            />
+            <form onSubmit={handleSearch} style={{width: '100%'}}>
+              <input
+                type="text"
+                className="search-modal-input"
+                placeholder="Search for beats, artists, or samples..."
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)}
+                autoFocus
+              />
+            </form>
             {/* You can add search results here */}
           </div>
         </div>
       )}
-
+      
       <div className="header-right">
         {windowWidth <= 768 && (
           <button className="search-icon-btn" onClick={() => setSearchModalOpen(true)}>

@@ -611,10 +611,10 @@ const Community = () => {
         }}
       >
         <div className="header-content">
-          <Link to="/" className="header-logo">
+        <Link to="/" className="header-logo">
             <img src="/favicon.ico" alt="808 Brokers Logo" className="logo-image" />
             <span className="logo-text">808 Brokers</span>
-          </Link>
+        </Link>
         </div>
       </header>
       <div className="community-container">
