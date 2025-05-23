@@ -5,13 +5,14 @@ import { FiArrowLeft } from 'react-icons/fi';
 import '../styles/Navbar.css';
 import dicelogo from '../images/DiceLogoTransparent.png';
 
-const Navbar = ({ isHomePage }) => {
+const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useAuth();
   const isLibraryPage = location.pathname === '/library';
   const isStudioPage = location.pathname === '/dashboard/studio';
   const isLoginPage = location.pathname === '/login';
+  const isHomePage = location.pathname === '/';
   const showConnectWallet = !user && !isLibraryPage && !isStudioPage && !isLoginPage;
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -49,17 +50,15 @@ const Navbar = ({ isHomePage }) => {
   return (
     <div className={`navbar ${isVisible ? 'visible' : 'hidden'}`}>
       <div className="navbar-left">
-        {!isHomePage && (
+        <Link to="/" className="navbar-logo">
+          <img src={dicelogo} alt="Logo" className="logo-image" />
+        </Link>
+        {!isHomePage && !isLoginPage && (
           <button className="nav-back-button" onClick={() => navigate('/library')}>
             <FiArrowLeft />
             <span>Back to Library</span>
           </button>
         )}
-      </div>
-      <div className="navbar-center">
-        <Link to="/" className="navbar-logo">
-          <img src={dicelogo} alt="Logo" className="logo-image" />
-        </Link>
       </div>
       <div className="navbar-right">
         {showConnectWallet && (

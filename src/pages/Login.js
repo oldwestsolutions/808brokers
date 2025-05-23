@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
 import { AnimatePresence } from 'framer-motion';
@@ -12,11 +12,15 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [showTransition, setShowTransition] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const location = useLocation();
+  const { login, user } = useAuth();
 
+  // If user is already logged in, redirect to dashboard
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    if (user) {
+      navigate('/dashboard');
+    }
+  }, [user, navigate]);
 
   const handleGoogleLogin = () => {
     // Implement Google login logic here
@@ -31,7 +35,9 @@ const Login = () => {
     // Delay navigation to allow animation to play
     setTimeout(() => {
       login({ email });
-      navigate('/dashboard');
+      // Redirect to the page they tried to access, or dashboard if none
+      const from = location.state?.from?.pathname || '/dashboard';
+      navigate(from, { replace: true });
     }, 1500); // Adjust timing to match animation duration
   };
 

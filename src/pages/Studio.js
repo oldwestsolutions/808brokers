@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WaveSurfer from 'wavesurfer.js';
-import { FiFolder, FiFile, FiMusic, FiPlus, FiMoreVertical, FiUpload, FiDownload, FiShare2, FiTrash2, FiX, FiPlay, FiEdit2, FiSearch, FiFolderPlus, FiChevronLeft, FiChevronRight, FiFolderPlus as FiMoveToFolder, FiArrowLeft } from 'react-icons/fi';
+import { FiFolder, FiFile, FiMusic, FiPlus, FiMoreVertical, FiUpload, FiDownload, FiShare2, FiTrash2, FiX, FiPlay, FiEdit2, FiSearch, FiFolderPlus, FiChevronLeft, FiChevronRight, FiFolderPlus as FiMoveToFolder, FiArrowLeft, FiUploadCloud } from 'react-icons/fi';
 import AudioTrackRecorder from '../components/AudioTrackRecorder';
 import '../styles/Studio.css';
 
@@ -112,6 +112,9 @@ const Studio = () => {
   });
   const [showRenameModal, setShowRenameModal] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [showDropboxModal, setShowDropboxModal] = useState(false);
+  const [dropboxFiles, setDropboxFiles] = useState([]);
+  const [selectedDropboxFile, setSelectedDropboxFile] = useState(null);
 
   // Hide navbar when Studio component mounts
   useEffect(() => {
@@ -545,6 +548,61 @@ const Studio = () => {
     </div>
   );
 
+  const handleDropboxUpload = () => {
+    setShowDropboxModal(true);
+  };
+
+  const handleDropboxFileSelect = (file) => {
+    setSelectedDropboxFile(file);
+    // Here you would implement the actual file import logic
+    console.log('Selected Dropbox file:', file);
+    setShowDropboxModal(false);
+  };
+
+  const renderDropboxModal = () => (
+    <div className="modal-overlay" onClick={() => setShowDropboxModal(false)}>
+      <div className="modal-content dropbox-modal" onClick={e => e.stopPropagation()}>
+        <button className="modal-close" onClick={() => setShowDropboxModal(false)}>
+          <FiX />
+        </button>
+        <div className="modal-header">
+          <div className="modal-icon">
+            <FiUploadCloud />
+          </div>
+          <h2>Upload from Dropbox</h2>
+        </div>
+        <div className="modal-body">
+          <div className="dropbox-files">
+            {dropboxFiles.length === 0 ? (
+              <div className="empty-state">
+                <p>No files found in your Dropbox. Please connect your Dropbox account first.</p>
+                <button className="modal-btn primary" onClick={() => window.location.href = '/dropbox'}>
+                  Connect Dropbox
+                </button>
+              </div>
+            ) : (
+              dropboxFiles.map(file => (
+                <div 
+                  key={file.id}
+                  className="dropbox-file-item"
+                  onClick={() => handleDropboxFileSelect(file)}
+                >
+                  <div className="file-icon">
+                    <FiMusic />
+                  </div>
+                  <div className="file-info">
+                    <h3>{file.name}</h3>
+                    <span className="file-size">{file.size}</span>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="studio-page">
       <div className="studio-header">
@@ -568,20 +626,22 @@ const Studio = () => {
             <FiPlus />
             New Project
           </button>
-          <button className="action-btn">
-            <FiUpload />
-            Upload
-          </button>
         </div>
       </div>
 
       <div className="studio-content">
         <div className="main-content">
           <div className="content-header">
-            <button className="new-folder-btn" onClick={() => setShowNewFolderModal(true)}>
-              <FiFolderPlus />
-              New Folder
-            </button>
+            <div className="content-actions">
+              <button className="new-folder-btn" onClick={() => setShowNewFolderModal(true)}>
+                <FiFolderPlus />
+                New Folder
+              </button>
+              <button className="dropbox-upload-btn" onClick={handleDropboxUpload}>
+                <FiUploadCloud />
+                Upload from Dropbox
+              </button>
+            </div>
           </div>
 
           <div className="items-container">
@@ -749,6 +809,8 @@ const Studio = () => {
       {showRenameModal && renderRenameModal()}
 
       {showDeleteConfirm && renderDeleteConfirmModal()}
+
+      {showDropboxModal && renderDropboxModal()}
     </div>
   );
 };

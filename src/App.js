@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import { AuthProvider } from './context/AuthContext';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp.js';
@@ -36,23 +37,121 @@ function AnimatedRoutes() {
         <Route path="/" element={<PageTransition><Home /></PageTransition>} />
         <Route path="/login" element={<PageTransition><Login /></PageTransition>} />
         <Route path="/signup" element={<PageTransition><SignUp /></PageTransition>} />
-        <Route path="/dashboard" element={<PageTransition><Dashboard /></PageTransition>} />
-        <Route path="/dashboard/mailbox" element={<PageTransition><Mailbox /></PageTransition>} />
-        <Route path="/dashboard/cloud" element={<PageTransition><Cloud /></PageTransition>} />
-        <Route path="/shop" element={<PageTransition><Shop /></PageTransition>} />
-        <Route path="/dashboard/studio" element={<PageTransition><Studio /></PageTransition>} />
-        <Route path="/community" element={<PageTransition><Community /></PageTransition>} />
-        <Route path="/charts" element={<PageTransition><Charts /></PageTransition>} />
-        <Route path="/foryou" element={<PageTransition><ForYou /></PageTransition>} />
-        <Route path="/radio" element={<PageTransition><Radio /></PageTransition>} />
         <Route path="/auth/callback" element={<PageTransition><AuthCallback /></PageTransition>} />
-        <Route path="/profile" element={<PageTransition><Profile /></PageTransition>} />
-        <Route path="/settings" element={<PageTransition><Settings /></PageTransition>} />
-        <Route path="/library" element={<PageTransition><Library /></PageTransition>} />
-        <Route path="/wallet" element={<PageTransition><Wallet /></PageTransition>} />
-        <Route path="/dropbox" element={<PageTransition><Dropbox /></PageTransition>} />
-        <Route path="/favorites" element={<PageTransition><Favorites /></PageTransition>} />
-        <Route path="/university" element={<PageTransition><University /></PageTransition>} />
+        
+        {/* Protected Routes */}
+        <Route path="/dashboard" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
+        <Route path="/dashboard/mailbox" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <Mailbox />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
+        <Route path="/dashboard/cloud" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <Cloud />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
+        <Route path="/shop" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <Shop />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
+        <Route path="/dashboard/studio" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <Studio />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
+        <Route path="/community" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <Community />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
+        <Route path="/charts" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <Charts />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
+        <Route path="/foryou" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <ForYou />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
+        <Route path="/radio" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <Radio />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
+        <Route path="/profile" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
+        <Route path="/settings" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
+        <Route path="/library" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <Library />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
+        <Route path="/wallet" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <Wallet />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
+        <Route path="/dropbox" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <Dropbox />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
+        <Route path="/favorites" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <Favorites />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
+        <Route path="/university" element={
+          <PageTransition>
+            <ProtectedRoute>
+              <University />
+            </ProtectedRoute>
+          </PageTransition>
+        } />
       </Routes>
     </AnimatePresence>
   );

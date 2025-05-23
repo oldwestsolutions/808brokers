@@ -26,10 +26,27 @@
 }
 
 .navbar-left,
-.navbar-center,
 .navbar-right {
   display: flex;
   align-items: center;
+  gap: 1.5rem;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 40px;
+  width: auto;
+  filter: grayscale(100%) contrast(120%) brightness(90%);
+  transition: all 0.3s ease;
+}
+
+.logo-image:hover {
+  filter: grayscale(100%) contrast(150%) brightness(100%);
+  transform: scale(1.05);
 }
 
 .nav-back-button {
@@ -60,24 +77,6 @@
 .nav-back-button svg {
   font-size: 1.2rem;
   pointer-events: none;
-}
-
-.navbar-logo {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logo-image {
-  height: 40px;
-  width: auto;
-  filter: grayscale(100%) contrast(120%) brightness(90%);
-  transition: all 0.3s ease;
-}
-
-.logo-image:hover {
-  filter: grayscale(100%) contrast(150%) brightness(100%);
-  transform: scale(1.05);
 }
 
 .navbar-logo a {
