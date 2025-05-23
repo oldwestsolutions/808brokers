@@ -249,59 +249,40 @@
 @media (max-width: 768px) {
   .dashboard-header-nav {
     padding: 1rem;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
   }
-
   .header-left {
-    width: 100%;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     gap: 1rem;
-    align-items: stretch;
+    width: auto;
   }
-
-  .search-bar {
-    width: 180px;
-    max-width: 60vw;
-  }
-
   .header-right {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    width: auto;
     padding: 0;
+    justify-content: flex-end;
   }
-
-  .header-profile {
-    margin-left: auto;
-  }
-
-  .profile-dropdown {
-    right: -1rem;
-    width: calc(100vw - 2rem);
-    max-width: 280px;
-  }
-
-  .header-logo img {
-    height: 28px;
-    max-width: 90px;
-  }
-
-  .profile-avatar {
-    width: 32px;
-    height: 32px;
-  }
-
   .logo-text {
+    min-width: 0;
+    text-align: left;
     font-size: 1.1rem;
-    min-width: auto;
+  }
+  .search-icon-btn {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .logo-text {
     font-size: 0.9rem;
-    min-width: auto;
+    min-width: 0;
   }
 
   .search-bar input {
