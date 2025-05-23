@@ -962,4 +962,23 @@
   background: rgba(255, 68, 68, 0.05);
   border-radius: 8px;
   border: 1px solid rgba(255, 68, 68, 0.1);
+}
+
+.studio-gray-btn {
+  background: #232323;
+  color: #e0e0e0;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.studio-gray-btn:hover {
+  background: #333;
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
 } 

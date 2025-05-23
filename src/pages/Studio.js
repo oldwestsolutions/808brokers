@@ -610,21 +610,10 @@ const Studio = () => {
           <button className="back-btn" onClick={handleBack}>
             <FiArrowLeft />
           </button>
-          <h1>Studio</h1>
-          <div className="search-bar">
-            <FiSearch />
-            <input 
-              type="text" 
-              placeholder="Search files and folders..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
         </div>
         <div className="studio-actions">
-          <button className="action-btn primary">
-            <FiPlus />
-            New Project
+          <button className="studio-gray-btn">
+            Studio
           </button>
         </div>
       </div>
