@@ -112,11 +112,7 @@ const DashboardHeader = () => {
               </svg>
             </button>
           </form>
-        ) : (
-          <button className="search-icon-btn" onClick={() => setSearchModalOpen(true)}>
-            <FaSearch />
-          </button>
-        )}
+        ) : null}
       </div>
 
       {searchModalOpen && (
@@ -137,6 +133,11 @@ const DashboardHeader = () => {
       )}
 
       <div className="header-right">
+        {windowWidth <= 768 && (
+          <button className="search-icon-btn" onClick={() => setSearchModalOpen(true)}>
+            <FaSearch />
+          </button>
+        )}
         <div className="header-profile">
           <motion.button 
             className="profile-trigger"
