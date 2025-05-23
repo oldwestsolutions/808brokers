@@ -286,6 +286,19 @@
   .producers-section h2 {
     font-size: 1.5rem;
   }
+
+  .header-logo {
+    height: 28px;
+    max-width: 90px;
+  }
+  .producer-avatar {
+    width: 60px;
+    height: 60px;
+  }
+  .header-search {
+    max-width: 120px;
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -300,8 +313,16 @@
     gap: 0.5rem;
   }
 
+  .header-logo {
+    height: 22px;
+    max-width: 60px;
+  }
   .producer-avatar {
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
+  }
+  .header-search {
+    max-width: 80px;
+    font-size: 0.8rem;
   }
 } 
