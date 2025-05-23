@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaPlay, FaPause, FaHeart, FaShare } from 'react-icons/fa';
+import { FaPlay, FaPause, FaHeart, FaShare, FaSearch } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import '../styles/ForYou.css';
 
 const ForYou = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [liked, setLiked] = useState(false);
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const recommendedBeats = [
     {
@@ -47,7 +49,27 @@ const ForYou = () => {
         <Link to="/" className="logo-link">
           <img src="/DiceLogoTransparent.png" alt="808Brokers Logo" className="header-logo" />
         </Link>
+        <button className="header-search-icon" onClick={() => setSearchModalOpen(true)}>
+          <FaSearch />
+        </button>
       </header>
+
+      {searchModalOpen && (
+        <div className="search-modal-overlay" onClick={() => setSearchModalOpen(false)}>
+          <div className="search-modal" onClick={e => e.stopPropagation()}>
+            <button className="close-modal" onClick={() => setSearchModalOpen(false)}>&times;</button>
+            <input
+              type="text"
+              className="search-modal-input"
+              placeholder="Search for beats, producers, genres..."
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              autoFocus
+            />
+            {/* You can add search results here */}
+          </div>
+        </div>
+      )}
 
       <motion.div
         initial={{ opacity: 0 }}

@@ -261,8 +261,8 @@
   }
 
   .search-bar {
-    width: 100%;
-    max-width: 100%;
+    width: 180px;
+    max-width: 60vw;
   }
 
   .header-right {
@@ -281,11 +281,26 @@
     width: calc(100vw - 2rem);
     max-width: 280px;
   }
+
+  .header-logo img {
+    height: 28px;
+    max-width: 90px;
+  }
+
+  .profile-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo-text {
+    font-size: 1.1rem;
+    min-width: auto;
+  }
 }
 
 @media (max-width: 480px) {
   .logo-text {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     min-width: auto;
   }
 
@@ -305,8 +320,18 @@
   }
 
   .profile-avatar {
-    width: 35px;
-    height: 35px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .header-logo img {
+    height: 20px;
+    max-width: 50px;
+  }
+
+  .search-bar {
+    width: 100px;
+    max-width: 40vw;
   }
 }
 
@@ -362,4 +387,84 @@
 
 .mailbox-btn:hover svg, .shop-btn:hover svg {
   filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.8));
+}
+
+.search-icon-btn {
+  background: none;
+  border: none;
+  color: #b3b3b3;
+  font-size: 1.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  transition: color 0.2s;
+}
+.search-icon-btn:hover {
+  color: #fff;
+}
+
+.search-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-modal {
+  background: #18181b;
+  border-radius: 16px;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.85);
+  min-width: 90vw;
+  max-width: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.search-modal-input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: #23232b;
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.close-modal {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.8rem;
+  background: none;
+  border: none;
+  color: #b3b3b3;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+@media (max-width: 480px) {
+  .search-modal {
+    min-width: 98vw;
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+  }
+  .search-modal-input {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
+  .close-modal {
+    font-size: 1.5rem;
+    top: 0.2rem;
+    right: 0.4rem;
+  }
 } 
