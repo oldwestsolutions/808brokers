@@ -203,11 +203,10 @@
 
 .file-item:hover {
   background: rgba(255, 255, 255, 0.1);
-  transform: translateX(5px);
 }
 
 .file-list.grid .file-item:hover {
-  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .file-icon {
@@ -267,4 +266,48 @@
 .back-button span,
 .back-button svg {
   color: #0061FE;
+}
+
+.navbar.library-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px;
+}
+
+.nav-back-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(-2px);
+}
+
+.nav-back-button:active {
+  transform: scale(0.98);
+}
+
+.nav-back-button svg {
+  font-size: 1.2rem;
+  pointer-events: none;
 } 

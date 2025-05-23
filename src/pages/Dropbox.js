@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { FiLink, FiList, FiGrid, FiFile } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
+import { FiLink, FiList, FiGrid, FiFile, FiArrowLeft } from 'react-icons/fi';
 import { SiDropbox } from 'react-icons/si';
 import { Dropbox } from 'dropbox';
-import BackButton from '../components/BackButton';
 import '../styles/Dropbox.css';
 
 const DropboxPage = () => {
+  const navigate = useNavigate();
   const [viewMode, setViewMode] = useState('list');
   const [isConnected, setIsConnected] = useState(false);
   const [files, setFiles] = useState([]);
   const [dbx, setDbx] = useState(null);
+
+  // Hide navbar when Dropbox component mounts
+  useEffect(() => {
+    document.querySelector('.navbar')?.style.setProperty('display', 'none');
+    
+    // Show navbar when component unmounts
+    return () => {
+      document.querySelector('.navbar')?.style.setProperty('display', 'flex');
+    };
+  }, []);
 
   // Initialize Dropbox client
   useEffect(() => {
@@ -39,8 +50,13 @@ const DropboxPage = () => {
 
   return (
     <div className="dropbox-page">
+      <div className="navbar library-navbar visible">
+        <button className="nav-back-button" onClick={() => navigate('/library')}>
+          <FiArrowLeft />
+          <span>Back to Library</span>
+        </button>
+      </div>
       <div className="dropbox-header">
-        <BackButton destination="/library" text="Back to Library" />
         <div className="header-content">
           <div className="title-container">
             <SiDropbox className="dropbox-logo" />

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiBook, FiClock, FiUsers, FiAward, FiMic, FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiBook, FiClock, FiUsers, FiAward, FiMic } from 'react-icons/fi';
 import '../styles/University.css';
 
 const University = () => {
@@ -38,19 +38,21 @@ const University = () => {
   const courses = [
     {
       id: 1,
-      title: 'Music Theory Fundamentals',
-      description: 'Learn the basics of music theory, including scales, chords, and progressions.',
-      duration: '4 weeks',
-      students: 1234,
-      level: 'Beginner'
+      title: "Music Production Basics",
+      description: "Learn the fundamentals of music production and beat making",
+      duration: "4 weeks",
+      students: "1.2k",
+      level: "Beginner",
+      isStudio: false
     },
     {
       id: 2,
-      title: 'Advanced Production Techniques',
-      description: 'Master advanced production techniques used by professional producers.',
-      duration: '6 weeks',
-      students: 856,
-      level: 'Advanced'
+      title: "Advanced Sound Design",
+      description: "Master advanced sound design techniques and synthesis",
+      duration: "6 weeks",
+      students: "800",
+      level: "Advanced",
+      isStudio: true
     },
     {
       id: 3,
@@ -74,11 +76,20 @@ const University = () => {
   const handleCourseClick = (course) => {
     if (course.isStudio) {
       navigate('/dashboard/studio');
+    } else {
+      // Handle regular course click
+      console.log('Course clicked:', course.title);
     }
   };
 
   return (
     <div className="university-page">
+      <div className={`navbar university-navbar ${showBackButton ? 'visible' : 'hidden'}`}>
+        <button className="nav-back-button" onClick={() => navigate('/library')}>
+          <FiArrowLeft />
+          <span>Back to Library</span>
+        </button>
+      </div>
       <button 
         className={`subtle-back-button ${showBackButton ? 'visible' : 'hidden'}`} 
         onClick={() => navigate('/library')}

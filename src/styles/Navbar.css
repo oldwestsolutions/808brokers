@@ -25,32 +25,41 @@
   opacity: 0;
 }
 
-.library-navbar {
-  justify-content: flex-start;
-  background-color: transparent;
-  border-bottom: none;
-  height: auto;
-  padding: 1rem 2rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  transition: transform 0.3s ease;
+.navbar-left,
+.navbar-center,
+.navbar-right {
+  display: flex;
+  align-items: center;
 }
 
-.library-navbar.visible {
-  transform: translateY(0);
+.nav-back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.library-navbar.hidden {
-  transform: translateY(-100%);
+.nav-back-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(-2px);
 }
 
-.navbar-home {
-  position: relative;
-  background: transparent;
-  backdrop-filter: none;
+.nav-back-button:active {
+  transform: scale(0.98);
+}
+
+.nav-back-button svg {
+  font-size: 1.2rem;
+  pointer-events: none;
 }
 
 .navbar-logo {
@@ -108,55 +117,70 @@
   gap: 1rem;
 }
 
-.connect-wallet-btn {
-  background: transparent;
-  color: white;
-  border: 2px solid #8a2be2;
-  padding: 0.6rem 1.2rem;
+.connect-wallet-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  background: rgba(138, 43, 226, 0.2);
+  border: 1px solid rgba(138, 43, 226, 0.3);
   border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.9rem;
   cursor: pointer;
-  font-weight: 500;
   transition: all 0.3s ease;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.95rem;
-  letter-spacing: 0.5px;
-  box-shadow: none;
-  height: 40px;
-  line-height: 1;
 }
 
-.connect-wallet-btn:hover {
+.connect-wallet-button:hover {
+  background: rgba(138, 43, 226, 0.3);
   transform: translateY(-2px);
-  background: #8a2be2;
-  color: white;
-  border-color: #8a2be2;
 }
 
-.connect-wallet-btn:active {
+.library-navbar {
+  justify-content: flex-start;
+  background-color: transparent;
+  border-bottom: none;
+  height: auto;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.library-navbar.visible {
   transform: translateY(0);
 }
 
-/* Mobile adjustments */
+.library-navbar.hidden {
+  transform: translateY(-100%);
+}
+
+.navbar-home {
+  position: relative;
+  background: transparent;
+  backdrop-filter: none;
+}
+
 @media (max-width: 768px) {
   .navbar {
-    padding: 0 1rem;
+    padding: 1rem;
   }
 
-  .library-navbar {
-    padding: 1rem;
+  .nav-back-button {
+    padding: 0.75rem;
+    min-width: 44px;
+    justify-content: center;
+  }
+
+  .nav-back-button span {
+    display: none;
   }
 
   .logo-image {
     height: 32px;
-  }
-
-  .navbar-logo a {
-    font-size: 1.6rem;
-  }
-
-  .connect-wallet-btn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
   }
 }
 
@@ -174,7 +198,7 @@
     font-size: 1.5rem;
   }
 
-  .connect-wallet-btn {
+  .connect-wallet-button {
     padding: 0.4rem 0.8rem;
     font-size: 0.75rem;
   }
@@ -357,22 +381,15 @@
   gap: 1rem;
 }
 
-.navbar .back-button {
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.8);
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+/* Ensure library items are easily tappable on mobile */
+.library-item {
   cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
-.navbar .back-button:hover {
-  color: #ffffff;
-  transform: translateX(-5px);
-}
-
-.navbar .back-button svg {
-  font-size: 1.2rem;
+@media (max-width: 768px) {
+  .library-item {
+    min-height: 44px;
+  }
 } 

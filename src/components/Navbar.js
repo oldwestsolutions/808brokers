@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import BackButton from './BackButton';
+import { FiArrowLeft } from 'react-icons/fi';
 import '../styles/Navbar.css';
 import dicelogo from '../images/DiceLogoTransparent.png';
 
@@ -38,27 +38,37 @@ const Navbar = ({ isHomePage }) => {
   if (isLibraryPage) {
     return (
       <div className={`navbar library-navbar ${isVisible ? 'visible' : 'hidden'}`}>
-        <BackButton destination="/dashboard" text="Back to Dashboard" />
+        <button className="nav-back-button" onClick={() => navigate('/dashboard')}>
+          <FiArrowLeft />
+          <span>Back to Dashboard</span>
+        </button>
       </div>
     );
   }
 
   return (
-    <nav className={`navbar ${isHomePage ? 'home-navbar' : ''} ${isVisible ? 'visible' : 'hidden'}`}>
-      <div className="navbar-logo">
-        <Link to="/">
-          <img src={dicelogo} alt="808 Brokers" className="logo-image" />
+    <div className={`navbar ${isVisible ? 'visible' : 'hidden'}`}>
+      <div className="navbar-left">
+        {!isHomePage && (
+          <button className="nav-back-button" onClick={() => navigate('/library')}>
+            <FiArrowLeft />
+            <span>Back to Library</span>
+          </button>
+        )}
+      </div>
+      <div className="navbar-center">
+        <Link to="/" className="navbar-logo">
+          <img src={dicelogo} alt="Logo" className="logo-image" />
         </Link>
       </div>
-
-      <div className="navbar-actions">
+      <div className="navbar-right">
         {showConnectWallet && (
-          <button className="connect-wallet-btn" onClick={handleConnectWallet}>
+          <button className="connect-wallet-button" onClick={handleConnectWallet}>
             Connect Wallet
           </button>
         )}
       </div>
-    </nav>
+    </div>
   );
 };
 
